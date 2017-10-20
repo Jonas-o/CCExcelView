@@ -1,0 +1,743 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 48;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		B114A85B1F9459F9000B5BDC /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B114A85A1F9459F9000B5BDC /* AppDelegate.m */; };
+		B114A85E1F9459F9000B5BDC /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B114A85D1F9459F9000B5BDC /* ViewController.m */; };
+		B114A8611F9459F9000B5BDC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B114A85F1F9459F9000B5BDC /* Main.storyboard */; };
+		B114A8631F9459F9000B5BDC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B114A8621F9459F9000B5BDC /* Assets.xcassets */; };
+		B114A8661F9459F9000B5BDC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B114A8641F9459F9000B5BDC /* LaunchScreen.storyboard */; };
+		B114A8691F9459F9000B5BDC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B114A8681F9459F9000B5BDC /* main.m */; };
+		B114A8731F9459F9000B5BDC /* CCExcelViewTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B114A8721F9459F9000B5BDC /* CCExcelViewTests.m */; };
+		B114A87E1F9459F9000B5BDC /* CCExcelViewUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = B114A87D1F9459F9000B5BDC /* CCExcelViewUITests.m */; };
+		B114A8D61F945ECC000B5BDC /* CCCustomControlCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B114A8BB1F945ECC000B5BDC /* CCCustomControlCell.m */; };
+		B114A8D71F945ECC000B5BDC /* CCExcelAcccssoryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B114A8BD1F945ECC000B5BDC /* CCExcelAcccssoryCell.m */; };
+		B114A8D81F945ECC000B5BDC /* CCExcelCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B114A8BF1F945ECC000B5BDC /* CCExcelCell.m */; };
+		B114A8D91F945ECC000B5BDC /* CCExcelDeleteCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B114A8C11F945ECC000B5BDC /* CCExcelDeleteCell.m */; };
+		B114A8DA1F945ECC000B5BDC /* CCExcelDiscountCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B114A8C31F945ECC000B5BDC /* CCExcelDiscountCell.m */; };
+		B114A8DB1F945ECC000B5BDC /* CCExcelImageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B114A8C51F945ECC000B5BDC /* CCExcelImageCell.m */; };
+		B114A8DC1F945ECC000B5BDC /* CCExcelMutilineCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B114A8C71F945ECC000B5BDC /* CCExcelMutilineCell.m */; };
+		B114A8DD1F945ECC000B5BDC /* CCExcelNumberInputCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B114A8C91F945ECC000B5BDC /* CCExcelNumberInputCell.m */; };
+		B114A8DE1F945ECC000B5BDC /* CCExcelRowCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B114A8CB1F945ECC000B5BDC /* CCExcelRowCell.m */; };
+		B114A8DF1F945ECC000B5BDC /* CCExcelView.m in Sources */ = {isa = PBXBuildFile; fileRef = B114A8CD1F945ECC000B5BDC /* CCExcelView.m */; };
+		B114A8E01F945ECC000B5BDC /* OrderExcelCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B114A8CF1F945ECC000B5BDC /* OrderExcelCell.m */; };
+		B114A8E11F945ECC000B5BDC /* OrderExcelImageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B114A8D11F945ECC000B5BDC /* OrderExcelImageCell.m */; };
+		B114A8E21F945ECC000B5BDC /* OrderPackingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B114A8D31F945ECC000B5BDC /* OrderPackingCell.m */; };
+		B114A8E61F9460E5000B5BDC /* CCTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = B114A8E51F9460E5000B5BDC /* CCTextField.m */; };
+		B114A8E91F946225000B5BDC /* CCBorderMaker.m in Sources */ = {isa = PBXBuildFile; fileRef = B114A8E81F946225000B5BDC /* CCBorderMaker.m */; };
+		B114A8EC1F946455000B5BDC /* CCTextButton.m in Sources */ = {isa = PBXBuildFile; fileRef = B114A8EB1F946455000B5BDC /* CCTextButton.m */; };
+		B114A8EF1F94652B000B5BDC /* NSString+size.m in Sources */ = {isa = PBXBuildFile; fileRef = B114A8EE1F94652B000B5BDC /* NSString+size.m */; };
+		B114A8F21F94662C000B5BDC /* CCWarnLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = B114A8F11F94662C000B5BDC /* CCWarnLabel.m */; };
+		B14A9BF01F9488C5002BB70B /* BaseExcelDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = B14A9BEF1F9488C5002BB70B /* BaseExcelDataSource.m */; };
+		B14A9BF31F9488EE002BB70B /* CCSortExcelcell.m in Sources */ = {isa = PBXBuildFile; fileRef = B14A9BF21F9488EE002BB70B /* CCSortExcelcell.m */; };
+		B14B86391F984EF2008FA686 /* CCExcelResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = B14B86381F984EF2008FA686 /* CCExcelResources.bundle */; };
+		B14B863C1F9858D2008FA686 /* UIImage+Vector.m in Sources */ = {isa = PBXBuildFile; fileRef = B14B863B1F9858D2008FA686 /* UIImage+Vector.m */; };
+		B18271A71F9898B700EB4417 /* ExcelModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B18271A61F9898B700EB4417 /* ExcelModel.m */; };
+		B18271B41F98B11300EB4417 /* 1.png in Resources */ = {isa = PBXBuildFile; fileRef = B18271B31F98B10A00EB4417 /* 1.png */; };
+		B18271B51F98B11300EB4417 /* 2.png in Resources */ = {isa = PBXBuildFile; fileRef = B18271B01F98B10900EB4417 /* 2.png */; };
+		B18271B61F98B11300EB4417 /* 3.png in Resources */ = {isa = PBXBuildFile; fileRef = B18271B11F98B10A00EB4417 /* 3.png */; };
+		B18271B71F98B11300EB4417 /* 4.png in Resources */ = {isa = PBXBuildFile; fileRef = B18271B21F98B10A00EB4417 /* 4.png */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		B114A86F1F9459F9000B5BDC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B114A84E1F9459F9000B5BDC /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B114A8551F9459F9000B5BDC;
+			remoteInfo = CCExcelView;
+		};
+		B114A87A1F9459F9000B5BDC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B114A84E1F9459F9000B5BDC /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B114A8551F9459F9000B5BDC;
+			remoteInfo = CCExcelView;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		B114A8561F9459F9000B5BDC /* CCExcelView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CCExcelView.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B114A8591F9459F9000B5BDC /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		B114A85A1F9459F9000B5BDC /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		B114A85C1F9459F9000B5BDC /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		B114A85D1F9459F9000B5BDC /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		B114A8601F9459F9000B5BDC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		B114A8621F9459F9000B5BDC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		B114A8651F9459F9000B5BDC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		B114A8671F9459F9000B5BDC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B114A8681F9459F9000B5BDC /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		B114A86E1F9459F9000B5BDC /* CCExcelViewTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CCExcelViewTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		B114A8721F9459F9000B5BDC /* CCExcelViewTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CCExcelViewTests.m; sourceTree = "<group>"; };
+		B114A8741F9459F9000B5BDC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B114A8791F9459F9000B5BDC /* CCExcelViewUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CCExcelViewUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		B114A87D1F9459F9000B5BDC /* CCExcelViewUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CCExcelViewUITests.m; sourceTree = "<group>"; };
+		B114A87F1F9459F9000B5BDC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B114A8B81F945ECC000B5BDC /* CCUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCUtil.h; sourceTree = "<group>"; };
+		B114A8BA1F945ECC000B5BDC /* CCCustomControlCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCCustomControlCell.h; sourceTree = "<group>"; };
+		B114A8BB1F945ECC000B5BDC /* CCCustomControlCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCCustomControlCell.m; sourceTree = "<group>"; };
+		B114A8BC1F945ECC000B5BDC /* CCExcelAcccssoryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCExcelAcccssoryCell.h; sourceTree = "<group>"; };
+		B114A8BD1F945ECC000B5BDC /* CCExcelAcccssoryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCExcelAcccssoryCell.m; sourceTree = "<group>"; };
+		B114A8BE1F945ECC000B5BDC /* CCExcelCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCExcelCell.h; sourceTree = "<group>"; };
+		B114A8BF1F945ECC000B5BDC /* CCExcelCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCExcelCell.m; sourceTree = "<group>"; };
+		B114A8C01F945ECC000B5BDC /* CCExcelDeleteCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCExcelDeleteCell.h; sourceTree = "<group>"; };
+		B114A8C11F945ECC000B5BDC /* CCExcelDeleteCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCExcelDeleteCell.m; sourceTree = "<group>"; };
+		B114A8C21F945ECC000B5BDC /* CCExcelDiscountCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCExcelDiscountCell.h; sourceTree = "<group>"; };
+		B114A8C31F945ECC000B5BDC /* CCExcelDiscountCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCExcelDiscountCell.m; sourceTree = "<group>"; };
+		B114A8C41F945ECC000B5BDC /* CCExcelImageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCExcelImageCell.h; sourceTree = "<group>"; };
+		B114A8C51F945ECC000B5BDC /* CCExcelImageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCExcelImageCell.m; sourceTree = "<group>"; };
+		B114A8C61F945ECC000B5BDC /* CCExcelMutilineCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCExcelMutilineCell.h; sourceTree = "<group>"; };
+		B114A8C71F945ECC000B5BDC /* CCExcelMutilineCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCExcelMutilineCell.m; sourceTree = "<group>"; };
+		B114A8C81F945ECC000B5BDC /* CCExcelNumberInputCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCExcelNumberInputCell.h; sourceTree = "<group>"; };
+		B114A8C91F945ECC000B5BDC /* CCExcelNumberInputCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCExcelNumberInputCell.m; sourceTree = "<group>"; };
+		B114A8CA1F945ECC000B5BDC /* CCExcelRowCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCExcelRowCell.h; sourceTree = "<group>"; };
+		B114A8CB1F945ECC000B5BDC /* CCExcelRowCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCExcelRowCell.m; sourceTree = "<group>"; };
+		B114A8CC1F945ECC000B5BDC /* CCExcelView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCExcelView.h; sourceTree = "<group>"; };
+		B114A8CD1F945ECC000B5BDC /* CCExcelView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCExcelView.m; sourceTree = "<group>"; };
+		B114A8CE1F945ECC000B5BDC /* OrderExcelCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderExcelCell.h; sourceTree = "<group>"; };
+		B114A8CF1F945ECC000B5BDC /* OrderExcelCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderExcelCell.m; sourceTree = "<group>"; };
+		B114A8D01F945ECC000B5BDC /* OrderExcelImageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderExcelImageCell.h; sourceTree = "<group>"; };
+		B114A8D11F945ECC000B5BDC /* OrderExcelImageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderExcelImageCell.m; sourceTree = "<group>"; };
+		B114A8D21F945ECC000B5BDC /* OrderPackingCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderPackingCell.h; sourceTree = "<group>"; };
+		B114A8D31F945ECC000B5BDC /* OrderPackingCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderPackingCell.m; sourceTree = "<group>"; };
+		B114A8E31F945FA3000B5BDC /* CCPrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CCPrefixHeader.pch; sourceTree = "<group>"; };
+		B114A8E41F9460E5000B5BDC /* CCTextField.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CCTextField.h; sourceTree = "<group>"; };
+		B114A8E51F9460E5000B5BDC /* CCTextField.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CCTextField.m; sourceTree = "<group>"; };
+		B114A8E71F946225000B5BDC /* CCBorderMaker.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CCBorderMaker.h; sourceTree = "<group>"; };
+		B114A8E81F946225000B5BDC /* CCBorderMaker.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CCBorderMaker.m; sourceTree = "<group>"; };
+		B114A8EA1F946455000B5BDC /* CCTextButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CCTextButton.h; sourceTree = "<group>"; };
+		B114A8EB1F946455000B5BDC /* CCTextButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CCTextButton.m; sourceTree = "<group>"; };
+		B114A8ED1F94652B000B5BDC /* NSString+size.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+size.h"; sourceTree = "<group>"; };
+		B114A8EE1F94652B000B5BDC /* NSString+size.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+size.m"; sourceTree = "<group>"; };
+		B114A8F01F94662C000B5BDC /* CCWarnLabel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CCWarnLabel.h; sourceTree = "<group>"; };
+		B114A8F11F94662C000B5BDC /* CCWarnLabel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CCWarnLabel.m; sourceTree = "<group>"; };
+		B14A9BEE1F9488C5002BB70B /* BaseExcelDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseExcelDataSource.h; sourceTree = "<group>"; };
+		B14A9BEF1F9488C5002BB70B /* BaseExcelDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseExcelDataSource.m; sourceTree = "<group>"; };
+		B14A9BF11F9488EE002BB70B /* CCSortExcelcell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCSortExcelcell.h; sourceTree = "<group>"; };
+		B14A9BF21F9488EE002BB70B /* CCSortExcelcell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCSortExcelcell.m; sourceTree = "<group>"; };
+		B14B86381F984EF2008FA686 /* CCExcelResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = CCExcelResources.bundle; sourceTree = "<group>"; };
+		B14B863A1F9858D2008FA686 /* UIImage+Vector.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIImage+Vector.h"; sourceTree = "<group>"; };
+		B14B863B1F9858D2008FA686 /* UIImage+Vector.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Vector.m"; sourceTree = "<group>"; };
+		B18271A51F9898B700EB4417 /* ExcelModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ExcelModel.h; sourceTree = "<group>"; };
+		B18271A61F9898B700EB4417 /* ExcelModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ExcelModel.m; sourceTree = "<group>"; };
+		B18271B01F98B10900EB4417 /* 2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 2.png; sourceTree = "<group>"; };
+		B18271B11F98B10A00EB4417 /* 3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 3.png; sourceTree = "<group>"; };
+		B18271B21F98B10A00EB4417 /* 4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 4.png; sourceTree = "<group>"; };
+		B18271B31F98B10A00EB4417 /* 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1.png; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		B114A8531F9459F9000B5BDC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B114A86B1F9459F9000B5BDC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B114A8761F9459F9000B5BDC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		B114A84D1F9459F9000B5BDC = {
+			isa = PBXGroup;
+			children = (
+				B114A88B1F945A81000B5BDC /* Excel */,
+				B114A8581F9459F9000B5BDC /* CCExcelView */,
+				B114A8711F9459F9000B5BDC /* CCExcelViewTests */,
+				B114A87C1F9459F9000B5BDC /* CCExcelViewUITests */,
+				B114A8571F9459F9000B5BDC /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		B114A8571F9459F9000B5BDC /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B114A8561F9459F9000B5BDC /* CCExcelView.app */,
+				B114A86E1F9459F9000B5BDC /* CCExcelViewTests.xctest */,
+				B114A8791F9459F9000B5BDC /* CCExcelViewUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		B114A8581F9459F9000B5BDC /* CCExcelView */ = {
+			isa = PBXGroup;
+			children = (
+				B18271B31F98B10A00EB4417 /* 1.png */,
+				B18271B01F98B10900EB4417 /* 2.png */,
+				B18271B11F98B10A00EB4417 /* 3.png */,
+				B18271B21F98B10A00EB4417 /* 4.png */,
+				B18271A51F9898B700EB4417 /* ExcelModel.h */,
+				B18271A61F9898B700EB4417 /* ExcelModel.m */,
+				B114A8591F9459F9000B5BDC /* AppDelegate.h */,
+				B114A85A1F9459F9000B5BDC /* AppDelegate.m */,
+				B114A85C1F9459F9000B5BDC /* ViewController.h */,
+				B114A85D1F9459F9000B5BDC /* ViewController.m */,
+				B114A8E31F945FA3000B5BDC /* CCPrefixHeader.pch */,
+				B114A85F1F9459F9000B5BDC /* Main.storyboard */,
+				B114A8621F9459F9000B5BDC /* Assets.xcassets */,
+				B114A8641F9459F9000B5BDC /* LaunchScreen.storyboard */,
+				B114A8671F9459F9000B5BDC /* Info.plist */,
+				B114A8681F9459F9000B5BDC /* main.m */,
+			);
+			path = CCExcelView;
+			sourceTree = "<group>";
+		};
+		B114A8711F9459F9000B5BDC /* CCExcelViewTests */ = {
+			isa = PBXGroup;
+			children = (
+				B114A8721F9459F9000B5BDC /* CCExcelViewTests.m */,
+				B114A8741F9459F9000B5BDC /* Info.plist */,
+			);
+			path = CCExcelViewTests;
+			sourceTree = "<group>";
+		};
+		B114A87C1F9459F9000B5BDC /* CCExcelViewUITests */ = {
+			isa = PBXGroup;
+			children = (
+				B114A87D1F9459F9000B5BDC /* CCExcelViewUITests.m */,
+				B114A87F1F9459F9000B5BDC /* Info.plist */,
+			);
+			path = CCExcelViewUITests;
+			sourceTree = "<group>";
+		};
+		B114A88B1F945A81000B5BDC /* Excel */ = {
+			isa = PBXGroup;
+			children = (
+				B114A8B81F945ECC000B5BDC /* CCUtil.h */,
+				B14A9BEE1F9488C5002BB70B /* BaseExcelDataSource.h */,
+				B14A9BEF1F9488C5002BB70B /* BaseExcelDataSource.m */,
+				B14A9BF11F9488EE002BB70B /* CCSortExcelcell.h */,
+				B14A9BF21F9488EE002BB70B /* CCSortExcelcell.m */,
+				B114A8B71F945ECC000B5BDC /* Resources */,
+				B114A8B91F945ECC000B5BDC /* Views */,
+			);
+			path = Excel;
+			sourceTree = "<group>";
+		};
+		B114A8B71F945ECC000B5BDC /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				B14B86381F984EF2008FA686 /* CCExcelResources.bundle */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		B114A8B91F945ECC000B5BDC /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				B114A8BA1F945ECC000B5BDC /* CCCustomControlCell.h */,
+				B114A8BB1F945ECC000B5BDC /* CCCustomControlCell.m */,
+				B114A8BC1F945ECC000B5BDC /* CCExcelAcccssoryCell.h */,
+				B114A8BD1F945ECC000B5BDC /* CCExcelAcccssoryCell.m */,
+				B114A8BE1F945ECC000B5BDC /* CCExcelCell.h */,
+				B114A8BF1F945ECC000B5BDC /* CCExcelCell.m */,
+				B114A8C01F945ECC000B5BDC /* CCExcelDeleteCell.h */,
+				B114A8C11F945ECC000B5BDC /* CCExcelDeleteCell.m */,
+				B114A8C21F945ECC000B5BDC /* CCExcelDiscountCell.h */,
+				B114A8C31F945ECC000B5BDC /* CCExcelDiscountCell.m */,
+				B114A8C41F945ECC000B5BDC /* CCExcelImageCell.h */,
+				B114A8C51F945ECC000B5BDC /* CCExcelImageCell.m */,
+				B114A8C61F945ECC000B5BDC /* CCExcelMutilineCell.h */,
+				B114A8C71F945ECC000B5BDC /* CCExcelMutilineCell.m */,
+				B114A8C81F945ECC000B5BDC /* CCExcelNumberInputCell.h */,
+				B114A8C91F945ECC000B5BDC /* CCExcelNumberInputCell.m */,
+				B114A8CA1F945ECC000B5BDC /* CCExcelRowCell.h */,
+				B114A8CB1F945ECC000B5BDC /* CCExcelRowCell.m */,
+				B114A8CC1F945ECC000B5BDC /* CCExcelView.h */,
+				B114A8CD1F945ECC000B5BDC /* CCExcelView.m */,
+				B114A8CE1F945ECC000B5BDC /* OrderExcelCell.h */,
+				B114A8CF1F945ECC000B5BDC /* OrderExcelCell.m */,
+				B114A8D01F945ECC000B5BDC /* OrderExcelImageCell.h */,
+				B114A8D11F945ECC000B5BDC /* OrderExcelImageCell.m */,
+				B114A8D21F945ECC000B5BDC /* OrderPackingCell.h */,
+				B114A8D31F945ECC000B5BDC /* OrderPackingCell.m */,
+				B114A8E41F9460E5000B5BDC /* CCTextField.h */,
+				B114A8E51F9460E5000B5BDC /* CCTextField.m */,
+				B114A8EA1F946455000B5BDC /* CCTextButton.h */,
+				B114A8EB1F946455000B5BDC /* CCTextButton.m */,
+				B114A8F01F94662C000B5BDC /* CCWarnLabel.h */,
+				B114A8F11F94662C000B5BDC /* CCWarnLabel.m */,
+				B114A8E71F946225000B5BDC /* CCBorderMaker.h */,
+				B114A8E81F946225000B5BDC /* CCBorderMaker.m */,
+				B114A8ED1F94652B000B5BDC /* NSString+size.h */,
+				B114A8EE1F94652B000B5BDC /* NSString+size.m */,
+				B14B863A1F9858D2008FA686 /* UIImage+Vector.h */,
+				B14B863B1F9858D2008FA686 /* UIImage+Vector.m */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		B114A8551F9459F9000B5BDC /* CCExcelView */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B114A8821F9459F9000B5BDC /* Build configuration list for PBXNativeTarget "CCExcelView" */;
+			buildPhases = (
+				B114A8521F9459F9000B5BDC /* Sources */,
+				B114A8531F9459F9000B5BDC /* Frameworks */,
+				B114A8541F9459F9000B5BDC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CCExcelView;
+			productName = CCExcelView;
+			productReference = B114A8561F9459F9000B5BDC /* CCExcelView.app */;
+			productType = "com.apple.product-type.application";
+		};
+		B114A86D1F9459F9000B5BDC /* CCExcelViewTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B114A8851F9459F9000B5BDC /* Build configuration list for PBXNativeTarget "CCExcelViewTests" */;
+			buildPhases = (
+				B114A86A1F9459F9000B5BDC /* Sources */,
+				B114A86B1F9459F9000B5BDC /* Frameworks */,
+				B114A86C1F9459F9000B5BDC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B114A8701F9459F9000B5BDC /* PBXTargetDependency */,
+			);
+			name = CCExcelViewTests;
+			productName = CCExcelViewTests;
+			productReference = B114A86E1F9459F9000B5BDC /* CCExcelViewTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		B114A8781F9459F9000B5BDC /* CCExcelViewUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B114A8881F9459F9000B5BDC /* Build configuration list for PBXNativeTarget "CCExcelViewUITests" */;
+			buildPhases = (
+				B114A8751F9459F9000B5BDC /* Sources */,
+				B114A8761F9459F9000B5BDC /* Frameworks */,
+				B114A8771F9459F9000B5BDC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B114A87B1F9459F9000B5BDC /* PBXTargetDependency */,
+			);
+			name = CCExcelViewUITests;
+			productName = CCExcelViewUITests;
+			productReference = B114A8791F9459F9000B5BDC /* CCExcelViewUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		B114A84E1F9459F9000B5BDC /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0900;
+				ORGANIZATIONNAME = luo;
+				TargetAttributes = {
+					B114A8551F9459F9000B5BDC = {
+						CreatedOnToolsVersion = 9.0;
+						ProvisioningStyle = Automatic;
+					};
+					B114A86D1F9459F9000B5BDC = {
+						CreatedOnToolsVersion = 9.0;
+						ProvisioningStyle = Automatic;
+						TestTargetID = B114A8551F9459F9000B5BDC;
+					};
+					B114A8781F9459F9000B5BDC = {
+						CreatedOnToolsVersion = 9.0;
+						ProvisioningStyle = Automatic;
+						TestTargetID = B114A8551F9459F9000B5BDC;
+					};
+				};
+			};
+			buildConfigurationList = B114A8511F9459F9000B5BDC /* Build configuration list for PBXProject "CCExcelView" */;
+			compatibilityVersion = "Xcode 8.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = B114A84D1F9459F9000B5BDC;
+			productRefGroup = B114A8571F9459F9000B5BDC /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				B114A8551F9459F9000B5BDC /* CCExcelView */,
+				B114A86D1F9459F9000B5BDC /* CCExcelViewTests */,
+				B114A8781F9459F9000B5BDC /* CCExcelViewUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		B114A8541F9459F9000B5BDC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B18271B41F98B11300EB4417 /* 1.png in Resources */,
+				B18271B51F98B11300EB4417 /* 2.png in Resources */,
+				B18271B61F98B11300EB4417 /* 3.png in Resources */,
+				B18271B71F98B11300EB4417 /* 4.png in Resources */,
+				B114A8661F9459F9000B5BDC /* LaunchScreen.storyboard in Resources */,
+				B14B86391F984EF2008FA686 /* CCExcelResources.bundle in Resources */,
+				B114A8631F9459F9000B5BDC /* Assets.xcassets in Resources */,
+				B114A8611F9459F9000B5BDC /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B114A86C1F9459F9000B5BDC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B114A8771F9459F9000B5BDC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		B114A8521F9459F9000B5BDC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B114A8EF1F94652B000B5BDC /* NSString+size.m in Sources */,
+				B18271A71F9898B700EB4417 /* ExcelModel.m in Sources */,
+				B114A8DA1F945ECC000B5BDC /* CCExcelDiscountCell.m in Sources */,
+				B114A85E1F9459F9000B5BDC /* ViewController.m in Sources */,
+				B114A8E01F945ECC000B5BDC /* OrderExcelCell.m in Sources */,
+				B114A8F21F94662C000B5BDC /* CCWarnLabel.m in Sources */,
+				B114A8D91F945ECC000B5BDC /* CCExcelDeleteCell.m in Sources */,
+				B114A8E61F9460E5000B5BDC /* CCTextField.m in Sources */,
+				B114A8D71F945ECC000B5BDC /* CCExcelAcccssoryCell.m in Sources */,
+				B114A8E91F946225000B5BDC /* CCBorderMaker.m in Sources */,
+				B114A8DD1F945ECC000B5BDC /* CCExcelNumberInputCell.m in Sources */,
+				B14B863C1F9858D2008FA686 /* UIImage+Vector.m in Sources */,
+				B114A8E21F945ECC000B5BDC /* OrderPackingCell.m in Sources */,
+				B114A8DC1F945ECC000B5BDC /* CCExcelMutilineCell.m in Sources */,
+				B114A8DE1F945ECC000B5BDC /* CCExcelRowCell.m in Sources */,
+				B114A8DF1F945ECC000B5BDC /* CCExcelView.m in Sources */,
+				B114A8EC1F946455000B5BDC /* CCTextButton.m in Sources */,
+				B14A9BF01F9488C5002BB70B /* BaseExcelDataSource.m in Sources */,
+				B114A8691F9459F9000B5BDC /* main.m in Sources */,
+				B114A8E11F945ECC000B5BDC /* OrderExcelImageCell.m in Sources */,
+				B114A8D81F945ECC000B5BDC /* CCExcelCell.m in Sources */,
+				B114A8DB1F945ECC000B5BDC /* CCExcelImageCell.m in Sources */,
+				B14A9BF31F9488EE002BB70B /* CCSortExcelcell.m in Sources */,
+				B114A8D61F945ECC000B5BDC /* CCCustomControlCell.m in Sources */,
+				B114A85B1F9459F9000B5BDC /* AppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B114A86A1F9459F9000B5BDC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B114A8731F9459F9000B5BDC /* CCExcelViewTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B114A8751F9459F9000B5BDC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B114A87E1F9459F9000B5BDC /* CCExcelViewUITests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		B114A8701F9459F9000B5BDC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B114A8551F9459F9000B5BDC /* CCExcelView */;
+			targetProxy = B114A86F1F9459F9000B5BDC /* PBXContainerItemProxy */;
+		};
+		B114A87B1F9459F9000B5BDC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B114A8551F9459F9000B5BDC /* CCExcelView */;
+			targetProxy = B114A87A1F9459F9000B5BDC /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		B114A85F1F9459F9000B5BDC /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B114A8601F9459F9000B5BDC /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		B114A8641F9459F9000B5BDC /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B114A8651F9459F9000B5BDC /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		B114A8801F9459F9000B5BDC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		B114A8811F9459F9000B5BDC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		B114A8831F9459F9000B5BDC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = EP7SKUA83H;
+				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = NO;
+				GCC_PREFIX_HEADER = CCExcelView/CCPrefixHeader.pch;
+				INFOPLIST_FILE = CCExcelView/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.luo.excel;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		B114A8841F9459F9000B5BDC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = EP7SKUA83H;
+				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = NO;
+				GCC_PREFIX_HEADER = CCExcelView/CCPrefixHeader.pch;
+				INFOPLIST_FILE = CCExcelView/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.luo.excel;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		B114A8861F9459F9000B5BDC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = EP7SKUA83H;
+				INFOPLIST_FILE = CCExcelViewTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.luo.CCExcelViewTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CCExcelView.app/CCExcelView";
+			};
+			name = Debug;
+		};
+		B114A8871F9459F9000B5BDC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = EP7SKUA83H;
+				INFOPLIST_FILE = CCExcelViewTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.luo.CCExcelViewTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CCExcelView.app/CCExcelView";
+			};
+			name = Release;
+		};
+		B114A8891F9459F9000B5BDC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = EP7SKUA83H;
+				INFOPLIST_FILE = CCExcelViewUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.luo.CCExcelViewUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = CCExcelView;
+			};
+			name = Debug;
+		};
+		B114A88A1F9459F9000B5BDC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = EP7SKUA83H;
+				INFOPLIST_FILE = CCExcelViewUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.luo.CCExcelViewUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = CCExcelView;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		B114A8511F9459F9000B5BDC /* Build configuration list for PBXProject "CCExcelView" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B114A8801F9459F9000B5BDC /* Debug */,
+				B114A8811F9459F9000B5BDC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B114A8821F9459F9000B5BDC /* Build configuration list for PBXNativeTarget "CCExcelView" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B114A8831F9459F9000B5BDC /* Debug */,
+				B114A8841F9459F9000B5BDC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B114A8851F9459F9000B5BDC /* Build configuration list for PBXNativeTarget "CCExcelViewTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B114A8861F9459F9000B5BDC /* Debug */,
+				B114A8871F9459F9000B5BDC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B114A8881F9459F9000B5BDC /* Build configuration list for PBXNativeTarget "CCExcelViewUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B114A8891F9459F9000B5BDC /* Debug */,
+				B114A88A1F9459F9000B5BDC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = B114A84E1F9459F9000B5BDC /* Project object */;
+}

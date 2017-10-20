@@ -105,7 +105,6 @@
 		B114A8D11F945ECC000B5BDC /* OrderExcelImageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderExcelImageCell.m; sourceTree = "<group>"; };
 		B114A8D21F945ECC000B5BDC /* OrderPackingCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderPackingCell.h; sourceTree = "<group>"; };
 		B114A8D31F945ECC000B5BDC /* OrderPackingCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderPackingCell.m; sourceTree = "<group>"; };
-		B114A8E31F945FA3000B5BDC /* CCPrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CCPrefixHeader.pch; sourceTree = "<group>"; };
 		B114A8E41F9460E5000B5BDC /* CCTextField.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CCTextField.h; sourceTree = "<group>"; };
 		B114A8E51F9460E5000B5BDC /* CCTextField.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CCTextField.m; sourceTree = "<group>"; };
 		B114A8E71F946225000B5BDC /* CCBorderMaker.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CCBorderMaker.h; sourceTree = "<group>"; };
@@ -116,6 +115,7 @@
 		B114A8EE1F94652B000B5BDC /* NSString+size.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+size.m"; sourceTree = "<group>"; };
 		B114A8F01F94662C000B5BDC /* CCWarnLabel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CCWarnLabel.h; sourceTree = "<group>"; };
 		B114A8F11F94662C000B5BDC /* CCWarnLabel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CCWarnLabel.m; sourceTree = "<group>"; };
+		B139D3711F9A0A4600BFA448 /* CCPrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCPrefixHeader.pch; sourceTree = "<group>"; };
 		B14A9BEE1F9488C5002BB70B /* BaseExcelDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseExcelDataSource.h; sourceTree = "<group>"; };
 		B14A9BEF1F9488C5002BB70B /* BaseExcelDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseExcelDataSource.m; sourceTree = "<group>"; };
 		B14A9BF11F9488EE002BB70B /* CCSortExcelcell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCSortExcelcell.h; sourceTree = "<group>"; };
@@ -190,7 +190,6 @@
 				B114A85A1F9459F9000B5BDC /* AppDelegate.m */,
 				B114A85C1F9459F9000B5BDC /* ViewController.h */,
 				B114A85D1F9459F9000B5BDC /* ViewController.m */,
-				B114A8E31F945FA3000B5BDC /* CCPrefixHeader.pch */,
 				B114A85F1F9459F9000B5BDC /* Main.storyboard */,
 				B114A8621F9459F9000B5BDC /* Assets.xcassets */,
 				B114A8641F9459F9000B5BDC /* LaunchScreen.storyboard */,
@@ -221,6 +220,7 @@
 		B114A88B1F945A81000B5BDC /* Excel */ = {
 			isa = PBXGroup;
 			children = (
+				B139D3711F9A0A4600BFA448 /* CCPrefixHeader.pch */,
 				B114A8B81F945ECC000B5BDC /* CCUtil.h */,
 				B14A9BEE1F9488C5002BB70B /* BaseExcelDataSource.h */,
 				B14A9BEF1F9488C5002BB70B /* BaseExcelDataSource.m */,
@@ -613,7 +613,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = EP7SKUA83H;
 				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = NO;
-				GCC_PREFIX_HEADER = CCExcelView/CCPrefixHeader.pch;
+				GCC_PREFIX_HEADER = Excel/CCPrefixHeader.pch;
 				INFOPLIST_FILE = CCExcelView/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -630,7 +630,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = EP7SKUA83H;
 				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = NO;
-				GCC_PREFIX_HEADER = CCExcelView/CCPrefixHeader.pch;
+				GCC_PREFIX_HEADER = Excel/CCPrefixHeader.pch;
 				INFOPLIST_FILE = CCExcelView/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

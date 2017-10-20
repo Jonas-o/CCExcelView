@@ -7,6 +7,7 @@
 //
 
 #import "CCCustomControlCell.h"
+#import "CCUtil.h"
 
 @implementation CCCustomControlCell
 @synthesize detailLabel, imageView;

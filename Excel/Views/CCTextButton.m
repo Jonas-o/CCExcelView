@@ -8,6 +8,8 @@
 
 #import "CCTextButton.h"
 #import "CCBorderMaker.h"
+#import "CCUtil.h"
+#import "NSString+size.h"
 
 #define defaultTextButtonColor ColorLightGreen
 #define defaultTextButtonHighlightedColor ColorGreen

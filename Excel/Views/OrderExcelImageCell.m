@@ -7,6 +7,7 @@
 //
 
 #import "OrderExcelImageCell.h"
+#import "CCUtil.h"
 
 @implementation OrderExcelImageCell
 @synthesize imageView;

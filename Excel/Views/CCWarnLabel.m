@@ -7,6 +7,7 @@
 //
 
 #import "CCWarnLabel.h"
+#import "CCUtil.h"
 
 @implementation CCWarnLabel {
     UIColor *initialColor;

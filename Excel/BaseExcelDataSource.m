@@ -7,6 +7,8 @@
 //
 
 #import "BaseExcelDataSource.h"
+#import "CCUtil.h"
+#import "NSString+size.h"
 
 @implementation BaseExcelDataSource {
     NSMutableArray *columnWidthArray;

@@ -9,6 +9,7 @@
 #import "CCExcelCell.h"
 #import "CCBorderMaker.h"
 #import "CCWarnLabel.h"
+#import "CCUtil.h"
 
 @implementation CCExcelCell
 @synthesize label, reuseIdentifier, control, style, switchImageView, rightIcon, contentImageView, rightLine,selectedBackgroundView;

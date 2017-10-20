@@ -8,6 +8,7 @@
 
 #import "CCExcelRowCell.h"
 #import "CCExcelCell.h"
+#import "CCUtil.h"
 
 @interface CCExcelRowCell() <UIScrollViewDelegate>
 

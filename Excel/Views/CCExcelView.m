@@ -8,6 +8,7 @@
 
 #import "CCExcelView.h"
 #import "CCExcelRowCell.h"
+#import "CCUtil.h"
 
 const CGFloat excelViewLoadMoreOffset = 100;
 

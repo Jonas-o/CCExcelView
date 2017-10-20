@@ -7,6 +7,8 @@
 //
 
 #import "CCExcelMutilineCell.h"
+#import "CCUtil.h"
+#import "NSString+size.h"
 
 @implementation CCExcelMutilineCell
 @synthesize mutilineLabel;

@@ -7,6 +7,7 @@
 //
 
 #import "CCExcelImageCell.h"
+#import "CCUtil.h"
 
 @implementation CCExcelImageCell
 @synthesize imageView;

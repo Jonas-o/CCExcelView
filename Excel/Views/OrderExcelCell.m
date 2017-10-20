@@ -8,6 +8,7 @@
 
 #import "OrderExcelCell.h"
 #import "CCBorderMaker.h"
+#import "CCUtil.h"
 
 @implementation OrderExcelCell
 

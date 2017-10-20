@@ -7,6 +7,8 @@
 //
 
 #import "OrderExcelCell.h"
+#import "CCUtil.h"
+
 
 @interface CCExcelNumberInputCell : OrderExcelCell
 

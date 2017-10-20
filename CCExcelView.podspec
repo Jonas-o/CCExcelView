@@ -91,7 +91,7 @@ Pod::Spec.new do |s|
   #  For header files it will include any header in the folder.
   #  Not including the public_header_files will make all headers public.
   #
-  s.prefix_header_contents = "Excel/CCPrefixHeader.pch"
+  
   s.source_files  = "Excel/Views/*.{h,m}", "Excel/*.{h,m}"
   s.exclude_files = "Classes/Exclude"
 

@@ -7,6 +7,7 @@
 //
 
 #import "OrderPackingCell.h"
+#import "CCUtil.h"
 
 @implementation OrderPackingCell
 @synthesize detailLabel, imageView;

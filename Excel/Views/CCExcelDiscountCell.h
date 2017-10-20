@@ -7,7 +7,7 @@
 //
 
 #import "OrderExcelCell.h"
-#import "CCTextField.h"
+#import "CCUtil.h"
 
 typedef void(^CCExcelDiscountCellAction)(NSDecimalNumber *number);
 typedef void(^CCExcelDiscountCellEditAction)(CCExcelCell *cell);

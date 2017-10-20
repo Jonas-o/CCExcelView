@@ -7,6 +7,7 @@
 //
 
 #import "NSString+size.h"
+#import "CCUtil.h"
 
 @implementation NSString (size)
 

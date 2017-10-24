@@ -16,7 +16,8 @@
 
 + (UIImage *)vectorImageWithName:(NSString *)name size:(CGSize)size stretch:(BOOL)stretch {
     //图片资源存放路径
-    NSString *filePath = [[NSBundle mainBundle] pathForResource: @"CCExcelResources" ofType :@"bundle"];
+    NSBundle *bundle = [NSBundle bundleForClass:NSClassFromString(@"CCExcelView")];
+    NSString *filePath = [bundle pathForResource: @"CCExcelResources" ofType :@"bundle"];
     NSString *pdfPath = [filePath stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.pdf",name]];
     if (!pdfPath) return nil;
     return [self vectorImageWithURL:[NSURL fileURLWithPath:pdfPath] size:size stretch:stretch];

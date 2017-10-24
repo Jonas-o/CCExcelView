@@ -1,0 +1,6 @@
+framework module Pods_CCExcelView {
+  umbrella header "Pods-CCExcelView-umbrella.h"
+
+  export *
+  module * { export * }
+}

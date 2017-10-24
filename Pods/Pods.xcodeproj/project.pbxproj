@@ -1,0 +1,737 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 48;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		00A66FBBA9ADCD9AA8872ECEF3BCBAEA /* UIImage+Vector.m in Sources */ = {isa = PBXBuildFile; fileRef = E099F2810B405DE70BE60E40F69E3DAD /* UIImage+Vector.m */; };
+		01DAE5274B30BA27299F90A204A57505 /* CCExcelAcccssoryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 02E80ACA875D4A4779596742F20720D7 /* CCExcelAcccssoryCell.m */; };
+		01E937F4FFB838B5486609A66F736DB4 /* CCExcelDeleteCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AD53F57C260A483A79B5CECC6B06ADC /* CCExcelDeleteCell.m */; };
+		028B41CBC24BC2D3D5619D10E6AF072B /* CCTextButton.m in Sources */ = {isa = PBXBuildFile; fileRef = E6FB11D64362F6BA97CFCCC205D1CCE4 /* CCTextButton.m */; };
+		07558F039BBE2038402D72D24384BBAA /* CCExcelResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = B5AACE6791541BE31DEA75FCB1D9812B /* CCExcelResources.bundle */; };
+		07AC3322225C4FEA9ED638CC14CF7351 /* CCBorderMaker.h in Headers */ = {isa = PBXBuildFile; fileRef = DD56E8E9F4818C46200EE4476510362D /* CCBorderMaker.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0DE3DB953E8C701CD0251EBDD2F855E0 /* CCTextButton.h in Headers */ = {isa = PBXBuildFile; fileRef = 8E96A7C031373094AA4AB109799C71A4 /* CCTextButton.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1082996F9EBF3BE4575F9E3A801D8599 /* CCExcelImageCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 3530ABC6BCC7501A3C0B9DA4C2217AEE /* CCExcelImageCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1C2C5EB5830C58D3AC41EF969CBE3354 /* CCExcelDiscountCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CF941644C27ADA358453CDD5AD806E2C /* CCExcelDiscountCell.m */; };
+		29A74C9B61ECC759EC0E42EC8A0A3088 /* CCCustomControlCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 86FF2CB3F13C33736B41BCE3A905D9EE /* CCCustomControlCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2A7177ECB3FC6C8590B78811FF4CBEC8 /* CCExcelDiscountCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 3112ACFFFEC57D3D4B5FC05937E1D55C /* CCExcelDiscountCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2E7FA98E3CC6FFDD652093293563FF46 /* CCExcelView-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 63F34A5EC79A4F13CB89493D5E256342 /* CCExcelView-dummy.m */; };
+		2F42EB5D93C84351DDC543D6FB36D564 /* CCExcelImageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 66C7E57FB929789708BF7300575FF1E4 /* CCExcelImageCell.m */; };
+		3180AE2FD79C2224E9D64CC83B959E7C /* CCExcelCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B05E2D3904D36E903FA9270864CE6EA6 /* CCExcelCell.m */; };
+		395494F02333C989EFC76B70360B3148 /* CCUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = 3DAECB383255EFF48BADF5B7444EBC0A /* CCUtil.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3B257CF1102BD94DCB25138EE02DEBA1 /* CCExcelNumberInputCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 164A891F04EA8C105CD4820BCC589A7E /* CCExcelNumberInputCell.m */; };
+		477311F8409FE77CBEC9C3ABE45B6199 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D88AAE1F92055A60CC2FC970D7D34634 /* Foundation.framework */; };
+		50A8C7C2223C6EC064BCEC3B5853C4F2 /* CCExcelCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 2BC723971AAA229C1B3497195F2E2E8B /* CCExcelCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		527E5C7C7B99949A2AD34E1063E8149E /* CCExcelView-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = BDF574EC0D7516A93FBF0632FC2FE2E3 /* CCExcelView-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5B5CA8FD4BFBDB6488E2528E0A08DD47 /* CCWarnLabel.h in Headers */ = {isa = PBXBuildFile; fileRef = 09048F0F65DEB89A434BBA421D3F9652 /* CCWarnLabel.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6274A6F8BF1D048C3781F44C18728529 /* OrderExcelImageCell.h in Headers */ = {isa = PBXBuildFile; fileRef = AA212330560A3D4EBF1C5BC47AFE4C41 /* OrderExcelImageCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6CB0BBA9DE063D14769247D439C7362B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B63C6A64CF66340668996F78DA6BB482 /* UIKit.framework */; };
+		6FF9898C258B66B489359477E0BFEAA2 /* OrderExcelImageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F2549E73BAB3D57EADB06949C4F4A22 /* OrderExcelImageCell.m */; };
+		71FD955D341BF580EFB88144A6AD50A1 /* CCTextField.h in Headers */ = {isa = PBXBuildFile; fileRef = 30A8D5F304BFD61AC1936B2CCB8AD595 /* CCTextField.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		735875DE2FC9AD81BF8E8A52E93C6496 /* NSString+size.h in Headers */ = {isa = PBXBuildFile; fileRef = 8E6E3F54D1878826F2445F09ED9320B7 /* NSString+size.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		76A42F8049749DA2708F0E71E1BFA5C3 /* CCExcelRowCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 33B5D05F93F9428E1D335AA6C78F50B3 /* CCExcelRowCell.m */; };
+		870BF9BDF4908F93CD3CF51D2D44A0C2 /* CCExcelNumberInputCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 43724AEC71E14E19807D8988A4880887 /* CCExcelNumberInputCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8EDABB959FDBDD141EBF70B349A548BB /* CCExcelMutilineCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 47840FAC4AA17C82C7F6FB71F27722E0 /* CCExcelMutilineCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9B838CF62A7E1EB8CB605A52F4B5ECC0 /* BaseExcelDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 9035BF60C10A44741ECC74BBFE1D641B /* BaseExcelDataSource.m */; };
+		A58F6AFB889D2857F5DD06B32D3565FC /* CCExcelDeleteCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 797076B74CD6D1FC123858BC514AC480 /* CCExcelDeleteCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A744BF33B1C2B24789E58D919C570B8A /* OrderExcelCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 83748010DF7BDD2C6AC40B4B053CD962 /* OrderExcelCell.m */; };
+		A9950D7C7F30EBEB68CB92274A520494 /* Pods-CCExcelView-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F51A5F8502922D0E7CCAA29C9590D7C /* Pods-CCExcelView-dummy.m */; };
+		ADDE53F440BBBA9DA7B2AF9F266ACECB /* Pods-CCExcelView-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = B36448263EFFA9BA8838696AC1394979 /* Pods-CCExcelView-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BA0B96D85022BF197465B99059E8F744 /* UIImage+Vector.h in Headers */ = {isa = PBXBuildFile; fileRef = 7D2962A19B1F6A33A18BA1785986E87A /* UIImage+Vector.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BA92E16A845AB5D7BF117843EAE167F4 /* CCTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 3860F282418227C3721347F45C880A3B /* CCTextField.m */; };
+		C156BB51D135FB20E4A9C79566CFF69A /* OrderPackingCell.h in Headers */ = {isa = PBXBuildFile; fileRef = BB7C4F865183D54EBF345546488B6B22 /* OrderPackingCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C64C5C4A984C724A361F0DA577436EA5 /* CCExcelRowCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 944DFD2B7279A52770A545F551A20E88 /* CCExcelRowCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C81EF67CEB20B51DC3B27AF74BB8EDD4 /* CCCustomControlCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DB94C784EF91AFC7868E6BEFC5066EEC /* CCCustomControlCell.m */; };
+		CC9CA83E592A462EEDA9E2AEC1B797A9 /* BaseExcelDataSource.h in Headers */ = {isa = PBXBuildFile; fileRef = 0A19BC11199AA39B80697E262A7B21AB /* BaseExcelDataSource.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CCB1E2BAE2C287CE2367C049E56904D9 /* OrderPackingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BE5F3651CD1DEEF6C4CBE6A1967C18BD /* OrderPackingCell.m */; };
+		D0F79AA5349B9026DA4E25A7B5FB51FB /* CCExcelView.h in Headers */ = {isa = PBXBuildFile; fileRef = F5AA976EAD137E30D274999DB16CD218 /* CCExcelView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E7BD79F92F400EA7C2D47C1C8B59F8F2 /* CCSortExcelcell.m in Sources */ = {isa = PBXBuildFile; fileRef = 23B93B45817739B024C1301A66A7D25D /* CCSortExcelcell.m */; };
+		E80EF1220F7086CD486FC831DC2C75F4 /* CCExcelAcccssoryCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 187AE4AD8F6C0EE469DC980C0BD54531 /* CCExcelAcccssoryCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E903D444F48E66EAC07C9BC8766EE571 /* CCBorderMaker.m in Sources */ = {isa = PBXBuildFile; fileRef = 316FBE1E1B0F3705D67125D4677DE1BD /* CCBorderMaker.m */; };
+		EB2E45DAE33ACD8AC9373B363BE14669 /* CCExcelView.m in Sources */ = {isa = PBXBuildFile; fileRef = 014312CD7E3D796594886A2E2E58482F /* CCExcelView.m */; };
+		F0251D7E75CA9C8882E5656A054B4C37 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D88AAE1F92055A60CC2FC970D7D34634 /* Foundation.framework */; };
+		F20FE5EB00911EFABFE8F84231F4E16E /* CCExcelMutilineCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 39D425D4CC42DA1FFA4C32D29636581D /* CCExcelMutilineCell.m */; };
+		F2949725CD0D24F9985ACEA1E11C199B /* OrderExcelCell.h in Headers */ = {isa = PBXBuildFile; fileRef = F81406E14F4222CF06A80BB34353F639 /* OrderExcelCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F529BC86340F33416697F5FD5F5EDAE0 /* CCSortExcelcell.h in Headers */ = {isa = PBXBuildFile; fileRef = BB2212C950E87CC4A22A22ED2468AF27 /* CCSortExcelcell.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F79E63A3AB64762E1C93C7B7ADB33D57 /* NSString+size.m in Sources */ = {isa = PBXBuildFile; fileRef = 383F1CF9F7791497729BF466E7994538 /* NSString+size.m */; };
+		FBCCC8A63DC49F8F29C41FF301CDEAD8 /* CCWarnLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = C89F189A0A80C2A2493FA0610A95707C /* CCWarnLabel.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		5AC9A74D8F5A5FB000E1F2958B2E201F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F8777160F6BBF323DED607EA1190A54E;
+			remoteInfo = CCExcelView;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		014312CD7E3D796594886A2E2E58482F /* CCExcelView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = CCExcelView.m; path = Excel/Views/CCExcelView.m; sourceTree = "<group>"; };
+		02E80ACA875D4A4779596742F20720D7 /* CCExcelAcccssoryCell.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = CCExcelAcccssoryCell.m; path = Excel/Views/CCExcelAcccssoryCell.m; sourceTree = "<group>"; };
+		055B89A073A8E094F8CC73DAC831C9E7 /* Pods-CCExcelView-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-CCExcelView-resources.sh"; sourceTree = "<group>"; };
+		09048F0F65DEB89A434BBA421D3F9652 /* CCWarnLabel.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CCWarnLabel.h; path = Excel/Views/CCWarnLabel.h; sourceTree = "<group>"; };
+		09B27F28132EAE1E90020DE17FFB351A /* Pods_CCExcelView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_CCExcelView.framework; path = "Pods-CCExcelView.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		0A19BC11199AA39B80697E262A7B21AB /* BaseExcelDataSource.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = BaseExcelDataSource.h; path = Excel/BaseExcelDataSource.h; sourceTree = "<group>"; };
+		0CD293C98990286D62AF8CF025DC67A0 /* Pods-CCExcelView.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-CCExcelView.modulemap"; sourceTree = "<group>"; };
+		0EEB1D1A63DB292D25769D8D09F814F1 /* Pods-CCExcelView.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-CCExcelView.release.xcconfig"; sourceTree = "<group>"; };
+		0F51A5F8502922D0E7CCAA29C9590D7C /* Pods-CCExcelView-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-CCExcelView-dummy.m"; sourceTree = "<group>"; };
+		164A891F04EA8C105CD4820BCC589A7E /* CCExcelNumberInputCell.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = CCExcelNumberInputCell.m; path = Excel/Views/CCExcelNumberInputCell.m; sourceTree = "<group>"; };
+		187AE4AD8F6C0EE469DC980C0BD54531 /* CCExcelAcccssoryCell.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CCExcelAcccssoryCell.h; path = Excel/Views/CCExcelAcccssoryCell.h; sourceTree = "<group>"; };
+		1AD53F57C260A483A79B5CECC6B06ADC /* CCExcelDeleteCell.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = CCExcelDeleteCell.m; path = Excel/Views/CCExcelDeleteCell.m; sourceTree = "<group>"; };
+		23B93B45817739B024C1301A66A7D25D /* CCSortExcelcell.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = CCSortExcelcell.m; path = Excel/CCSortExcelcell.m; sourceTree = "<group>"; };
+		2BC723971AAA229C1B3497195F2E2E8B /* CCExcelCell.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CCExcelCell.h; path = Excel/Views/CCExcelCell.h; sourceTree = "<group>"; };
+		2F2549E73BAB3D57EADB06949C4F4A22 /* OrderExcelImageCell.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = OrderExcelImageCell.m; path = Excel/Views/OrderExcelImageCell.m; sourceTree = "<group>"; };
+		303F9A4369F8D71D8C8C6558022103AA /* CCExcelView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = CCExcelView.framework; path = CCExcelView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		30A8D5F304BFD61AC1936B2CCB8AD595 /* CCTextField.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CCTextField.h; path = Excel/Views/CCTextField.h; sourceTree = "<group>"; };
+		3112ACFFFEC57D3D4B5FC05937E1D55C /* CCExcelDiscountCell.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CCExcelDiscountCell.h; path = Excel/Views/CCExcelDiscountCell.h; sourceTree = "<group>"; };
+		316FBE1E1B0F3705D67125D4677DE1BD /* CCBorderMaker.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = CCBorderMaker.m; path = Excel/Views/CCBorderMaker.m; sourceTree = "<group>"; };
+		33B5D05F93F9428E1D335AA6C78F50B3 /* CCExcelRowCell.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = CCExcelRowCell.m; path = Excel/Views/CCExcelRowCell.m; sourceTree = "<group>"; };
+		34BF09DEA7DC4DC64AAB5F21E978418B /* CCExcelView-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "CCExcelView-prefix.pch"; sourceTree = "<group>"; };
+		3530ABC6BCC7501A3C0B9DA4C2217AEE /* CCExcelImageCell.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CCExcelImageCell.h; path = Excel/Views/CCExcelImageCell.h; sourceTree = "<group>"; };
+		383F1CF9F7791497729BF466E7994538 /* NSString+size.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSString+size.m"; path = "Excel/Views/NSString+size.m"; sourceTree = "<group>"; };
+		3860F282418227C3721347F45C880A3B /* CCTextField.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = CCTextField.m; path = Excel/Views/CCTextField.m; sourceTree = "<group>"; };
+		39D425D4CC42DA1FFA4C32D29636581D /* CCExcelMutilineCell.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = CCExcelMutilineCell.m; path = Excel/Views/CCExcelMutilineCell.m; sourceTree = "<group>"; };
+		3DAECB383255EFF48BADF5B7444EBC0A /* CCUtil.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CCUtil.h; path = Excel/CCUtil.h; sourceTree = "<group>"; };
+		43724AEC71E14E19807D8988A4880887 /* CCExcelNumberInputCell.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CCExcelNumberInputCell.h; path = Excel/Views/CCExcelNumberInputCell.h; sourceTree = "<group>"; };
+		47840FAC4AA17C82C7F6FB71F27722E0 /* CCExcelMutilineCell.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CCExcelMutilineCell.h; path = Excel/Views/CCExcelMutilineCell.h; sourceTree = "<group>"; };
+		5E343359B7D8342E77C0DA81EA7CFD7F /* Pods-CCExcelView-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-CCExcelView-acknowledgements.markdown"; sourceTree = "<group>"; };
+		63F34A5EC79A4F13CB89493D5E256342 /* CCExcelView-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "CCExcelView-dummy.m"; sourceTree = "<group>"; };
+		66C7E57FB929789708BF7300575FF1E4 /* CCExcelImageCell.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = CCExcelImageCell.m; path = Excel/Views/CCExcelImageCell.m; sourceTree = "<group>"; };
+		6D5810306E594A11510080208F2CD6E8 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		74A4687B7F9C8FD77314DD9F0D4F6FE7 /* CCExcelView.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = CCExcelView.xcconfig; sourceTree = "<group>"; };
+		797076B74CD6D1FC123858BC514AC480 /* CCExcelDeleteCell.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CCExcelDeleteCell.h; path = Excel/Views/CCExcelDeleteCell.h; sourceTree = "<group>"; };
+		7D2962A19B1F6A33A18BA1785986E87A /* UIImage+Vector.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIImage+Vector.h"; path = "Excel/Views/UIImage+Vector.h"; sourceTree = "<group>"; };
+		83748010DF7BDD2C6AC40B4B053CD962 /* OrderExcelCell.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = OrderExcelCell.m; path = Excel/Views/OrderExcelCell.m; sourceTree = "<group>"; };
+		86FF2CB3F13C33736B41BCE3A905D9EE /* CCCustomControlCell.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CCCustomControlCell.h; path = Excel/Views/CCCustomControlCell.h; sourceTree = "<group>"; };
+		87865B97E9F4C4DBE52B43EF2987533F /* Pods-CCExcelView-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-CCExcelView-frameworks.sh"; sourceTree = "<group>"; };
+		8E6E3F54D1878826F2445F09ED9320B7 /* NSString+size.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSString+size.h"; path = "Excel/Views/NSString+size.h"; sourceTree = "<group>"; };
+		8E96A7C031373094AA4AB109799C71A4 /* CCTextButton.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CCTextButton.h; path = Excel/Views/CCTextButton.h; sourceTree = "<group>"; };
+		9035BF60C10A44741ECC74BBFE1D641B /* BaseExcelDataSource.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = BaseExcelDataSource.m; path = Excel/BaseExcelDataSource.m; sourceTree = "<group>"; };
+		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		944DFD2B7279A52770A545F551A20E88 /* CCExcelRowCell.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CCExcelRowCell.h; path = Excel/Views/CCExcelRowCell.h; sourceTree = "<group>"; };
+		A216C0409D629ECF152E18465EE1FA65 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AA212330560A3D4EBF1C5BC47AFE4C41 /* OrderExcelImageCell.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = OrderExcelImageCell.h; path = Excel/Views/OrderExcelImageCell.h; sourceTree = "<group>"; };
+		B05E2D3904D36E903FA9270864CE6EA6 /* CCExcelCell.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = CCExcelCell.m; path = Excel/Views/CCExcelCell.m; sourceTree = "<group>"; };
+		B36448263EFFA9BA8838696AC1394979 /* Pods-CCExcelView-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-CCExcelView-umbrella.h"; sourceTree = "<group>"; };
+		B5AACE6791541BE31DEA75FCB1D9812B /* CCExcelResources.bundle */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "wrapper.plug-in"; name = CCExcelResources.bundle; path = Excel/Resources/CCExcelResources.bundle; sourceTree = "<group>"; };
+		B63C6A64CF66340668996F78DA6BB482 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
+		BB2212C950E87CC4A22A22ED2468AF27 /* CCSortExcelcell.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CCSortExcelcell.h; path = Excel/CCSortExcelcell.h; sourceTree = "<group>"; };
+		BB7C4F865183D54EBF345546488B6B22 /* OrderPackingCell.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = OrderPackingCell.h; path = Excel/Views/OrderPackingCell.h; sourceTree = "<group>"; };
+		BDF574EC0D7516A93FBF0632FC2FE2E3 /* CCExcelView-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "CCExcelView-umbrella.h"; sourceTree = "<group>"; };
+		BE5F3651CD1DEEF6C4CBE6A1967C18BD /* OrderPackingCell.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = OrderPackingCell.m; path = Excel/Views/OrderPackingCell.m; sourceTree = "<group>"; };
+		C89F189A0A80C2A2493FA0610A95707C /* CCWarnLabel.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = CCWarnLabel.m; path = Excel/Views/CCWarnLabel.m; sourceTree = "<group>"; };
+		C9A923E6097C335935395301C9F8A1F3 /* Pods-CCExcelView-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-CCExcelView-acknowledgements.plist"; sourceTree = "<group>"; };
+		CF941644C27ADA358453CDD5AD806E2C /* CCExcelDiscountCell.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = CCExcelDiscountCell.m; path = Excel/Views/CCExcelDiscountCell.m; sourceTree = "<group>"; };
+		D15E0DC111A798E41D72A009ED41FCCE /* CCExcelView.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = CCExcelView.modulemap; sourceTree = "<group>"; };
+		D27957EF16823238BB52C125D1EFAFF2 /* Pods-CCExcelView.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-CCExcelView.debug.xcconfig"; sourceTree = "<group>"; };
+		D88AAE1F92055A60CC2FC970D7D34634 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		DB94C784EF91AFC7868E6BEFC5066EEC /* CCCustomControlCell.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = CCCustomControlCell.m; path = Excel/Views/CCCustomControlCell.m; sourceTree = "<group>"; };
+		DD56E8E9F4818C46200EE4476510362D /* CCBorderMaker.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CCBorderMaker.h; path = Excel/Views/CCBorderMaker.h; sourceTree = "<group>"; };
+		E099F2810B405DE70BE60E40F69E3DAD /* UIImage+Vector.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIImage+Vector.m"; path = "Excel/Views/UIImage+Vector.m"; sourceTree = "<group>"; };
+		E6FB11D64362F6BA97CFCCC205D1CCE4 /* CCTextButton.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = CCTextButton.m; path = Excel/Views/CCTextButton.m; sourceTree = "<group>"; };
+		F5AA976EAD137E30D274999DB16CD218 /* CCExcelView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CCExcelView.h; path = Excel/Views/CCExcelView.h; sourceTree = "<group>"; };
+		F81406E14F4222CF06A80BB34353F639 /* OrderExcelCell.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = OrderExcelCell.h; path = Excel/Views/OrderExcelCell.h; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		7658D3C2DE95D8D3EBF582C481F3459D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F0251D7E75CA9C8882E5656A054B4C37 /* Foundation.framework in Frameworks */,
+				6CB0BBA9DE063D14769247D439C7362B /* UIKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FB393DD289928D50CAFE8AD2E0CE2940 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				477311F8409FE77CBEC9C3ABE45B6199 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		04FC73B5283F98BFE6E866426F5BF5A7 /* CCExcelView */ = {
+			isa = PBXGroup;
+			children = (
+				0A19BC11199AA39B80697E262A7B21AB /* BaseExcelDataSource.h */,
+				9035BF60C10A44741ECC74BBFE1D641B /* BaseExcelDataSource.m */,
+				DD56E8E9F4818C46200EE4476510362D /* CCBorderMaker.h */,
+				316FBE1E1B0F3705D67125D4677DE1BD /* CCBorderMaker.m */,
+				86FF2CB3F13C33736B41BCE3A905D9EE /* CCCustomControlCell.h */,
+				DB94C784EF91AFC7868E6BEFC5066EEC /* CCCustomControlCell.m */,
+				187AE4AD8F6C0EE469DC980C0BD54531 /* CCExcelAcccssoryCell.h */,
+				02E80ACA875D4A4779596742F20720D7 /* CCExcelAcccssoryCell.m */,
+				2BC723971AAA229C1B3497195F2E2E8B /* CCExcelCell.h */,
+				B05E2D3904D36E903FA9270864CE6EA6 /* CCExcelCell.m */,
+				797076B74CD6D1FC123858BC514AC480 /* CCExcelDeleteCell.h */,
+				1AD53F57C260A483A79B5CECC6B06ADC /* CCExcelDeleteCell.m */,
+				3112ACFFFEC57D3D4B5FC05937E1D55C /* CCExcelDiscountCell.h */,
+				CF941644C27ADA358453CDD5AD806E2C /* CCExcelDiscountCell.m */,
+				3530ABC6BCC7501A3C0B9DA4C2217AEE /* CCExcelImageCell.h */,
+				66C7E57FB929789708BF7300575FF1E4 /* CCExcelImageCell.m */,
+				47840FAC4AA17C82C7F6FB71F27722E0 /* CCExcelMutilineCell.h */,
+				39D425D4CC42DA1FFA4C32D29636581D /* CCExcelMutilineCell.m */,
+				43724AEC71E14E19807D8988A4880887 /* CCExcelNumberInputCell.h */,
+				164A891F04EA8C105CD4820BCC589A7E /* CCExcelNumberInputCell.m */,
+				944DFD2B7279A52770A545F551A20E88 /* CCExcelRowCell.h */,
+				33B5D05F93F9428E1D335AA6C78F50B3 /* CCExcelRowCell.m */,
+				F5AA976EAD137E30D274999DB16CD218 /* CCExcelView.h */,
+				014312CD7E3D796594886A2E2E58482F /* CCExcelView.m */,
+				BB2212C950E87CC4A22A22ED2468AF27 /* CCSortExcelcell.h */,
+				23B93B45817739B024C1301A66A7D25D /* CCSortExcelcell.m */,
+				8E96A7C031373094AA4AB109799C71A4 /* CCTextButton.h */,
+				E6FB11D64362F6BA97CFCCC205D1CCE4 /* CCTextButton.m */,
+				30A8D5F304BFD61AC1936B2CCB8AD595 /* CCTextField.h */,
+				3860F282418227C3721347F45C880A3B /* CCTextField.m */,
+				3DAECB383255EFF48BADF5B7444EBC0A /* CCUtil.h */,
+				09048F0F65DEB89A434BBA421D3F9652 /* CCWarnLabel.h */,
+				C89F189A0A80C2A2493FA0610A95707C /* CCWarnLabel.m */,
+				8E6E3F54D1878826F2445F09ED9320B7 /* NSString+size.h */,
+				383F1CF9F7791497729BF466E7994538 /* NSString+size.m */,
+				F81406E14F4222CF06A80BB34353F639 /* OrderExcelCell.h */,
+				83748010DF7BDD2C6AC40B4B053CD962 /* OrderExcelCell.m */,
+				AA212330560A3D4EBF1C5BC47AFE4C41 /* OrderExcelImageCell.h */,
+				2F2549E73BAB3D57EADB06949C4F4A22 /* OrderExcelImageCell.m */,
+				BB7C4F865183D54EBF345546488B6B22 /* OrderPackingCell.h */,
+				BE5F3651CD1DEEF6C4CBE6A1967C18BD /* OrderPackingCell.m */,
+				7D2962A19B1F6A33A18BA1785986E87A /* UIImage+Vector.h */,
+				E099F2810B405DE70BE60E40F69E3DAD /* UIImage+Vector.m */,
+				C8EAAA6911768E7A0AFD5B186F16AD0A /* Resources */,
+				0BAFEEBD2E1CADCF173069D9C8ED41C2 /* Support Files */,
+			);
+			name = CCExcelView;
+			path = CCExcelView;
+			sourceTree = "<group>";
+		};
+		0BAFEEBD2E1CADCF173069D9C8ED41C2 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				D15E0DC111A798E41D72A009ED41FCCE /* CCExcelView.modulemap */,
+				74A4687B7F9C8FD77314DD9F0D4F6FE7 /* CCExcelView.xcconfig */,
+				63F34A5EC79A4F13CB89493D5E256342 /* CCExcelView-dummy.m */,
+				34BF09DEA7DC4DC64AAB5F21E978418B /* CCExcelView-prefix.pch */,
+				BDF574EC0D7516A93FBF0632FC2FE2E3 /* CCExcelView-umbrella.h */,
+				6D5810306E594A11510080208F2CD6E8 /* Info.plist */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/CCExcelView";
+			sourceTree = "<group>";
+		};
+		433CD3331B6C3787F473C941B61FC68F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				438B396F6B4147076630CAEFE34282C1 /* iOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		438B396F6B4147076630CAEFE34282C1 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				D88AAE1F92055A60CC2FC970D7D34634 /* Foundation.framework */,
+				B63C6A64CF66340668996F78DA6BB482 /* UIKit.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		7DB346D0F39D3F0E887471402A8071AB = {
+			isa = PBXGroup;
+			children = (
+				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
+				433CD3331B6C3787F473C941B61FC68F /* Frameworks */,
+				8C43E79E1FDF5B7CECD4BD4CE08AD1C9 /* Pods */,
+				BC9EF7E94B78CF88E034480DE6054281 /* Products */,
+				C3D44F309DDB7419B010FFB54B111378 /* Targets Support Files */,
+			);
+			sourceTree = "<group>";
+		};
+		8C43E79E1FDF5B7CECD4BD4CE08AD1C9 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				04FC73B5283F98BFE6E866426F5BF5A7 /* CCExcelView */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		8DA330FB248D8CA5D882B6876EC6C0B0 /* Pods-CCExcelView */ = {
+			isa = PBXGroup;
+			children = (
+				A216C0409D629ECF152E18465EE1FA65 /* Info.plist */,
+				0CD293C98990286D62AF8CF025DC67A0 /* Pods-CCExcelView.modulemap */,
+				5E343359B7D8342E77C0DA81EA7CFD7F /* Pods-CCExcelView-acknowledgements.markdown */,
+				C9A923E6097C335935395301C9F8A1F3 /* Pods-CCExcelView-acknowledgements.plist */,
+				0F51A5F8502922D0E7CCAA29C9590D7C /* Pods-CCExcelView-dummy.m */,
+				87865B97E9F4C4DBE52B43EF2987533F /* Pods-CCExcelView-frameworks.sh */,
+				055B89A073A8E094F8CC73DAC831C9E7 /* Pods-CCExcelView-resources.sh */,
+				B36448263EFFA9BA8838696AC1394979 /* Pods-CCExcelView-umbrella.h */,
+				D27957EF16823238BB52C125D1EFAFF2 /* Pods-CCExcelView.debug.xcconfig */,
+				0EEB1D1A63DB292D25769D8D09F814F1 /* Pods-CCExcelView.release.xcconfig */,
+			);
+			name = "Pods-CCExcelView";
+			path = "Target Support Files/Pods-CCExcelView";
+			sourceTree = "<group>";
+		};
+		BC9EF7E94B78CF88E034480DE6054281 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				303F9A4369F8D71D8C8C6558022103AA /* CCExcelView.framework */,
+				09B27F28132EAE1E90020DE17FFB351A /* Pods_CCExcelView.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		C3D44F309DDB7419B010FFB54B111378 /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				8DA330FB248D8CA5D882B6876EC6C0B0 /* Pods-CCExcelView */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		C8EAAA6911768E7A0AFD5B186F16AD0A /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				B5AACE6791541BE31DEA75FCB1D9812B /* CCExcelResources.bundle */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		770BB673AAB8B39F883D29BE0D27B02C /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ADDE53F440BBBA9DA7B2AF9F266ACECB /* Pods-CCExcelView-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E5562BF94358F06C5EAFE2BB7A91B1AD /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CC9CA83E592A462EEDA9E2AEC1B797A9 /* BaseExcelDataSource.h in Headers */,
+				07AC3322225C4FEA9ED638CC14CF7351 /* CCBorderMaker.h in Headers */,
+				29A74C9B61ECC759EC0E42EC8A0A3088 /* CCCustomControlCell.h in Headers */,
+				E80EF1220F7086CD486FC831DC2C75F4 /* CCExcelAcccssoryCell.h in Headers */,
+				50A8C7C2223C6EC064BCEC3B5853C4F2 /* CCExcelCell.h in Headers */,
+				A58F6AFB889D2857F5DD06B32D3565FC /* CCExcelDeleteCell.h in Headers */,
+				2A7177ECB3FC6C8590B78811FF4CBEC8 /* CCExcelDiscountCell.h in Headers */,
+				1082996F9EBF3BE4575F9E3A801D8599 /* CCExcelImageCell.h in Headers */,
+				8EDABB959FDBDD141EBF70B349A548BB /* CCExcelMutilineCell.h in Headers */,
+				870BF9BDF4908F93CD3CF51D2D44A0C2 /* CCExcelNumberInputCell.h in Headers */,
+				C64C5C4A984C724A361F0DA577436EA5 /* CCExcelRowCell.h in Headers */,
+				527E5C7C7B99949A2AD34E1063E8149E /* CCExcelView-umbrella.h in Headers */,
+				D0F79AA5349B9026DA4E25A7B5FB51FB /* CCExcelView.h in Headers */,
+				F529BC86340F33416697F5FD5F5EDAE0 /* CCSortExcelcell.h in Headers */,
+				0DE3DB953E8C701CD0251EBDD2F855E0 /* CCTextButton.h in Headers */,
+				71FD955D341BF580EFB88144A6AD50A1 /* CCTextField.h in Headers */,
+				395494F02333C989EFC76B70360B3148 /* CCUtil.h in Headers */,
+				5B5CA8FD4BFBDB6488E2528E0A08DD47 /* CCWarnLabel.h in Headers */,
+				735875DE2FC9AD81BF8E8A52E93C6496 /* NSString+size.h in Headers */,
+				F2949725CD0D24F9985ACEA1E11C199B /* OrderExcelCell.h in Headers */,
+				6274A6F8BF1D048C3781F44C18728529 /* OrderExcelImageCell.h in Headers */,
+				C156BB51D135FB20E4A9C79566CFF69A /* OrderPackingCell.h in Headers */,
+				BA0B96D85022BF197465B99059E8F744 /* UIImage+Vector.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		67E98E5E1DEF5272D35D0FAB5C77A2D9 /* Pods-CCExcelView */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1047B54690C92588DA7B3955BBD5E345 /* Build configuration list for PBXNativeTarget "Pods-CCExcelView" */;
+			buildPhases = (
+				CF5DB72F06813E87E0542DC9C35D6A1D /* Sources */,
+				FB393DD289928D50CAFE8AD2E0CE2940 /* Frameworks */,
+				770BB673AAB8B39F883D29BE0D27B02C /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				409D9A4DB42B90F7C22070FCAB97BC5C /* PBXTargetDependency */,
+			);
+			name = "Pods-CCExcelView";
+			productName = "Pods-CCExcelView";
+			productReference = 09B27F28132EAE1E90020DE17FFB351A /* Pods_CCExcelView.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		F8777160F6BBF323DED607EA1190A54E /* CCExcelView */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4FD8EFEA658FAD369964D6465960CE39 /* Build configuration list for PBXNativeTarget "CCExcelView" */;
+			buildPhases = (
+				55CA4596524D3F7B12D6F0879AC2355A /* Sources */,
+				7658D3C2DE95D8D3EBF582C481F3459D /* Frameworks */,
+				E5562BF94358F06C5EAFE2BB7A91B1AD /* Headers */,
+				9CDC6F8DB6A96A174C1B7A3444D11BB8 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CCExcelView;
+			productName = CCExcelView;
+			productReference = 303F9A4369F8D71D8C8C6558022103AA /* CCExcelView.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D41D8CD98F00B204E9800998ECF8427E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0830;
+				LastUpgradeCheck = 0700;
+			};
+			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
+			productRefGroup = BC9EF7E94B78CF88E034480DE6054281 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				F8777160F6BBF323DED607EA1190A54E /* CCExcelView */,
+				67E98E5E1DEF5272D35D0FAB5C77A2D9 /* Pods-CCExcelView */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		9CDC6F8DB6A96A174C1B7A3444D11BB8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				07558F039BBE2038402D72D24384BBAA /* CCExcelResources.bundle in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		55CA4596524D3F7B12D6F0879AC2355A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9B838CF62A7E1EB8CB605A52F4B5ECC0 /* BaseExcelDataSource.m in Sources */,
+				E903D444F48E66EAC07C9BC8766EE571 /* CCBorderMaker.m in Sources */,
+				C81EF67CEB20B51DC3B27AF74BB8EDD4 /* CCCustomControlCell.m in Sources */,
+				01DAE5274B30BA27299F90A204A57505 /* CCExcelAcccssoryCell.m in Sources */,
+				3180AE2FD79C2224E9D64CC83B959E7C /* CCExcelCell.m in Sources */,
+				01E937F4FFB838B5486609A66F736DB4 /* CCExcelDeleteCell.m in Sources */,
+				1C2C5EB5830C58D3AC41EF969CBE3354 /* CCExcelDiscountCell.m in Sources */,
+				2F42EB5D93C84351DDC543D6FB36D564 /* CCExcelImageCell.m in Sources */,
+				F20FE5EB00911EFABFE8F84231F4E16E /* CCExcelMutilineCell.m in Sources */,
+				3B257CF1102BD94DCB25138EE02DEBA1 /* CCExcelNumberInputCell.m in Sources */,
+				76A42F8049749DA2708F0E71E1BFA5C3 /* CCExcelRowCell.m in Sources */,
+				2E7FA98E3CC6FFDD652093293563FF46 /* CCExcelView-dummy.m in Sources */,
+				EB2E45DAE33ACD8AC9373B363BE14669 /* CCExcelView.m in Sources */,
+				E7BD79F92F400EA7C2D47C1C8B59F8F2 /* CCSortExcelcell.m in Sources */,
+				028B41CBC24BC2D3D5619D10E6AF072B /* CCTextButton.m in Sources */,
+				BA92E16A845AB5D7BF117843EAE167F4 /* CCTextField.m in Sources */,
+				FBCCC8A63DC49F8F29C41FF301CDEAD8 /* CCWarnLabel.m in Sources */,
+				F79E63A3AB64762E1C93C7B7ADB33D57 /* NSString+size.m in Sources */,
+				A744BF33B1C2B24789E58D919C570B8A /* OrderExcelCell.m in Sources */,
+				6FF9898C258B66B489359477E0BFEAA2 /* OrderExcelImageCell.m in Sources */,
+				CCB1E2BAE2C287CE2367C049E56904D9 /* OrderPackingCell.m in Sources */,
+				00A66FBBA9ADCD9AA8872ECEF3BCBAEA /* UIImage+Vector.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CF5DB72F06813E87E0542DC9C35D6A1D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A9950D7C7F30EBEB68CB92274A520494 /* Pods-CCExcelView-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		409D9A4DB42B90F7C22070FCAB97BC5C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = CCExcelView;
+			target = F8777160F6BBF323DED607EA1190A54E /* CCExcelView */;
+			targetProxy = 5AC9A74D8F5A5FB000E1F2958B2E201F /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		34FE9531DA9AF2820790339988D5FF41 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGNING_REQUIRED = NO;
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_RELEASE=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				PROVISIONING_PROFILE_SPECIFIER = NO_SIGNING/;
+				STRIP_INSTALLED_PRODUCT = NO;
+				SYMROOT = "${SRCROOT}/../build";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		4075FCA8ACF5797E8254BDC1B80E5034 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D27957EF16823238BB52C125D1EFAFF2 /* Pods-CCExcelView.debug.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-CCExcelView/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-CCExcelView/Pods-CCExcelView.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_CCExcelView;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		A2E4C459BECAFEB83966DD1E804615F2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 74A4687B7F9C8FD77314DD9F0D4F6FE7 /* CCExcelView.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/CCExcelView/CCExcelView-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/CCExcelView/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/CCExcelView/CCExcelView.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = CCExcelView;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		C104F7F091290C3D1E248192F07FE689 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGNING_REQUIRED = NO;
+				COPY_PHASE_STRIP = NO;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_DEBUG=1",
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE_SPECIFIER = NO_SIGNING/;
+				STRIP_INSTALLED_PRODUCT = NO;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Debug;
+		};
+		D007F77FDD4D37695FFBCC29CC0B3791 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0EEB1D1A63DB292D25769D8D09F814F1 /* Pods-CCExcelView.release.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-CCExcelView/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-CCExcelView/Pods-CCExcelView.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_CCExcelView;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		DC67FEED16FD7FDECD8B14D484519BDD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 74A4687B7F9C8FD77314DD9F0D4F6FE7 /* CCExcelView.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/CCExcelView/CCExcelView-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/CCExcelView/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/CCExcelView/CCExcelView.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = CCExcelView;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1047B54690C92588DA7B3955BBD5E345 /* Build configuration list for PBXNativeTarget "Pods-CCExcelView" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4075FCA8ACF5797E8254BDC1B80E5034 /* Debug */,
+				D007F77FDD4D37695FFBCC29CC0B3791 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C104F7F091290C3D1E248192F07FE689 /* Debug */,
+				34FE9531DA9AF2820790339988D5FF41 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4FD8EFEA658FAD369964D6465960CE39 /* Build configuration list for PBXNativeTarget "CCExcelView" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DC67FEED16FD7FDECD8B14D484519BDD /* Debug */,
+				A2E4C459BECAFEB83966DD1E804615F2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+}

@@ -6,6 +6,10 @@ iOS ExcelView 自定义表格，支持设置左右向锁住的列数，支持列
 ### Cell单元格点击效果
 ![image](https://github.com/Jonas-o/CCExcelView/blob/master/Cell单元格点击效果.gif)
 
+
+
+
+
 ### Cell整行点击效果
 ![image](https://github.com/Jonas-o/CCExcelView/blob/master/Cell整行点击效果.gif)
 
@@ -16,7 +20,7 @@ iOS ExcelView 自定义表格，支持设置左右向锁住的列数，支持列
 * 支持使用 CocoaPods 导入项目中
 
 > pod 'CCExcelView'
-> 然后运行 pod install 即可
+ 然后运行 pod install 即可
 
 可参考[Demo](https://github.com/Jonas-o/CCExcelViewDemo.git)
 

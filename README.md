@@ -4,10 +4,10 @@ iOS ExcelView 自定义表格，支持设置左右向锁住的列数，支持列
 ## 效果展示
 
 ### Cell单元格点击效果
-![image](https://github.com/Jonas-o/CCExcelView.git/CCExcelView/Cell单元格点击效果.gif)
+![image](https://github.com/Jonas-o/CCExcelView/blob/master/Cell单元格点击效果.gif)
 
 ### Cell整行点击效果
-![image](https://github.com/Jonas-o/CCExcelView.git/CCExcelView/Cell整行点击效果.gif)
+![image](https://github.com/Jonas-o/CCExcelView/blob/master/Cell整行点击效果.gif)
 
 ## 使用说明
 

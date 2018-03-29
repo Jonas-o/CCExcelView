@@ -84,8 +84,12 @@
     }
     delegate.excelView.headerCell.shouldSendScrollNotification = YES;
     [scrollView setContentOffset:CC_point(offsetX, 0) animated:YES];
+    __weak typeof(self) weak_self = self;
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(.3f * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [self excelView:delegate.excelView didSelectAt:matrix];
+        if (weak_self) {
+            __strong typeof(self) strong_self = weak_self;
+            [weak_self excelView:strong_self -> delegate.excelView didSelectAt:matrix];
+        }
     });
 }
 

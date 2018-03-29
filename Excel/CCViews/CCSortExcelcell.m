@@ -28,7 +28,7 @@
     } else if (sortType == CCSortTypeDescending) {
         self.sortImageView.image = [CCHelper imageWithName:@"CC_order_arrow_desc"];
     } else {
-        self.sortImageView.image = nil;//HMImage(@"order_arrow");
+        self.sortImageView.image = nil;//[CCHelper imageWithName:@"CC_order_arrow"];
     }
 }
 

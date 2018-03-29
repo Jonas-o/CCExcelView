@@ -102,8 +102,12 @@
 - (void)controlScrollOffset:(CGPoint)offset
 {
     shouldSendScrollNotification = NO;
+    __weak typeof(self) weak_self = self;
     dispatch_async(dispatch_get_main_queue(), ^{
-        [contentScrollView setContentOffset:offset animated:NO];
+        if (weak_self) {
+            __strong typeof(self) strong_self = weak_self;
+            [strong_self -> contentScrollView setContentOffset:offset animated:NO];
+        }
     });
 }
 

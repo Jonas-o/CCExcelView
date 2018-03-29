@@ -27,11 +27,17 @@ Pod::Spec.new do |s|
   s.author             = { "luo" => "824375137@qq.com" }
   s.platform     = :ios, "8.0"
   s.source       = { :git => "https://github.com/Jonas-o/CCExcelView.git", :tag => s.version.to_s }
-  s.source_files  = "Excel", "Excel/**/*.{h,m}"
-  s.resource  = "Excel/Resources/CCExcelResources.bundle"
+#  s.source_files  = "Excel", "Excel/**/*.{h,m}"
+#  s.resource  = "Excel/Resources/CCExcelResources.bundle"
   s.framework  = "UIKit"
   s.requires_arc = true
 
-  
+  s.subspec 'CCViews' do |ss|
+    ss.source_files = 'Excel/CCViews/*.{h,m}'
+  end
+
+  s.subspec 'CCResources' do |ss|
+    ss.resource = 'Excel/CCResources/CCExcelResources.bundle'
+  end
 
 end

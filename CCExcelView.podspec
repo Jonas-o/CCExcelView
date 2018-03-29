@@ -30,15 +30,8 @@ Pod::Spec.new do |s|
   s.framework  = "UIKit"
   s.requires_arc = true
 
-  s.source_files  = "CCExcelView/CCExcel.h"
-
-  s.subspec 'CCViews' do |ss|
-    ss.source_files = "CCExcelView/CCViews/*.{h,m}"
-  end
-
-  s.subspec 'CCResources' do |ss|
-    ss.resource = "CCExcelView/CCResources/*.bundle"
-  end
+  s.source_files  = "CCViews", "CCExcelView/**/*.{h,m}"
+  s.resource = "CCExcelView/CCResources/*.bundle"
   
 
 end

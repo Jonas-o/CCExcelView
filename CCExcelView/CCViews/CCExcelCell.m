@@ -11,17 +11,17 @@
 #import "CCWarnNumberLabel.h"
 
 @implementation CCExcelCell
-@synthesize label, reuseIdentifier, control, style, switchImageView, rightIcon, contentImageView, rightLine,selectedBackgroundView;
+@synthesize label, reuseIdentifier, control, style, switchImageView, rightIcon, contentImageView, rightLineLayer,selectedBackgroundLayer;
 
 - (instancetype)initWithReuseIdentifier:(NSString *)identifier style:(CCExcelCellStyle)cellStyle
 {
     if (self = [super init]) {
         reuseIdentifier = identifier;
         
-        selectedBackgroundView = [[UIView alloc] init];
-        selectedBackgroundView.backgroundColor = kExcelCellSelectedColor;
-        selectedBackgroundView.layer.opacity = 0.0f;
-        [self addSubview:selectedBackgroundView];
+        selectedBackgroundLayer = [[CALayer alloc] init];
+        selectedBackgroundLayer.backgroundColor = kExcelCellSelectedColor.CGColor;
+        selectedBackgroundLayer.opacity = 0.0f;
+        [self.layer addSublayer:selectedBackgroundLayer];
         
         label = [[CCWarnNumberLabel alloc] init];
         label.font = CC_defaultFont;
@@ -33,10 +33,9 @@
         control.exclusiveTouch = YES;
         [self addSubview:control];
         
-        rightLine = [[UIView alloc] init];
-        rightLine.backgroundColor = CC_RGB(184, 186, 186);
-        rightLine.userInteractionEnabled = NO;
-        [self addSubview:rightLine];
+        rightLineLayer = [[CALayer alloc] init];
+        rightLineLayer.backgroundColor = CC_RGB(184, 186, 186).CGColor;
+        [self.layer addSublayer:rightLineLayer];
         
         switchImageView = [[UIImageView alloc] initWithImage:[CCHelper imageWithName:@"CC_switch_off"]];
         switchImageView.hidden = YES;
@@ -77,11 +76,11 @@
         switchImageView.hidden = YES;
     }
     if (style & CCExcelCellStyleHeader) {
-        rightLine.hidden = NO;
+        rightLineLayer.hidden = NO;
         label.font = kExcelCellLabelHeaderFont;
         label.textColor = kExcelCellLabelHeaderColor;
     } else {
-        rightLine.hidden = YES;
+        rightLineLayer.hidden = YES;
         label.font = kExcelCellLabelFont;
         label.textColor = kExcelCellLabelColor;
     }
@@ -93,7 +92,7 @@
 }
 
 - (void)setHighlighted:(BOOL)highlighted {
-    selectedBackgroundView.layer.opacity = highlighted?1.0f:0.0f;
+    selectedBackgroundLayer.opacity = highlighted?1.0f:0.0f;
 }
 
 - (void)setHighlighted:(BOOL)highlighted animated:(BOOL)animated {
@@ -117,8 +116,8 @@
     [super layoutSubviews];
     control.frame = self.bounds;
     [self bringSubviewToFront:control];
-    selectedBackgroundView.frame = self.bounds;
-    rightLine.frame = CC_rect(self.bounds.size.width - 1, 0, 1, self.bounds.size.height);
+    selectedBackgroundLayer.frame = self.bounds;
+    rightLineLayer.frame = CC_rect(self.bounds.size.width - 1, 0, 1, self.bounds.size.height);
     if (style & CCExcelCellStyleSwitch) {
         label.frame = CC_rect(35, 0, self.bounds.size.width - 35, self.bounds.size.height);
         

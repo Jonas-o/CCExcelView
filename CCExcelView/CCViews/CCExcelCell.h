@@ -43,9 +43,9 @@ typedef NS_OPTIONS(NSInteger, CCExcelCellStyle) {
 
 @property (nonatomic, strong) UIImageView *contentImageView;
 
-@property (nonatomic, strong) UIView *selectedBackgroundView;
+@property (nonatomic, strong) CALayer *selectedBackgroundLayer;
 
-@property (nonatomic, strong) UIView *rightLine;
+@property (nonatomic, strong) CALayer *rightLineLayer;
 
 @property (nonatomic, assign) BOOL      highlighted;
 

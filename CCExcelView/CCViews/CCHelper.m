@@ -81,7 +81,10 @@ NSString *const CCResourcesMainBundleName = @"CCExcelResources.bundle";
 
 + (CGSize)sizeWithString:(NSString *)string font:(UIFont *)font maxSize:(CGSize)maxSize {
     NSDictionary *attrs = @{NSFontAttributeName : font};
-     return [string boundingRectWithSize:maxSize options:NSStringDrawingUsesLineFragmentOrigin attributes:attrs context:nil].size;
+    if ([string respondsToSelector:@selector(boundingRectWithSize:options:attributes:context:)]) {
+        return [string boundingRectWithSize:maxSize options:NSStringDrawingUsesLineFragmentOrigin attributes:attrs context:nil].size;
+    }
+    return CGSizeZero;
 }
 
 @end

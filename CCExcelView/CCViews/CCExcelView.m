@@ -104,7 +104,11 @@ const CGFloat excelViewLoadMoreOffset = 100;
 {
     if (row > 0 && ![self isBottomRow:row]) {
         NSIndexPath *indexPath = [NSIndexPath indexPathForRow:row-1 inSection:0];
-        [table deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+        @try {
+            [table deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+        } @catch (NSException *exception) {
+            [table reloadData];
+        }
     }
 }
 

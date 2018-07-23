@@ -12,6 +12,7 @@
 @implementation BaseExcelDataSource
 {
     NSMutableArray *columnWidthArray;
+    NSInteger currentPage;
 }
 @synthesize delegate;
 
@@ -22,6 +23,7 @@
         self.maxExcelColumnWidth = 160;
         self.lockNum = 1;
         self.lockRightNum = 0;
+        columnWidthArray = [NSMutableArray array];
     }
     return self;
 }
@@ -55,6 +57,57 @@
         [self reloadData];
     }
 }
+
+- (void)updateCurrentPage:(NSInteger)page {
+    currentPage = page;
+}
+
+- (void)reloadDataWithAutoInsertCells:(NSInteger)pageSize currentPage:(NSInteger)page completion:(void (^)(void))completion {
+    if (page == 0) {
+        if (self.currentSortColumn) {
+            //排序请求第一页时只需要刷新数据不需要刷新表
+            [self reloadData];
+        } else {
+            //非排序请求第一页需要刷新整个表
+            [self reloadDataAndCells];
+        }
+        if (completion) completion();
+    } else if (page > 0 && pageSize > 0 && page > currentPage) {
+        __weak typeof(self) weak_self = self;
+        dispatch_async(dispatch_get_global_queue(0, 0), ^{
+            NSMutableArray *indexs = [NSMutableArray array];
+            NSInteger totalRows = [self.delegate numberOfRowsInDataSource:self];
+            NSInteger begin = page * pageSize;
+            if (begin < totalRows) {
+                for (NSInteger i = begin; i < totalRows; i ++) {
+                    [indexs addObject:[NSIndexPath indexPathForRow:i inSection:0]];
+                }
+                NSInteger index = [self calculateColumnWidthsFromRow:begin + 1];
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [weak_self.delegate.excelView resetAllColumnsWidthFromIndex:index];
+                    @try {
+                        [weak_self.delegate.excelView.table insertRowsAtIndexPaths:indexs withRowAnimation:UITableViewRowAnimationFade];
+                    } @catch (NSException *exception) {
+                        [weak_self.delegate.excelView.table reloadData];
+                    } @finally {
+                        if (completion) completion();
+                    }
+                });
+            } else {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [self reloadData];
+                    if (completion) completion();
+                });
+            }
+        });
+    } else {
+        [self reloadData];
+        if (completion) completion();
+    }
+    currentPage = page;
+}
+
+
 
 - (void)resetSorts {
     self.currentSortType = CCSortTypeDefault;
@@ -131,20 +184,17 @@
 
 - (CGFloat)excelView:(CCExcelView *)excelView widthAtColumn:(NSInteger)column
 {
-    NSNumber *number = columnWidthArray[column];
-    CGFloat calWidth = number.floatValue;
     if ([delegate respondsToSelector:@selector(dataSource:widthAtColumn:)]) {
         CGFloat width =  [delegate dataSource:self widthAtColumn:column];
         if (width > 0) {
             if ([self shouldShowSortControl:[CCMatrix matrixWithColumn:column row:0]]) {
-                return width + 20;
+                width += 20;
             }
             return width;
         }
     }
-    if ([self shouldShowSortControl:[CCMatrix matrixWithColumn:column row:0]]) {
-        return calWidth + 20;
-    }
+    NSNumber *number = columnWidthArray[column];
+    CGFloat calWidth = number.floatValue;
     return calWidth;
 }
 
@@ -200,12 +250,17 @@
 
 - (BOOL)shouldLoadMore:(CCExcelView *)excelView
 {
-    return [delegate shouldLoadMore:self];
+    if ([delegate respondsToSelector:@selector(shouldLoadMore:)]) {
+        return [delegate shouldLoadMore:self];
+    }
+    return NO;
 }
 
 - (void)loadNextPage:(CCExcelView *)excelView
 {
-    [delegate loadNextPage:self];
+    if ([delegate respondsToSelector:@selector(loadNextPage:)]) {
+        return [delegate loadNextPage:self];
+    }
 }
 
 - (void)excelView:(CCExcelView *)excelView didSelectAt:(CCMatrix *)matrix
@@ -254,6 +309,67 @@
 }
 
 #pragma mark-
+///返回变化的最小的列号
+- (NSInteger)calculateColumnWidthsFromRow:(NSInteger)row {
+    NSInteger columnCount = [delegate numberOfColumnsInDataSource:self];
+    NSInteger rowCount = [delegate numberOfRowsInDataSource:self] + 1;
+    if (delegate.excelView.showFooter) {
+        rowCount++;
+    }
+    NSInteger fromCloumn = columnCount - 1;
+    if (row == 0) {
+        fromCloumn = 0;
+        [columnWidthArray removeAllObjects];
+        for (NSInteger i = 0; i < columnCount; i++) {
+            [columnWidthArray addObject:@0];
+        }
+    }
+    for (NSInteger i = 0; i < columnCount; i++) {
+        CGFloat width = 0;
+        for (NSInteger j = row; j < rowCount; j++) {
+            CCMatrix *matrix = [CCMatrix matrixWithColumn:i row:j];
+            NSString *content = [self contentAtMatrix:matrix];
+            CGSize maxSize = CC_size(MAXFLOAT, 40);
+            CGFloat cellWidth = [CCHelper sizeWithString:content font:kExcelCellLabelFont maxSize:maxSize].width;
+            if (j == 0) {
+                //如果支持排序加上排序图片的宽度
+                if ([self shouldShowSortControl:matrix]) {
+                    cellWidth += 20;
+                }
+            }
+            width = MAX(width, cellWidth);
+        }
+        CGFloat minWidth = self.minExcelColumnWidth;
+        CGFloat maxWidth = self.maxExcelColumnWidth;
+        if ([delegate respondsToSelector:@selector(dataSource:minExcelColumnWidth:)]) {
+            CGFloat width =  [delegate dataSource:self minExcelColumnWidth:i];
+            if (width > 0) {
+                minWidth = width;
+            }
+        }
+        if ([delegate respondsToSelector:@selector(dataSource:maxExcelColumnWidth:)]) {
+            CGFloat width =  [delegate dataSource:self maxExcelColumnWidth:i];
+            if (width > 0) {
+                maxWidth = width;
+            }
+        }
+        if (width < minWidth) {
+            width = minWidth;
+        }
+        if (width > maxWidth) {
+            width = maxWidth;
+        }
+        CGFloat targetWidth = width + kExcelCellLabelMarginX*2;
+        CGFloat oldWidth = [[columnWidthArray objectAtIndex:i] floatValue];
+        if (oldWidth != targetWidth) {
+            targetWidth = MAX(targetWidth, oldWidth);
+            fromCloumn = MIN(fromCloumn, i);//最左侧列，所以取最小值
+        }
+        [columnWidthArray replaceObjectAtIndex:i withObject:@(targetWidth)];
+    }
+    return fromCloumn;
+}
+
 - (void)calculateColumnWidths
 {
     NSInteger columnCount = [delegate numberOfColumnsInDataSource:self];
@@ -261,7 +377,7 @@
     if (delegate.excelView.showFooter) {
         rowCount++;
     }
-    columnWidthArray = [NSMutableArray array];
+    [columnWidthArray removeAllObjects];
     for (NSInteger i = 0; i < columnCount; i++) {
         CGFloat width = 0;
         for (NSInteger j = 0; j < rowCount; j++) {
@@ -269,6 +385,12 @@
             NSString *content = [self contentAtMatrix:matrix];
             CGSize maxSize = CC_size(MAXFLOAT, 40);
             CGFloat cellWidth = [CCHelper sizeWithString:content font:kExcelCellLabelFont maxSize:maxSize].width;
+            if (j == 0) {
+                //如果支持排序加上排序图片的宽度
+                if ([self shouldShowSortControl:matrix]) {
+                    cellWidth += 20;
+                }
+            }
             width = MAX(width, cellWidth);
         }
         CGFloat minWidth = self.minExcelColumnWidth;

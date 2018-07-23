@@ -88,6 +88,23 @@ typedef void(^ExcelSortTitleAction)(NSString  *sortTitle , CCSortType type);
 - (void)reloadDataWithAutoReloadCells;
 
 /**
+ 自动根据当前页数、当前是否排序自动选择刷新方式，适用于获取数据后直接刷新表（为优化加载下一页时因需要刷新整个表和计算列宽导致的卡顿）如果是不同的数据源使用同一个dataSource则必须保证刷新前的page是正确的
+
+ @param pageSize 每页的数量
+ @param page 当前页
+ @param completion 异步计算宽度，刷新完成后回调，
+ */
+- (void)reloadDataWithAutoInsertCells:(NSInteger)pageSize currentPage:(NSInteger)page completion:(void(^)(void))completion;
+
+/**
+ 手动更新当前页数，用于reloadDataWithAutoInsertCells方法
+
+ @param page 当前页数
+ */
+- (void)updateCurrentPage:(NSInteger)page;
+
+
+/**
  *  清除所有的排序，（只会操作表头，不会操作数据）
  */
 - (void)resetSorts;

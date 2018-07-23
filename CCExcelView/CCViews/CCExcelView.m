@@ -39,8 +39,6 @@ const CGFloat excelViewLoadMoreOffset = 100;
     CGFloat currentOffsetY;
     BOOL forward;
     BOOL dragging;
-    
-    UIActivityIndicatorView *loadingView;
 }
 @synthesize table, showFooter, headerCell;
 
@@ -181,8 +179,6 @@ const CGFloat excelViewLoadMoreOffset = 100;
     [self handleTopView];
     [self handleTopViewFrame];
     [self handleHeaderCellFrame];
-    
-    [loadingView stopAnimating];
 }
 
 - (void)resetAllColumnsWidth
@@ -510,26 +506,36 @@ const CGFloat excelViewLoadMoreOffset = 100;
     }
     [self handleTopViewFrame];
     [self handleHeaderCellFrame];
+    if (scrollView.superview && scrollView.panGestureRecognizer) {
+        CGPoint point =  [scrollView.panGestureRecognizer translationInView:scrollView.superview];
+        if ( point.y < 0 ) {
+            [self loadNextPage];
+        }
+    } else {
+        [self loadNextPage];
+//        if (!scrollView.decelerating) {
+//            [self loadNextPage];
+//        }
+    }
 }
 
 - (void)loadNextPage
 {
-    CGFloat offsetY = table.contentOffset.y;
-    if (!self.loading &&  offsetY > table.contentSize.height - table.bounds.size.height - excelViewLoadMoreOffset) {
+    static BOOL canLoad = YES;
+    if (canLoad && !self.loading && table.contentSize.height - table.contentOffset.y - table.height <= excelViewLoadMoreOffset) {
         BOOL shouldLoadMore = NO;
         if ([self.delegate respondsToSelector:@selector(shouldLoadMore:)]) {
             shouldLoadMore = [self.delegate shouldLoadMore:self];
         }
         if (shouldLoadMore) {
             if ([self.delegate respondsToSelector:@selector(loadNextPage:)]) {
-                if (loadingView == nil) {
-                    loadingView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-                    [table addSubview:loadingView];
-                }
-                loadingView.frame = CC_rect((table.bounds.size.width-30)/2, table.contentSize.height + 5, 30, 30);
                 [self.delegate loadNextPage:self];
             }
         }
+        canLoad = NO;
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            canLoad = YES;
+        });
     }
 }
 
@@ -545,7 +551,7 @@ const CGFloat excelViewLoadMoreOffset = 100;
         [self.delegate excelViewDidEndScroll:self];
         
     }
-    [self loadNextPage];
+//    [self loadNextPage];
 }
 
 - (void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView
@@ -562,7 +568,7 @@ const CGFloat excelViewLoadMoreOffset = 100;
         if ([self.delegate respondsToSelector:@selector(excelViewDidEndScroll:)]) {
             [self.delegate excelViewDidEndScroll:self];
         }
-        [self loadNextPage];
+//        [self loadNextPage];
     }
     if (!decelerate && topView != nil && self.autoShowTopView) {
         NSInteger rowNum = [self.delegate numberOfRowsInExcelView:self];

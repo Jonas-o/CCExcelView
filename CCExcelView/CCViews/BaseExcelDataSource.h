@@ -103,6 +103,14 @@ typedef void(^ExcelSortTitleAction)(NSString  *sortTitle , CCSortType type);
  */
 - (void)updateCurrentPage:(NSInteger)page;
 
+/**
+ 从哪行插入数据
+
+ @param from 插入数据的起始行（不包含已存在行）
+ @param completion 完成回调
+ */
+- (void)insertDataFromRow:(NSInteger)from completion:(void(^)(void))completion;
+
 
 /**
  *  清除所有的排序，（只会操作表头，不会操作数据）

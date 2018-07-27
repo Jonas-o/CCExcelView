@@ -71,43 +71,63 @@
             //非排序请求第一页需要刷新整个表
             [self reloadDataAndCells];
         }
-        if (completion) completion();
-    } else if (page > 0 && pageSize > 0 && page > currentPage) {
-        __weak typeof(self) weak_self = self;
-        dispatch_async(dispatch_get_global_queue(0, 0), ^{
-            NSMutableArray *indexs = [NSMutableArray array];
-            NSInteger totalRows = [self.delegate numberOfRowsInDataSource:self];
-            NSInteger begin = page * pageSize;
-            if (begin < totalRows) {
-                for (NSInteger i = begin; i < totalRows; i ++) {
-                    [indexs addObject:[NSIndexPath indexPathForRow:i inSection:0]];
-                }
-                NSInteger index = [self calculateColumnWidthsFromRow:begin + 1];
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    [weak_self.delegate.excelView resetAllColumnsWidthFromIndex:index];
-                    @try {
-                        [weak_self.delegate.excelView.table insertRowsAtIndexPaths:indexs withRowAnimation:UITableViewRowAnimationFade];
-                    } @catch (NSException *exception) {
-                        [weak_self.delegate.excelView.table reloadData];
-                    } @finally {
-                        if (completion) completion();
-                    }
-                });
-            } else {
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    [self reloadData];
-                    if (completion) completion();
-                });
-            }
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if (completion) completion();
         });
+    } else if (page > 0 && pageSize > 0 && page > currentPage) {
+        [self insertDataFromRow:page * pageSize completion:completion];
     } else {
         [self reloadData];
-        if (completion) completion();
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if (completion) completion();
+        });
     }
     currentPage = page;
 }
 
-
+- (void)insertDataFromRow:(NSInteger)from completion:(void(^)(void))completion {
+    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+        NSMutableArray *indexs = [NSMutableArray array];
+        NSInteger totalRows = [self.delegate numberOfRowsInDataSource:self];
+        NSInteger begin = from;
+        if (begin < totalRows) {
+            for (NSInteger i = begin; i < totalRows; i ++) {
+                [indexs addObject:[NSIndexPath indexPathForRow:i inSection:0]];
+            }
+            NSInteger index = [self calculateColumnWidthsFromRow:begin + 1];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self.delegate.excelView resetAllColumnsWidthFromIndex:index];
+                BOOL canInsert = YES;
+                NSArray *visibleIndexs = [self.delegate.excelView.table indexPathsForVisibleRows];
+                for (NSIndexPath *index in indexs) {
+                    if ([visibleIndexs containsObject:index]) {
+                        canInsert = NO;
+                        break;
+                    }
+                }
+                if (canInsert) {
+                    @try {
+                        [self.delegate.excelView.table insertRowsAtIndexPaths:indexs withRowAnimation:UITableViewRowAnimationFade];
+                    } @catch (NSException *exception) {
+                        [self.delegate.excelView.table reloadData];
+                    }
+                } else {
+                    [self.delegate.excelView.table reloadData];
+                }
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    if (completion) completion();
+                });
+            });
+        } else {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self reloadData];
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    if (completion) completion();
+                });
+            });
+        }
+    });
+}
 
 - (void)resetSorts {
     self.currentSortType = CCSortTypeDefault;

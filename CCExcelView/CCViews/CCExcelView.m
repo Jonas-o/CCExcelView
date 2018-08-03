@@ -11,6 +11,7 @@
 #import "CCHelper.h"
 
 const CGFloat excelViewLoadMoreOffset = 100;
+static NSString *cc_reuseIdentifier = @"cc_cell";
 
 @interface CCExcelView() <UITableViewDelegate, UITableViewDataSource, CCExcelRowCellDelegate>
 
@@ -600,19 +601,15 @@ const CGFloat excelViewLoadMoreOffset = 100;
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    CCExcelRowCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
+    CCExcelRowCell *cell = [tableView dequeueReusableCellWithIdentifier:cc_reuseIdentifier];
     if (cell == nil) {
-        cell = [[CCExcelRowCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
+        cell = [[CCExcelRowCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cc_reuseIdentifier];
         cell.delegate = self;
     }
     [self resetRowCell:cell atRow:indexPath.row+1];
     
-    UIColor *lineColor = nil;
     if ([self.delegate respondsToSelector:@selector(excelView:bottomLineColorAtRow:)]) {
-        lineColor = [self.delegate excelView:self bottomLineColorAtRow:indexPath.row+1];
-    }
-    if (lineColor) {
-        cell.line.backgroundColor = lineColor;
+        cell.line.backgroundColor = [self.delegate excelView:self bottomLineColorAtRow:indexPath.row+1];
     }
     
     UIColor *color = CC_ColorClear;

@@ -238,6 +238,9 @@ static NSString *cc_reuseIdentifier = @"cc_cell";
     CGRect scrollFrame = headerCell.contentScrollView.frame;
     scrollFrame.origin.x += xoffset;
     headerCell.contentScrollView.frame = scrollFrame;
+    if (showFooter) {
+        footerCell.contentScrollView.frame = scrollFrame;
+    }
     for (CCExcelRowCell *cell in [table visibleCells]) {
         cell.contentScrollView.frame = scrollFrame;
     }

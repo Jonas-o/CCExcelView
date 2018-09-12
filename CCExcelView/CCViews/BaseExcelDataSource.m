@@ -96,27 +96,32 @@
             }
             NSInteger index = [self calculateColumnWidthsFromRow:begin + 1];
             dispatch_async(dispatch_get_main_queue(), ^{
-                [self.delegate.excelView resetAllColumnsWidthFromIndex:index];
-                BOOL canInsert = YES;
-                NSArray *visibleIndexs = [self.delegate.excelView.table indexPathsForVisibleRows];
-                for (NSIndexPath *index in indexs) {
-                    if ([visibleIndexs containsObject:index]) {
-                        canInsert = NO;
-                        break;
+                [UIView animateWithDuration:.1f animations:^{
+                    [self.delegate.excelView resetAllColumnsWidthFromIndex:index];
+                } completion:^(BOOL finished) {
+                    BOOL canInsert = YES;
+                    NSArray *visibleIndexs = [self.delegate.excelView.table indexPathsForVisibleRows];
+                    for (NSIndexPath *index in indexs) {
+                        if ([visibleIndexs containsObject:index]) {
+                            canInsert = NO;
+                            break;
+                        }
                     }
-                }
-                if (canInsert) {
-                    @try {
-                        [self.delegate.excelView.table insertRowsAtIndexPaths:indexs withRowAnimation:UITableViewRowAnimationFade];
-                    } @catch (NSException *exception) {
-                        [self.delegate.excelView.table reloadData];
+                    if (canInsert) {
+                        [UIView setAnimationsEnabled:NO];// 或者[CATransaction setDisableActions:YES];
+                        @try {
+                            [self.delegate.excelView.table insertRowsAtIndexPaths:indexs withRowAnimation:UITableViewRowAnimationNone];
+                        } @catch (NSException *exception) {
+                            [self reloadData];
+                        }
+                        [UIView setAnimationsEnabled:YES];// 或者[CATransaction setDisableActions:NO];
+                    } else {
+                        [self reloadData];
                     }
-                } else {
-                    [self.delegate.excelView.table reloadData];
-                }
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    if (completion) completion();
-                });
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        if (completion) completion();
+                    });
+                }];
             });
         } else {
             dispatch_async(dispatch_get_main_queue(), ^{
@@ -384,8 +389,8 @@
         if (oldWidth != targetWidth) {
             targetWidth = MAX(targetWidth, oldWidth);
             fromCloumn = MIN(fromCloumn, i);//最左侧列，所以取最小值
+            [columnWidthArray replaceObjectAtIndex:i withObject:@(targetWidth)];
         }
-        [columnWidthArray replaceObjectAtIndex:i withObject:@(targetWidth)];
     }
     return fromCloumn;
 }

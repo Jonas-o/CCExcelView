@@ -51,6 +51,30 @@
     return self;
 }
 
+- (void)resetSubCellsOffset {
+    CGFloat x = 0;
+    for (CCExcelCell *cell in self.lockCells) {
+        cell.x = x;
+        x = cell.right;
+    }
+    lockScrollView.frame = CC_rectZP(x, self.bounds.size.height);
+    lockScrollView.contentSize = lockScrollView.bounds.size;
+    x = 0;
+    for (CCExcelCell *cell in self.farrightLockCells) {
+        cell.x = x;
+        x = cell.right;
+    }
+    farrightLockScrollView.frame = CC_rect(self.bounds.size.width-x, 0, x, self.bounds.size.height);
+    farrightLockScrollView.contentSize = farrightLockScrollView.bounds.size;
+    x = 0;
+    for (CCExcelCell *cell in self.scrollCells) {
+        cell.x = x;
+        x = cell.right;
+    }
+    contentScrollView.frame = CC_rect(lockScrollView.bounds.size.width, 0, self.bounds.size.width - lockScrollView.frame.size.width - farrightLockScrollView.bounds.size.width, self.bounds.size.height);
+    contentScrollView.contentSize = CC_size(MAX(contentScrollView.bounds.size.width, x), self.bounds.size.height);
+}
+
 - (void)resetCellContentViewSize
 {
     lockScrollView.frame = CC_rectZP([self lockScrollViewContentWidth], self.bounds.size.height);

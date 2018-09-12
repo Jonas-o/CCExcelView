@@ -195,35 +195,24 @@ static NSString *cc_reuseIdentifier = @"cc_cell";
         CGFloat columnWidth = [self.delegate excelView:self widthAtColumn:i];
         CCExcelCell *tempHeaderCell = [headerCell excelCellAtColumn:i];
         tempHeaderCell.width = columnWidth;
-        if (i < 1 || i == headerCell.lockCells.count || i == headerCell.lockCells.count + headerCell.scrollCells.count) {
-            tempHeaderCell.x = 0;
-        } else {
-            CCExcelCell *tempLastHeaderCell = [headerCell excelCellAtColumn:i-1];
-            tempHeaderCell.x = tempLastHeaderCell.right;
-        }
-        [headerCell resetCellContentViewSize];
+//        [headerCell resetSubCellsOffset];
         if (showFooter) {
             CCExcelCell *tempFooterCell = [footerCell excelCellAtColumn:i];
             tempFooterCell.width = columnWidth;
-            if (i < 1 || i == footerCell.lockCells.count || i == footerCell.lockCells.count + footerCell.scrollCells.count) {
-                tempFooterCell.x = 0;
-            } else {
-                CCExcelCell *tempLastFooterCell = [footerCell excelCellAtColumn:i-1];
-                tempFooterCell.x = tempLastFooterCell.right;
-            }
-            [footerCell resetCellContentViewSize];
+//            [footerCell resetSubCellsOffset];
         }
         for (CCExcelRowCell *cell in [table visibleCells]) {
             CCExcelCell *tempCell = [cell excelCellAtColumn:i];
             tempCell.width = columnWidth;
-            if (i < 1 || i == cell.lockCells.count || i == cell.lockCells.count + cell.scrollCells.count) {
-                tempCell.x = 0;
-            } else {
-                CCExcelCell *tempLastCell = [cell excelCellAtColumn:i-1];
-                tempCell.x = tempLastCell.right;
-            }
-            [cell resetCellContentViewSize];
+//            [cell resetSubCellsOffset];
         }
+    }
+    [headerCell resetSubCellsOffset];
+    if (showFooter) {
+        [footerCell resetSubCellsOffset];
+    }
+    for (CCExcelRowCell *cell in [table visibleCells]) {
+        [cell resetSubCellsOffset];
     }
 }
 

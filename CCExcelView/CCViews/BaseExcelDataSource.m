@@ -134,10 +134,16 @@
     });
 }
 
+- (void)reloadHeader {
+    //刷新表头内容，
+    [self calculateColumnWidths];
+    [delegate.excelView reloadHeaderCell];
+}
+
 - (void)resetSorts {
     self.currentSortType = CCSortTypeDefault;
     self.currentSortColumn = nil;
-    [self reloadHeader];
+    [self reloadHeaderSort];
 }
 
 - (void)resetTargetSort:(NSNumber *)sortColumn sortType:(CCSortType)sortType {
@@ -298,7 +304,7 @@
                 self.currentSortType = CCSortTypeAscending;
             }
             self.currentSortColumn = @(matrix.column);
-            [self reloadHeader];
+            [self reloadHeaderSort];
             if (self.sortAction) {
                 self.sortAction(self.currentSortColumn, self.currentSortType);
             }
@@ -313,7 +319,7 @@
     }
 }
 
-- (void)reloadHeader {
+- (void)reloadHeaderSort {
     for (int i = 0; i < [delegate numberOfColumnsInDataSource:self]; i ++) {
         CCExcelCell *cell = [delegate.excelView cellAtMatrix:[CCMatrix matrixWithColumn:i row:0]];
         if ([cell isMemberOfClass:[CCSortExcelcell class]]) {

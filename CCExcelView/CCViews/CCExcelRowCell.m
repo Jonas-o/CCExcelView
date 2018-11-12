@@ -191,7 +191,7 @@
         return self.lockCells[column];
     } else if (column < (self.lockCells.count + self.scrollCells.count)) {
         return self.scrollCells[column - self.lockCells.count];
-    } else if (column >= (self.lockCells.count + self.scrollCells.count)) {
+    } else if (column < (self.lockCells.count + self.scrollCells.count + self.farrightLockCells.count)) {
         return self.farrightLockCells[column - self.lockCells.count - self.scrollCells.count];
     }
     return nil;

@@ -111,6 +111,10 @@ typedef void(^ExcelSortTitleAction)(NSString  *sortTitle , CCSortType type);
  */
 - (void)insertDataFromRow:(NSInteger)from completion:(void(^)(void))completion;
 
+/**
+ *  刷新表头，（只会操作表头，不会操作数据）
+ */
+- (void)reloadHeader;
 
 /**
  *  清除所有的排序，（只会操作表头，不会操作数据）

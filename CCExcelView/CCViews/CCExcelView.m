@@ -182,6 +182,13 @@ static NSString *cc_reuseIdentifier = @"cc_cell";
     [self handleHeaderCellFrame];
 }
 
+- (void)reloadHeaderCell {
+    [headerCell.lockScrollView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
+    [headerCell.contentScrollView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
+    [headerCell.farrightLockScrollView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
+    [self resetRowCell:headerCell atRow:0];
+}
+
 - (void)resetAllColumnsWidth
 {
     [self resetAllColumnsWidthFromIndex:0];

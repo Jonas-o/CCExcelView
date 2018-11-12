@@ -37,6 +37,8 @@
 
 - (void)reloadDataAndRowCell; // 同时重置每个cell的contentScrollView.contentOffset
 
+- (void)reloadHeaderCell;//刷新表头
+
 /// 重新计算所有列的宽度，并重新定位frame。不涉及内容重载。
 - (void)resetAllColumnsWidth;
 

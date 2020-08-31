@@ -126,6 +126,10 @@
 - (void)controlScrollOffset:(CGPoint)offset
 {
     shouldSendScrollNotification = NO;
+    if ([NSThread isMainThread]) {
+        [contentScrollView setContentOffset:offset animated:NO];
+        return;
+    }
     __weak typeof(self) weak_self = self;
     dispatch_async(dispatch_get_main_queue(), ^{
         if (weak_self) {
@@ -141,6 +145,7 @@
     scrollCells = scrollItems;
     farrightLockCells = rightLockItems;
     CGFloat currentOffsetX = 0;
+    if (lockScrollView.subviews.count) [lockScrollView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
     for (int i = 0; i < lockItems.count; i++) {
         CCExcelCell *lockItem = lockItems[i];
         lockItem.control.tag = 100 + i;
@@ -154,6 +159,7 @@
     }
     contentScrollView.frame = CC_rect(currentOffsetX, 0, 0, 0);
     currentOffsetX = 0;
+    if (contentScrollView.subviews.count) [contentScrollView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
     for (int i = 0; i < scrollItems.count; i++) {
         CCExcelCell *scrollItem = scrollItems[i];
         scrollItem.control.tag = 100 + i + lockItems.count;
@@ -168,6 +174,7 @@
     contentScrollView.contentSize = CC_size(currentOffsetX, 0);
     
     currentOffsetX = 0;
+    if (farrightLockScrollView.subviews.count) [farrightLockScrollView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
     for (int i = 0; i < rightLockItems.count; i++) {
         CCExcelCell *lockItem = rightLockItems[i];
         [lockItem.control removeTarget:nil action:NULL forControlEvents:UIControlEventAllEvents];
@@ -275,7 +282,6 @@
     }
     [self.delegate resetAllRowCellsContentOffset:self];
     self.shouldSendScrollNotification = YES;
-    
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView

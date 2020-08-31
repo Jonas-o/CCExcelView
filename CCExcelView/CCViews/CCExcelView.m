@@ -127,7 +127,7 @@ static NSString *cc_reuseIdentifier = @"cc_cell";
         bottomRowHeight = [self.delegate bottomRowHeightInExcelView:self];
     }
     table.frame = CC_rect(0, topRowHeight, self.bounds.size.width, self.bounds.size.height - topRowHeight - bottomRowHeight);
-    [reusableCells removeAllObjects];
+//    [reusableCells removeAllObjects];
     columnNum = [self.delegate numberOfColumnsInExcelView:self];
     lockColumnNum = 1;
     if ([self.delegate respondsToSelector:@selector(numberOfColumnsLockInExcelView:)]) {
@@ -404,12 +404,12 @@ static NSString *cc_reuseIdentifier = @"cc_cell";
 
 - (CCExcelCell *)dequeueReusableCellWithIdentifier:(NSString *)cellIdentifier
 {
-    NSMutableArray *array = [reusableCells objectForKey:cellIdentifier];
-    if ([array count] == 0) {
+    NSMutableSet *set = [reusableCells objectForKey:cellIdentifier];
+    if ([set count] == 0) {
         return nil;
     }
-    CCExcelCell *lastCell = [array lastObject];
-    [array removeLastObject];
+    CCExcelCell *lastCell = [set anyObject];
+    [set removeObject:lastCell];
     return lastCell;
 }
 
@@ -417,13 +417,16 @@ static NSString *cc_reuseIdentifier = @"cc_cell";
 {
     [cell removeFromSuperview];
     NSString *identifer = cell.reuseIdentifier;
-    if ([reusableCells objectForKey:identifer] == nil) {
-        NSMutableArray *array = [NSMutableArray array];
-        [reusableCells setObject:array forKey:identifer];
+    if (!identifer) {
+        return;
     }
-    NSMutableArray *array = [reusableCells objectForKey:identifer];
-    if (![array containsObject:cell]) {
-        [array addObject:cell];
+    if ([reusableCells objectForKey:identifer] == nil) {
+        NSMutableSet *set = [NSMutableSet set];
+        [reusableCells setObject:set forKey:identifer];
+    }
+    NSMutableSet *set = [reusableCells objectForKey:identifer];
+    if (![set containsObject:cell]) {
+        [set addObject:cell];
     }
 }
 
@@ -677,6 +680,7 @@ static NSString *cc_reuseIdentifier = @"cc_cell";
     for (CCExcelCell *excelCell in rowCell.farrightLockCells) {
         [self reuseCell:excelCell];
     }
+    [rowCell setLockItems:nil scrollItems:nil rightLockItems:nil];
 }
 
 - (BOOL)tableView:(UITableView *)tableView shouldHighlightRowAtIndexPath:(NSIndexPath *)indexPath

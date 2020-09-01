@@ -420,11 +420,11 @@ static NSString *cc_reuseIdentifier = @"cc_cell";
     if (!identifer) {
         return;
     }
-    if ([reusableCells objectForKey:identifer] == nil) {
-        NSMutableSet *set = [NSMutableSet set];
+    NSMutableSet *set = [reusableCells objectForKey:identifer];
+    if (!set) {
+        set = [NSMutableSet set];
         [reusableCells setObject:set forKey:identifer];
     }
-    NSMutableSet *set = [reusableCells objectForKey:identifer];
     if (![set containsObject:cell]) {
         [set addObject:cell];
     }
@@ -895,4 +895,5 @@ static NSString *cc_reuseIdentifier = @"cc_cell";
 }
 
 @end
+
 

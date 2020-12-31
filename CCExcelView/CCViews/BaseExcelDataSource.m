@@ -263,8 +263,14 @@
     }
     cell.style = [delegate dataSource:self styleAtMatrix:matrix];
     cell.label.text = content;
-    if (!(excelView.showFooter && matrix.row == [delegate numberOfRowsInDataSource:self] + 1)) {
-        [delegate dataSource:self handleCell:cell atMatrix:matrix];
+    if (excelView.showFooter && matrix.row == [delegate numberOfRowsInDataSource:self] + 1) {
+        if ([delegate respondsToSelector:@selector(dataSource:handleFooterCell:atColumn:)]) {
+            [delegate dataSource:self handleFooterCell:cell atColumn:matrix.column];
+        }
+    } else {
+        if ([delegate respondsToSelector:@selector(dataSource:handleCell:atMatrix:)]) {
+            [delegate dataSource:self handleCell:cell atMatrix:matrix];
+        }
     }
     if ([cell isMemberOfClass:[CCSortExcelcell class]]) {
         cell.label.textAlignment = NSTextAlignmentLeft;

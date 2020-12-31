@@ -173,6 +173,8 @@ typedef void(^ExcelSortTitleAction)(NSString  *sortTitle , CCSortType type);
  */
 - (NSString *)dataSource:(BaseExcelDataSource *)dataSource sumContentAtColumn:(NSInteger)column;
 
+- (void)dataSource:(BaseExcelDataSource *)dataSource handleFooterCell:(CCExcelCell *)cell atColumn:(NSInteger)column;
+
 /**
  *  当当前列支持排序后，列表头的对齐方式会自动设置为居左，忽略设置对齐方式的代理，且宽度在原有的基础上自动增加20，以容下排序的指示图标
  */

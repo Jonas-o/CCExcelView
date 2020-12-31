@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "CCExcelView"
-  s.version      = "0.1.0"
+  s.version      = "1.0.0"
   s.summary      = "The Excel View a friendly way for iOS."
   s.description  = <<-DESC
                   iOS ExcelView 自定义表格，支持设置左右向锁住的列数，支持列排序（排序规则自己实现）,支持设置topView，支持列表背景色，支持设置整行还是单元格点击的点击色
@@ -24,7 +24,7 @@ Pod::Spec.new do |s|
 
   s.homepage     = "https://github.com/Jonas-o/CCExcelView"
   s.license      = { :type => "MIT", :file => "LICENSE"}
-  s.author             = { "luo" => "824375137@qq.com" }
+  s.author             = { "luo" => "luo_ty@qq.com" }
   s.platform     = :ios, "8.0"
   s.source       = { :git => "https://github.com/Jonas-o/CCExcelView.git", :tag => s.version.to_s }
   s.framework  = "UIKit"
@@ -32,6 +32,6 @@ Pod::Spec.new do |s|
 
   s.source_files  = "CCViews", "CCExcelView/**/*.{h,m}"
   s.resource = "CCExcelView/CCResources/*.bundle"
-  
+
 
 end

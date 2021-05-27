@@ -164,6 +164,9 @@ static NSString *cc_reuseIdentifier = @"cc_cell";
         footerCell.frame = CC_rect(0, self.bounds.size.height - bottomRowHeight, self.bounds.size.width, bottomRowHeight);
         footerCell.delegate = self;
         footerCell.backgroundColor = CC_ColorClear;
+        footerCell.lockScrollView.backgroundColor = CC_ColorWhite;
+        footerCell.contentScrollView.backgroundColor = CC_ColorWhite;
+        footerCell.farrightLockScrollView.backgroundColor = CC_ColorWhite;
 
         if ([self.delegate respondsToSelector:@selector(excelView:bottomLineColorAtRow:)]) {
             UIColor *c = [self.delegate excelView:self bottomLineColorAtRow:footRow];

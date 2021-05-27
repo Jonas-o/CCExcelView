@@ -461,7 +461,7 @@
         if ([delegate respondsToSelector:@selector(dataSource:sumContentAtColumn:)]) {
             content = [delegate dataSource:self sumContentAtColumn:matrix.column];
         }
-        if (delegate.excelView.showFooterTotalString && rows > 1 && content.length == 0 && matrix.column == 0) {
+        if (delegate.excelView.showFooterTotalString && rows > 0 && content.length == 0 && matrix.column == 0) {
             // 控制底部合计栏是否显示合计字样（有内容才会显示）
             content = delegate.excelView.totalString ?: @"合计";
         }

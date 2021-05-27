@@ -29,6 +29,12 @@
 
 @property (nonatomic, assign, readonly) BOOL showFooter;
 
+/// 是否需要在展示 footer 第一列展示【合计】字样，【合计】支持自定义，当第一列 footer 行内容为空且列表有数据时才会展示
+@property (nonatomic, assign) BOOL showFooterTotalString;
+
+/// 【合计】字样，默认【合计】
+@property (nonatomic, copy) NSString *totalString;
+
 - (instancetype)initWithFrame:(CGRect)frame rowHeight:(CGFloat)rowHeight;
 
 - (instancetype)initWithFrame:(CGRect)frame rowHeight:(CGFloat)rowHeight showFooter:(BOOL)showFooter;

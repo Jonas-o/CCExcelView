@@ -21,22 +21,22 @@ static NSString *cc_reuseIdentifier = @"cc_cell";
 {
     CCExcelRowCell *footerCell;
     CGPoint currentRowCellOffset;
-    
+
     NSInteger columnNum;
     NSInteger lockColumnNum;
     NSInteger farrightLockColumnNum;
-    
+
     CGFloat rowHeight;
     CGFloat topRowHeight;
     CGFloat bottomRowHeight;
     CGFloat rowWidth;
-    
+
     NSMutableDictionary *reusableCells;
     NSMutableArray *cells;
-    
+
     CGFloat topViewHeight;
     UIView *topView;
-    
+
     CGFloat currentOffsetY;
     BOOL forward;
     BOOL dragging;
@@ -53,7 +53,7 @@ static NSString *cc_reuseIdentifier = @"cc_cell";
 - (instancetype)init {
     self = [self initWithFrame:CC_rectZP(100, 100) rowHeight:50 showFooter:NO];
     if (self) {
-        
+
     }
     return self;
 }
@@ -147,7 +147,7 @@ static NSString *cc_reuseIdentifier = @"cc_cell";
     headerCell.frame = CC_rectZP(self.bounds.size.width, topRowHeight);
     headerCell.delegate = self;
     headerCell.backgroundColor = CC_RGB(244, 246, 248);
-    
+
     if ([self.delegate respondsToSelector:@selector(excelView:bottomLineColorAtRow:)]) {
         UIColor *c = [self.delegate excelView:self bottomLineColorAtRow:0];
         if (c) {
@@ -156,7 +156,7 @@ static NSString *cc_reuseIdentifier = @"cc_cell";
     }
     [self addSubview:headerCell];
     [self resetRowCell:headerCell atRow:0];
-    
+
     if (showFooter) {
         NSInteger footRow = [self.delegate numberOfRowsInExcelView:self] + 1;
         [footerCell removeFromSuperview];
@@ -164,19 +164,25 @@ static NSString *cc_reuseIdentifier = @"cc_cell";
         footerCell.frame = CC_rect(0, self.bounds.size.height - bottomRowHeight, self.bounds.size.width, bottomRowHeight);
         footerCell.delegate = self;
         footerCell.backgroundColor = CC_ColorClear;
-        
+
         if ([self.delegate respondsToSelector:@selector(excelView:bottomLineColorAtRow:)]) {
             UIColor *c = [self.delegate excelView:self bottomLineColorAtRow:footRow];
             if (c) {
                 footerCell.line.backgroundColor = c;
             }
         }
+
+        // 给 footer 增加阴影
+        UIImageView *back = [[UIImageView alloc] initWithFrame:CC_rect(-15, -10, footerCell.bounds.size.width + 30, footerCell.bounds.size.height - 10)];
+        back.image = [[CCHelper imageWithName:@"CC_back_blur"] resizableImageWithCapInsets:UIEdgeInsetsMake(20, 20, 20, 20) resizingMode:UIImageResizingModeStretch];
+        [footerCell.contentView insertSubview:back atIndex:0];
+
         [self addSubview:footerCell];
         [self resetRowCell:footerCell atRow:footRow];
     }
-    
+
     [table reloadData];
-    
+
     [self handleTopView];
     [self handleTopViewFrame];
     [self handleHeaderCellFrame];
@@ -198,7 +204,7 @@ static NSString *cc_reuseIdentifier = @"cc_cell";
 {
     for (NSInteger i = reloadColumnIndex; i < [self.delegate numberOfColumnsInExcelView:self]; i++) {
 //        [self resetColumnsWidthFromIndex:i];
-        
+
         CGFloat columnWidth = [self.delegate excelView:self widthAtColumn:i];
         CCExcelCell *tempHeaderCell = [headerCell excelCellAtColumn:i];
         tempHeaderCell.width = columnWidth;
@@ -446,7 +452,7 @@ static NSString *cc_reuseIdentifier = @"cc_cell";
 - (NSArray *)visiableRows
 {
     NSMutableArray *visableRows = [NSMutableArray arrayWithObject:@(0)];
-    
+
     for (NSIndexPath *indexPath in [table indexPathsForVisibleRows]) {
         [visableRows addObject:@(indexPath.row + 1)];
     }
@@ -585,7 +591,7 @@ static NSString *cc_reuseIdentifier = @"cc_cell";
 {
     if ([self.delegate respondsToSelector:@selector(excelViewDidEndScroll:)]) {
         [self.delegate excelViewDidEndScroll:self];
-        
+
     }
 //    [self loadNextPage];
 }
@@ -642,11 +648,11 @@ static NSString *cc_reuseIdentifier = @"cc_cell";
         cell.delegate = self;
     }
     [self resetRowCell:cell atRow:indexPath.row+1];
-    
+
     if ([self.delegate respondsToSelector:@selector(excelView:bottomLineColorAtRow:)]) {
         cell.line.backgroundColor = [self.delegate excelView:self bottomLineColorAtRow:indexPath.row+1];
     }
-    
+
     UIColor *color = CC_ColorClear;
     if ([self.delegate respondsToSelector:@selector(excelView:backgroundColorAtRow:)]) {
         color = [self.delegate excelView:self backgroundColorAtRow:indexPath.row + 1];

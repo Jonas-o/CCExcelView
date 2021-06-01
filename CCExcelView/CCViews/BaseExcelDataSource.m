@@ -86,6 +86,13 @@
 }
 
 - (void)insertDataFromRow:(NSInteger)from completion:(void(^)(void))completion {
+    if (from == 0) {
+        [self reloadData];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if (completion) completion();
+        });
+        return;
+    }
     dispatch_async(dispatch_get_global_queue(0, 0), ^{
         NSMutableArray *indexs = [NSMutableArray array];
         NSInteger totalRows = [self.delegate numberOfRowsInDataSource:self];
@@ -229,12 +236,17 @@
     return calWidth;
 }
 
-- (CCExcelCell *)excelView:(CCExcelView *)excelView cellAtMatrix:(CCMatrix *)matrix
+- (CCExcelCell *)excelView:(CCExcelView *)excelView rowCell:(CCExcelRowCell *)rowCell cellAtMatrix:(CCMatrix *)matrix
 {
     NSString *content = [self contentAtMatrix:matrix];
     CCExcelCell *cell;
-    if ([delegate respondsToSelector:@selector(dataSource:cellAtMatrix:)]) {
+    if ([delegate respondsToSelector:@selector(dataSource:cellAtMatrix:withRowCell:)]) {
+        cell = [delegate dataSource:self cellAtMatrix:matrix withRowCell:rowCell];
+    } else if ([delegate respondsToSelector:@selector(dataSource:cellAtMatrix:)]) {
         cell = [delegate dataSource:self cellAtMatrix:matrix];
+        if (cell) {
+            [rowCell removeAllItems];
+        }
     }
     if (excelView.showFooter && matrix.row == [delegate numberOfRowsInDataSource:self] + 1) {
         if (cell == nil) {
@@ -243,7 +255,7 @@
     } else {
         if (matrix.row == 0) {
             if (cell == nil) {
-                cell = [excelView dequeueReusableCellWithIdentifier:@"header"];
+                cell = [excelView dequeueReusableCellWithIdentifier:@"header" withRowCell:rowCell withMatrix:matrix];
                 if (!cell) {
                     if ([self shouldShowSortControl:matrix]) {
                         cell = [[CCSortExcelcell alloc] initWithReuseIdentifier:@"header"];
@@ -254,7 +266,7 @@
             }
         } else {
             if (cell == nil) {
-                cell = [excelView dequeueReusableCellWithIdentifier:@"default"];
+                cell = [excelView dequeueReusableCellWithIdentifier:@"default" withRowCell:rowCell withMatrix:matrix];
                 if (cell == nil) {
                     cell = [[CCExcelCell alloc] initWithReuseIdentifier:@"default"];
                 }
@@ -354,9 +366,11 @@
         rowCount++;
     }
     NSInteger fromCloumn = columnCount - 1;
-    if (row == 0) {
+    if (row == 0 || columnWidthArray.count != columnCount) {
         fromCloumn = 0;
         [columnWidthArray removeAllObjects];
+    }
+    if (columnWidthArray.count == 0) {
         for (NSInteger i = 0; i < columnCount; i++) {
             [columnWidthArray addObject:@0];
         }
@@ -457,7 +471,8 @@
 - (NSString *)contentAtMatrix:(CCMatrix *)matrix
 {
     NSString *content = nil;
-    if (delegate.excelView.showFooter && matrix.row == [delegate numberOfRowsInDataSource:self] + 1) {
+    NSInteger rows = [delegate numberOfRowsInDataSource:self];
+    if (delegate.excelView.showFooter && matrix.row == rows + 1) {
         if ([delegate respondsToSelector:@selector(dataSource:sumContentAtColumn:)]) {
             content = [delegate dataSource:self sumContentAtColumn:matrix.column];
         }

@@ -57,6 +57,7 @@
 - (NSArray *)visiableRows;
 
 - (CCExcelCell *)dequeueReusableCellWithIdentifier:(NSString *)cellIdentifier;
+- (CCExcelCell *)dequeueReusableCellWithIdentifier:(NSString *)cellIdentifier withRowCell:(CCExcelRowCell *)rowCell withMatrix:(CCMatrix *)matrix;
 
 - (void)setHighlight:(BOOL)highlight atRow:(NSInteger)row;
 
@@ -98,13 +99,15 @@
 
 - (CGFloat)excelView:(CCExcelView *)excelView widthAtColumn:(NSInteger)column;
 
-- (CCExcelCell *)excelView:(CCExcelView *)excelView cellAtMatrix:(CCMatrix *)matrix;
-
 - (NSInteger)numberOfColumnsInExcelView:(CCExcelView *)excelView;
 
 - (NSInteger)numberOfRowsInExcelView:(CCExcelView *)excelView;
 
 @optional
+
+- (CCExcelCell *)excelView:(CCExcelView *)excelView cellAtMatrix:(CCMatrix *)matrix;
+
+- (CCExcelCell *)excelView:(CCExcelView *)excelView rowCell:(CCExcelRowCell *)rowCell cellAtMatrix:(CCMatrix *)matrix;
 
 - (CGFloat)topRowHeightInExcelView:(CCExcelView *)excelView;
 

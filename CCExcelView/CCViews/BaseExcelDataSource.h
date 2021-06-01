@@ -168,6 +168,8 @@ typedef void(^ExcelSortTitleAction)(NSString  *sortTitle , CCSortType type);
 
 - (CCExcelCell *)dataSource:(BaseExcelDataSource *)dataSource cellAtMatrix:(CCMatrix *)matrix;
 
+- (CCExcelCell *)dataSource:(BaseExcelDataSource *)dataSource cellAtMatrix:(CCMatrix *)matrix withRowCell:(CCExcelRowCell *)rowCell;
+
 /**
  *  表底部的统计
  */

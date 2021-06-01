@@ -25,30 +25,39 @@
         lockScrollView.showsVerticalScrollIndicator = NO;
         lockScrollView.showsHorizontalScrollIndicator = NO;
         [self.contentView addSubview:lockScrollView];
-        
+
         contentScrollView = [UIScrollView new];
         contentScrollView.delegate = self;
         contentScrollView.alwaysBounceHorizontal = YES;
         contentScrollView.showsVerticalScrollIndicator = NO;
         contentScrollView.showsHorizontalScrollIndicator = NO;
         [self.contentView addSubview:contentScrollView];
-        
+
         farrightLockScrollView = [UIScrollView new];
         farrightLockScrollView.showsVerticalScrollIndicator = NO;
         farrightLockScrollView.showsHorizontalScrollIndicator = NO;
         [self.contentView addSubview:farrightLockScrollView];
-        
+
         line = [UIView new];
         line.userInteractionEnabled = NO;
         line.backgroundColor = CC_RGB(240, 240, 240);
         [self.contentView addSubview:line];
-        
+
         shouldSendScrollNotification = NO;
         UIView *selectedView = [UIView new];
         selectedView.backgroundColor = kExcelCellSelectedColor;
         self.selectedBackgroundView = selectedView;
     }
     return self;
+}
+
+- (void)removeAllItems {
+    lockCells = nil;
+    scrollCells = nil;
+    farrightLockCells = nil;
+    [lockScrollView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
+    [contentScrollView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
+    [farrightLockScrollView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
 }
 
 - (void)resetSubCellsOffset {
@@ -79,11 +88,11 @@
 {
     lockScrollView.frame = CC_rectZP([self lockScrollViewContentWidth], self.bounds.size.height);
     lockScrollView.contentSize = lockScrollView.bounds.size;
-    
+
     CGFloat rightWidth = [self rightScrollViewContentWidth];
     farrightLockScrollView.frame = CC_rect(self.bounds.size.width-rightWidth, 0, rightWidth, self.bounds.size.height);
     farrightLockScrollView.contentSize = farrightLockScrollView.bounds.size;
-    
+
     CGFloat contentWidth = [self contentScrollViewContentWidth];
     contentScrollView.frame = CC_rect(lockScrollView.bounds.size.width, 0, self.bounds.size.width - lockScrollView.frame.size.width - farrightLockScrollView.bounds.size.width, self.bounds.size.height);
     contentScrollView.contentSize = CC_size(MAX(contentScrollView.bounds.size.width, contentWidth), self.bounds.size.height);
@@ -145,7 +154,7 @@
     scrollCells = scrollItems;
     farrightLockCells = rightLockItems;
     CGFloat currentOffsetX = 0;
-    if (lockScrollView.subviews.count) [lockScrollView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
+    if (lockScrollView.subviews.count != lockItems.count) [lockScrollView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
     for (int i = 0; i < lockItems.count; i++) {
         CCExcelCell *lockItem = lockItems[i];
         lockItem.control.tag = 100 + i;
@@ -155,11 +164,13 @@
         [lockItem.control addTarget:self action:@selector(cellControlTouchCancelAction:) forControlEvents:UIControlEventTouchDragExit|UIControlEventTouchDragEnter|UIControlEventTouchDragOutside|UIControlEventTouchCancel];
         lockItem.frame = CC_rectFromSize(currentOffsetX, 0, lockItem.bounds.size);
         currentOffsetX += lockItem.bounds.size.width;
-        [lockScrollView addSubview:lockItem];
+        if (lockItem.superview != lockScrollView) {
+            [lockScrollView addSubview:lockItem];
+        }
     }
     contentScrollView.frame = CC_rect(currentOffsetX, 0, 0, 0);
     currentOffsetX = 0;
-    if (contentScrollView.subviews.count) [contentScrollView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
+    if (contentScrollView.subviews.count != scrollItems.count) [contentScrollView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
     for (int i = 0; i < scrollItems.count; i++) {
         CCExcelCell *scrollItem = scrollItems[i];
         scrollItem.control.tag = 100 + i + lockItems.count;
@@ -168,13 +179,15 @@
         [scrollItem.control addTarget:self action:@selector(cellControlTouchDownAction:) forControlEvents:UIControlEventTouchDown];
         [scrollItem.control addTarget:self action:@selector(cellControlTouchCancelAction:) forControlEvents:UIControlEventTouchDragExit|UIControlEventTouchDragEnter|UIControlEventTouchDragOutside|UIControlEventTouchCancel];
         scrollItem.frame = CC_rectFromSize(currentOffsetX, 0, scrollItem.bounds.size);
-        [contentScrollView addSubview:scrollItem];
         currentOffsetX += scrollItem.bounds.size.width;
+        if (scrollItem.superview != contentScrollView) {
+            [contentScrollView addSubview:scrollItem];
+        }
     }
     contentScrollView.contentSize = CC_size(currentOffsetX, 0);
-    
+
     currentOffsetX = 0;
-    if (farrightLockScrollView.subviews.count) [farrightLockScrollView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
+    if (farrightLockScrollView.subviews.count != rightLockItems.count) [farrightLockScrollView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
     for (int i = 0; i < rightLockItems.count; i++) {
         CCExcelCell *lockItem = rightLockItems[i];
         [lockItem.control removeTarget:nil action:NULL forControlEvents:UIControlEventAllEvents];
@@ -184,10 +197,12 @@
         [lockItem.control addTarget:self action:@selector(cellControlTouchCancelAction:) forControlEvents:UIControlEventTouchDragExit|UIControlEventTouchDragEnter|UIControlEventTouchDragOutside|UIControlEventTouchCancel];
         lockItem.frame = CC_rectFromSize(currentOffsetX, 0, lockItem.bounds.size);
         currentOffsetX += lockItem.bounds.size.width;
-        [farrightLockScrollView addSubview:lockItem];
+        if (lockItem.superview != farrightLockScrollView) {
+            [farrightLockScrollView addSubview:lockItem];
+        }
     }
     farrightLockScrollView.frame = CC_rectZP(currentOffsetX, 0);
-    
+
     [self.contentView bringSubviewToFront:line];
     [self setNeedsLayout];
 }
@@ -241,13 +256,13 @@
             case CCExcelViewCellSelectionStyleCell:
                 [(CCExcelCell *)cell setHighlighted:YES animated:YES];
                 break;
-                
+
             default:
                 [(CCExcelCell *)cell setHighlighted:NO animated:YES];
                 [self setHighlighted:NO animated:YES];
                 break;
         }
-        
+
     }
 }
 
@@ -291,7 +306,7 @@
             [self.delegate excelRowCell:self didScrollViewAtOffset:scrollView.contentOffset];
         }
     }
-    
+
 }
 
 @end

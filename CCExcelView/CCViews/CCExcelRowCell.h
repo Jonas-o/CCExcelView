@@ -36,6 +36,8 @@ typedef enum : NSUInteger {
 @property (nonatomic, strong, readonly) UIScrollView *contentScrollView;
 @property (nonatomic, strong, readonly) UIScrollView *farrightLockScrollView;
 
+- (void)removeAllItems;
+
 - (void)resetSubCellsOffset;
 
 - (void)resetCellContentViewSize;

@@ -162,8 +162,13 @@ static NSString *cc_reuseIdentifier = @"cc_cell";
         [footerCell removeFromSuperview];
         footerCell = [[CCExcelRowCell alloc] initWithFrame:CC_rect(0, self.bounds.size.height - bottomRowHeight, self.bounds.size.width, bottomRowHeight)];
         footerCell.frame = CC_rect(0, self.bounds.size.height - bottomRowHeight, self.bounds.size.width, bottomRowHeight);
+
+        // 给 footer 增加阴影
+        UIImageView *back = [[UIImageView alloc] initWithFrame:CC_rect(-15, -10, footerCell.bounds.size.width + 30, footerCell.bounds.size.height - 10)];
+        back.image = [[CCHelper imageWithName:@"CC_back_blur"] resizableImageWithCapInsets:UIEdgeInsetsMake(20, 20, 20, 20) resizingMode:UIImageResizingModeStretch];
+        [footerCell.contentView insertSubview:back atIndex:0];
+
         footerCell.delegate = self;
-        footerCell.backgroundColor = CC_ColorClear;
         footerCell.lockScrollView.backgroundColor = CC_ColorWhite;
         footerCell.contentScrollView.backgroundColor = CC_ColorWhite;
         footerCell.farrightLockScrollView.backgroundColor = CC_ColorWhite;
@@ -174,12 +179,6 @@ static NSString *cc_reuseIdentifier = @"cc_cell";
                 footerCell.line.backgroundColor = c;
             }
         }
-
-        // 给 footer 增加阴影
-        UIImageView *back = [[UIImageView alloc] initWithFrame:CC_rect(-15, -10, footerCell.bounds.size.width + 30, footerCell.bounds.size.height - 10)];
-        back.image = [[CCHelper imageWithName:@"CC_back_blur"] resizableImageWithCapInsets:UIEdgeInsetsMake(20, 20, 20, 20) resizingMode:UIImageResizingModeStretch];
-        [footerCell.contentView insertSubview:back atIndex:0];
-
         [self addSubview:footerCell];
         [self resetRowCell:footerCell atRow:footRow];
     }
@@ -192,9 +191,9 @@ static NSString *cc_reuseIdentifier = @"cc_cell";
 }
 
 - (void)reloadHeaderCell {
-    [headerCell.lockScrollView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
-    [headerCell.contentScrollView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
-    [headerCell.farrightLockScrollView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
+//    [headerCell.lockScrollView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
+//    [headerCell.contentScrollView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
+//    [headerCell.farrightLockScrollView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
     [self resetRowCell:headerCell atRow:0];
 }
 
@@ -410,16 +409,35 @@ static NSString *cc_reuseIdentifier = @"cc_cell";
     }
     headerCell.frame = frame;
 }
-
-- (CCExcelCell *)dequeueReusableCellWithIdentifier:(NSString *)cellIdentifier
-{
+- (CCExcelCell *)dequeueReusableCellWithIdentifier:(NSString *)cellIdentifier {
+    return [self dequeueReusableCellWithIdentifier:cellIdentifier withRowCell:nil withMatrix:nil];
+}
+- (CCExcelCell *)dequeueReusableCellWithIdentifier:(NSString *)cellIdentifier withRowCell:(CCExcelRowCell *)rowCell withMatrix:(CCMatrix *)matrix {
+    CCExcelCell *reusableCell = nil;
+    // 优先从本 cell 中寻找
+    if (rowCell && matrix) {
+        if (matrix.column < rowCell.lockCells.count) {
+            reusableCell = rowCell.lockCells[matrix.column];
+        } else if (matrix.column < rowCell.lockCells.count + rowCell.scrollCells.count) {
+            reusableCell = rowCell.scrollCells[matrix.column - rowCell.lockCells.count];
+        } else if (matrix.column < rowCell.lockCells.count + rowCell.scrollCells.count + rowCell.farrightLockCells.count) {
+            reusableCell = rowCell.farrightLockCells[matrix.column - rowCell.lockCells.count - rowCell.scrollCells.count];
+        }
+        if (![reusableCell.reuseIdentifier isEqualToString:cellIdentifier]) {
+            [reusableCell removeFromSuperview];
+            reusableCell = nil;
+        }
+        if (reusableCell) {
+            return reusableCell;
+        }
+    }
     NSMutableSet *set = [reusableCells objectForKey:cellIdentifier];
     if ([set count] == 0) {
         return nil;
     }
-    CCExcelCell *lastCell = [set anyObject];
-    [set removeObject:lastCell];
-    return lastCell;
+    reusableCell = [set anyObject];
+    [set removeObject:reusableCell];
+    return reusableCell;
 }
 
 - (void)reuseCell:(CCExcelCell *)cell
@@ -677,8 +695,10 @@ static NSString *cc_reuseIdentifier = @"cc_cell";
     return cell;
 }
 
-- (void)tableView:(UITableView *)tableView didEndDisplayingCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
-{
+- (void)tableView:(UITableView *)tableView didEndDisplayingCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
+    if ([self.delegate respondsToSelector:@selector(excelView:rowCell:cellAtMatrix:)]) {
+        return;
+    }
     CCExcelRowCell *rowCell = (CCExcelRowCell *) cell;
     for (CCExcelCell *excelCell in rowCell.lockCells) {
         [self reuseCell:excelCell];
@@ -689,6 +709,7 @@ static NSString *cc_reuseIdentifier = @"cc_cell";
     for (CCExcelCell *excelCell in rowCell.farrightLockCells) {
         [self reuseCell:excelCell];
     }
+    [rowCell removeAllItems];
     [rowCell setLockItems:nil scrollItems:nil rightLockItems:nil];
 }
 
@@ -704,7 +725,13 @@ static NSString *cc_reuseIdentifier = @"cc_cell";
     NSMutableArray *scrollCells = [NSMutableArray array];
     NSMutableArray *rightLockExcelCells = [NSMutableArray array];
     for (int i = 0; i < columnNum; i++) {
-        CCExcelCell *excelCell = [self.delegate excelView:self cellAtMatrix:[CCMatrix matrixWithColumn:i row:row]];
+        CCExcelCell *excelCell;
+        if ([self.delegate respondsToSelector:@selector(excelView:rowCell:cellAtMatrix:)]) {
+            excelCell = [self.delegate excelView:self rowCell:cell cellAtMatrix:[CCMatrix matrixWithColumn:i row:row]];
+        } else {
+            [cell removeAllItems];
+            excelCell = [self.delegate excelView:self cellAtMatrix:[CCMatrix matrixWithColumn:i row:row]];
+        }
         CGFloat excelCellWidth = [self.delegate excelView:self widthAtColumn:i];
         CGFloat height = rowHeight;
         if (row == 0) {

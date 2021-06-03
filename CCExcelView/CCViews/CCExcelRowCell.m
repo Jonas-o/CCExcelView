@@ -101,11 +101,12 @@
     farrightLockScrollView.frame = CC_rect(self.bounds.size.width-rightWidth, 0, rightWidth, self.bounds.size.height);
     farrightLockScrollView.contentSize = farrightLockScrollView.bounds.size;
     farrightLockShadow.frame = CC_rect(farrightLockScrollView.origin.x - 15, 0, 30, farrightLockScrollView.size.height);
-    farrightLockShadow.hidden = farrightLockScrollView.subviews.count == 0;
 
     CGFloat contentWidth = [self contentScrollViewContentWidth];
     contentScrollView.frame = CC_rect(lockScrollView.bounds.size.width, 0, self.bounds.size.width - lockScrollView.frame.size.width - farrightLockScrollView.bounds.size.width, self.bounds.size.height);
     contentScrollView.contentSize = CC_size(MAX(contentScrollView.bounds.size.width, contentWidth), self.bounds.size.height);
+
+    farrightLockShadow.hidden = farrightLockScrollView.subviews.count == 0 || contentWidth < contentScrollView.size.width;
 }
 
 - (CGFloat)lockScrollViewContentWidth

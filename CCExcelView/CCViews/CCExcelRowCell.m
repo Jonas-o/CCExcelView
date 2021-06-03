@@ -14,7 +14,9 @@
 
 @end
 
-@implementation CCExcelRowCell
+@implementation CCExcelRowCell {
+    UIImageView *farrightLockShadow;
+}
 @synthesize shouldSendScrollNotification, lockCells, scrollCells, line, farrightLockCells;
 @synthesize lockScrollView, contentScrollView, farrightLockScrollView;
 
@@ -36,6 +38,12 @@
         farrightLockScrollView = [UIScrollView new];
         farrightLockScrollView.showsVerticalScrollIndicator = NO;
         farrightLockScrollView.showsHorizontalScrollIndicator = NO;
+        // 增加阴影
+        UIImageView *back = [[UIImageView alloc] initWithFrame:CC_rect(-10, 0, 50, 30)];
+        back.image = [[CCHelper imageWithName:@"CC_left_blur"] resizableImageWithCapInsets:UIEdgeInsetsMake(20, 20, 20, 5) resizingMode:UIImageResizingModeStretch];
+        [self.contentView addSubview:back];
+        farrightLockShadow = back;
+
         [self.contentView addSubview:farrightLockScrollView];
 
         line = [UIView new];
@@ -92,6 +100,8 @@
     CGFloat rightWidth = [self rightScrollViewContentWidth];
     farrightLockScrollView.frame = CC_rect(self.bounds.size.width-rightWidth, 0, rightWidth, self.bounds.size.height);
     farrightLockScrollView.contentSize = farrightLockScrollView.bounds.size;
+    farrightLockShadow.frame = CC_rect(farrightLockScrollView.origin.x - 15, 0, 30, farrightLockScrollView.size.height);
+    farrightLockShadow.hidden = farrightLockScrollView.subviews.count == 0;
 
     CGFloat contentWidth = [self contentScrollViewContentWidth];
     contentScrollView.frame = CC_rect(lockScrollView.bounds.size.width, 0, self.bounds.size.width - lockScrollView.frame.size.width - farrightLockScrollView.bounds.size.width, self.bounds.size.height);

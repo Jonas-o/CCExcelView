@@ -106,7 +106,8 @@
     contentScrollView.frame = CC_rect(lockScrollView.bounds.size.width, 0, self.bounds.size.width - lockScrollView.frame.size.width - farrightLockScrollView.bounds.size.width, self.bounds.size.height);
     contentScrollView.contentSize = CC_size(MAX(contentScrollView.bounds.size.width, contentWidth), self.bounds.size.height);
 
-    farrightLockShadow.hidden = farrightLockScrollView.subviews.count == 0 || contentWidth <= contentScrollView.size.width;
+    // farrightLockShadow.hidden = farrightLockScrollView.subviews.count == 0 || contentWidth <= contentScrollView.size.width;
+    farrightLockShadow.hidden = farrightLockScrollView.subviews.count == 0 || CCCGFloatLessThanOrEqualToFloat(contentScrollView.contentSize.width, contentScrollView.size.width) || CCCGFloatLessThanOrEqualToFloat(contentScrollView.contentSize.width, contentScrollView.contentOffset.x + contentScrollView.size.width);
 }
 
 - (CGFloat)lockScrollViewContentWidth
@@ -317,7 +318,7 @@
             [self.delegate excelRowCell:self didScrollViewAtOffset:scrollView.contentOffset];
         }
     }
-
+    farrightLockShadow.hidden = farrightLockScrollView.subviews.count == 0 || CCCGFloatLessThanOrEqualToFloat(contentScrollView.contentSize.width, contentScrollView.size.width) || CCCGFloatLessThanOrEqualToFloat(contentScrollView.contentSize.width, contentScrollView.contentOffset.x + contentScrollView.size.width);
 }
 
 @end

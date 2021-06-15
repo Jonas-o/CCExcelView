@@ -20,6 +20,7 @@ static NSString *cc_reuseIdentifier = @"cc_cell";
 @implementation CCExcelView
 {
     CCExcelRowCell *footerCell;
+    UIImageView *footerShadowImageView;
     CGPoint currentRowCellOffset;
 
     NSInteger columnNum;
@@ -164,9 +165,9 @@ static NSString *cc_reuseIdentifier = @"cc_cell";
         footerCell.frame = CC_rect(0, self.bounds.size.height - bottomRowHeight, self.bounds.size.width, bottomRowHeight);
 
         // 给 footer 增加阴影
-        UIImageView *back = [[UIImageView alloc] initWithFrame:CC_rect(-15, -10, footerCell.bounds.size.width + 30, footerCell.bounds.size.height - 10)];
-        back.image = [[CCHelper imageWithName:@"CC_back_blur"] resizableImageWithCapInsets:UIEdgeInsetsMake(20, 20, 20, 20) resizingMode:UIImageResizingModeStretch];
-        [footerCell.contentView insertSubview:back atIndex:0];
+        footerShadowImageView = [[UIImageView alloc] initWithFrame:CC_rect(-15, -10, footerCell.bounds.size.width + 30, footerCell.bounds.size.height - 10)];
+        footerShadowImageView.image = [[CCHelper imageWithName:@"CC_back_blur"] resizableImageWithCapInsets:UIEdgeInsetsMake(20, 20, 20, 20) resizingMode:UIImageResizingModeStretch];
+        [footerCell.contentView insertSubview:footerShadowImageView atIndex:0];
 
         footerCell.delegate = self;
         footerCell.lockScrollView.backgroundColor = CC_ColorWhite;
@@ -580,6 +581,8 @@ static NSString *cc_reuseIdentifier = @"cc_cell";
 //            [self loadNextPage];
 //        }
     }
+    // footer 的阴影控制
+    footerShadowImageView.hidden = CCCGFloatLessThanOrEqualToFloat(scrollView.contentSize.height, scrollView.size.height) || CCCGFloatLessThanOrEqualToFloat(scrollView.contentSize.height, scrollView.contentOffset.y + scrollView.size.height);
 }
 
 - (void)loadNextPage
@@ -751,6 +754,11 @@ static NSString *cc_reuseIdentifier = @"cc_cell";
     }
     [cell setLockItems:lockExcelCells scrollItems:scrollCells rightLockItems:rightLockExcelCells];
     [cell controlScrollOffset:currentRowCellOffset];
+    if (footerCell == cell) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            footerShadowImageView.hidden = CCCGFloatLessThanOrEqualToFloat(self.table.contentSize.height, self.table.size.height) || CCCGFloatLessThanOrEqualToFloat(self.table.contentSize.height, self.table.contentOffset.y + self.table.size.height);
+        });
+    }
 }
 
 #pragma mark- CCExcelRowCellDelegate

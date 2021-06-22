@@ -166,6 +166,7 @@ static NSString *cc_reuseIdentifier = @"cc_cell";
 
         // 给 footer 增加阴影
         footerShadowImageView = [[UIImageView alloc] initWithFrame:CC_rect(-15, -10, footerCell.bounds.size.width + 30, footerCell.bounds.size.height - 10)];
+        footerShadowImageView.hidden = YES;
         footerShadowImageView.image = [[CCHelper imageWithName:@"CC_back_blur"] resizableImageWithCapInsets:UIEdgeInsetsMake(20, 20, 20, 20) resizingMode:UIImageResizingModeStretch];
         [footerCell.contentView insertSubview:footerShadowImageView atIndex:0];
 

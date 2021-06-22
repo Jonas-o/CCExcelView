@@ -41,6 +41,7 @@
         // 增加阴影
         UIImageView *back = [[UIImageView alloc] initWithFrame:CC_rect(-10, 0, 50, 30)];
         back.image = [[CCHelper imageWithName:@"CC_left_blur"] resizableImageWithCapInsets:UIEdgeInsetsMake(20, 20, 20, 5) resizingMode:UIImageResizingModeStretch];
+        back.hidden = YES;
         [self.contentView addSubview:back];
         farrightLockShadow = back;
 

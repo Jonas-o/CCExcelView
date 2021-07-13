@@ -583,7 +583,7 @@ static NSString *cc_reuseIdentifier = @"cc_cell";
 //        }
     }
     // footer 的阴影控制
-    footerShadowImageView.hidden = CCCGFloatLessThanOrEqualToFloat(scrollView.contentSize.height, scrollView.size.height) || CCCGFloatLessThanOrEqualToFloat(scrollView.contentSize.height, scrollView.contentOffset.y + scrollView.size.height);
+    footerShadowImageView.hidden = CCCGFloatLessThanOrEqualToFloat(scrollView.contentSize.height + scrollView.contentInset.top, scrollView.size.height) || CCCGFloatLessThanOrEqualToFloat(scrollView.contentSize.height, scrollView.contentOffset.y + scrollView.size.height);
 }
 
 - (void)loadNextPage
@@ -757,7 +757,7 @@ static NSString *cc_reuseIdentifier = @"cc_cell";
     [cell controlScrollOffset:currentRowCellOffset];
     if (footerCell == cell) {
         dispatch_async(dispatch_get_main_queue(), ^{
-            footerShadowImageView.hidden = CCCGFloatLessThanOrEqualToFloat(self.table.contentSize.height, self.table.size.height) || CCCGFloatLessThanOrEqualToFloat(self.table.contentSize.height, self.table.contentOffset.y + self.table.size.height);
+            footerShadowImageView.hidden = CCCGFloatLessThanOrEqualToFloat(self.table.contentSize.height + self.table.contentInset.top, self.table.size.height) || CCCGFloatLessThanOrEqualToFloat(self.table.contentSize.height, self.table.contentOffset.y + self.table.size.height);
         });
     }
 }

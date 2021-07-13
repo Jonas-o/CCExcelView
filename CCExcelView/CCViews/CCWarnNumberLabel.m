@@ -44,24 +44,23 @@
 }
 
 - (void)resetTextColor {
-    if (self.text.length > 0 && [self isPureDouble:self.text]) {
-        if (CC_isNegativeDecimal(CC_decimalWithString(self.text))) {
-            if (self.warnColor != nil) {
-                self.textColor = self.warnColor;
-            } else {
-                self.textColor = CC_ColorRed;
-            }
-        } else {
-            self.textColor = initialColor;
-        }
+    if ([self isNegativeDecimalDouble:self.text]) {
+        self.textColor = self.warnColor ?: CC_ColorRed;
+    } else {
+        self.textColor = initialColor;
     }
 }
 
-- (BOOL)isPureDouble:(NSString*)string
-{
-    NSScanner* scan = [NSScanner scannerWithString:string];
+- (BOOL)isNegativeDecimalDouble:(NSString*)string {
+    if (self.text.length < 2) {
+        return NO;
+    }
+    if (![string hasPrefix:@"-"]) {
+        return NO;
+    }
+    NSScanner* scan = [NSScanner scannerWithString:[[string componentsSeparatedByString:@","] componentsJoinedByString:@""]];
     double val;
-    return[scan scanDouble:&val] && [scan isAtEnd];
+    return[scan scanDouble:&val] && scan.isAtEnd;
 }
 
 @end

@@ -94,6 +94,19 @@ static NSString *cc_reuseIdentifier = @"cc_cell";
     reusableCells = [NSMutableDictionary dictionary];
 }
 
+- (void)layoutSubviews {
+    [super layoutSubviews];
+
+    if ([self.delegate respondsToSelector:@selector(topRowHeightInExcelView:)]) {
+        topRowHeight = [self.delegate topRowHeightInExcelView:self];
+    }
+    if (showFooter && [self.delegate respondsToSelector:@selector(bottomRowHeightInExcelView:)]) {
+        bottomRowHeight = [self.delegate bottomRowHeightInExcelView:self];
+    }
+
+    table.frame = CC_rect(0, topRowHeight, self.bounds.size.width, self.bounds.size.height - topRowHeight - bottomRowHeight);
+}
+
 - (void)refreshData:(id)sender {
     if ([self.delegate respondsToSelector:@selector(refresh)]) {
         [self.delegate refresh];

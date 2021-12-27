@@ -381,7 +381,11 @@
             CCMatrix *matrix = [CCMatrix matrixWithColumn:i row:j];
             NSString *content = [self contentAtMatrix:matrix];
             CGSize maxSize = CC_size(MAXFLOAT, 40);
-            CGFloat cellWidth = [CCHelper sizeWithString:content font:kExcelCellLabelFont maxSize:maxSize].width;
+            UIFont *font = kExcelCellLabelFont;
+            if (j == 0) {
+                font = CC_defaultBoldFont;
+            }
+            CGFloat cellWidth = [CCHelper sizeWithString:content font:font maxSize:maxSize].width;
             if (j == 0) {
                 //如果支持排序加上排序图片的宽度
                 if ([self shouldShowSortControl:matrix]) {
@@ -435,7 +439,11 @@
             CCMatrix *matrix = [CCMatrix matrixWithColumn:i row:j];
             NSString *content = [self contentAtMatrix:matrix];
             CGSize maxSize = CC_size(MAXFLOAT, 40);
-            CGFloat cellWidth = [CCHelper sizeWithString:content font:kExcelCellLabelFont maxSize:maxSize].width;
+            UIFont *font = kExcelCellLabelFont;
+            if (j == 0) {
+                font = CC_defaultBoldFont;
+            }
+            CGFloat cellWidth = [CCHelper sizeWithString:content font:font maxSize:maxSize].width;
             if (j == 0) {
                 //如果支持排序加上排序图片的宽度
                 if ([self shouldShowSortControl:matrix]) {

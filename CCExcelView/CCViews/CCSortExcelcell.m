@@ -11,14 +11,13 @@
 
 @implementation CCSortExcelcell
 
-- (instancetype)initWithReuseIdentifier:(NSString *)reuseIdentifier {
-    if (self = [super initWithReuseIdentifier:reuseIdentifier]) {
-        UIImage *sortImage = [CCHelper imageWithName:@"CC_order_arrow"];
-        self.sortImageView = [[UIImageView alloc] initWithImage:sortImage];
-        [self.sortImageView sizeToFit];
-        [self addSubview:self.sortImageView];
-    }
-    return self;
+- (void)didInitialize {
+    [super didInitialize];
+
+    UIImage *sortImage = [CCHelper imageWithName:@"CC_order_arrow"];
+    self.sortImageView = [[UIImageView alloc] initWithImage:sortImage];
+    [self.sortImageView sizeToFit];
+    [self addSubview:self.sortImageView];
 }
 
 - (void)setSortType:(CCSortType)sortType {

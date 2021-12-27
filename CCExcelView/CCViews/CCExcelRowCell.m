@@ -84,6 +84,8 @@
     }
     farrightLockScrollView.frame = CC_rect(self.bounds.size.width-x, 0, x, self.bounds.size.height);
     farrightLockScrollView.contentSize = farrightLockScrollView.bounds.size;
+    farrightLockShadow.frame = CC_rect(farrightLockScrollView.origin.x - 15, 0, 30, farrightLockScrollView.size.height);
+
     x = 0;
     for (CCExcelCell *cell in self.scrollCells) {
         cell.x = x;
@@ -91,6 +93,8 @@
     }
     contentScrollView.frame = CC_rect(lockScrollView.bounds.size.width, 0, self.bounds.size.width - lockScrollView.frame.size.width - farrightLockScrollView.bounds.size.width, self.bounds.size.height);
     contentScrollView.contentSize = CC_size(MAX(contentScrollView.bounds.size.width, x), self.bounds.size.height);
+
+    farrightLockShadow.hidden = farrightLockScrollView.subviews.count == 0 || CCCGFloatLessThanOrEqualToFloat(contentScrollView.contentSize.width, contentScrollView.size.width) || CCCGFloatLessThanOrEqualToFloat(contentScrollView.contentSize.width, contentScrollView.contentOffset.x + contentScrollView.size.width);
 }
 
 - (void)resetCellContentViewSize
@@ -141,7 +145,7 @@
 - (void)layoutSubviews
 {
     [super layoutSubviews];
-    [self resetCellContentViewSize];
+    [self resetSubCellsOffset];
     line.frame = CC_rect(0, self.bounds.size.height - 1, self.bounds.size.width, 1);
 }
 

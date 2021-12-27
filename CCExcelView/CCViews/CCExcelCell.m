@@ -13,48 +13,56 @@
 @implementation CCExcelCell
 @synthesize label, reuseIdentifier, control, style, switchImageView, rightIcon, contentImageView, rightLineLayer,selectedBackgroundLayer;
 
-- (instancetype)initWithReuseIdentifier:(NSString *)identifier style:(CCExcelCellStyle)cellStyle
-{
-    if (self = [super init]) {
+- (instancetype)initWithReuseIdentifier:(NSString *)identifier style:(CCExcelCellStyle)cellStyle {
+    if (self = [super initWithFrame:CGRectZero]) {
         reuseIdentifier = identifier;
-        
-        selectedBackgroundLayer = [[CALayer alloc] init];
-        selectedBackgroundLayer.backgroundColor = kExcelCellSelectedColor.CGColor;
-        selectedBackgroundLayer.opacity = 0.0f;
-        [self.layer addSublayer:selectedBackgroundLayer];
-        
-        label = [[CCWarnNumberLabel alloc] init];
-        label.font = CC_defaultFont;
-        label.textColor = kExcelCellLabelColor;
-        [self addSubview:label];
-        
-        control = [UIControl new];
-        control.backgroundColor = CC_ColorClear;
-        control.exclusiveTouch = YES;
-        [self addSubview:control];
-        
-        rightLineLayer = [[CALayer alloc] init];
-        rightLineLayer.backgroundColor = CC_RGB(184, 186, 186).CGColor;
-        [self.layer addSublayer:rightLineLayer];
-        
-        switchImageView = [[UIImageView alloc] initWithImage:[CCHelper imageWithName:@"CC_switch_off"]];
-        switchImageView.hidden = YES;
-        [self addSubview:switchImageView];
-        
-        rightIcon = [[UIImageView alloc] init];
-        [self addSubview:rightIcon];
-        
-        contentImageView = [[UIImageView alloc] init];
-        [self addSubview:contentImageView];
-        
         self.style = cellStyle;
+        [self didInitialize];
     }
     return self;
 }
 
-- (instancetype)initWithReuseIdentifier:(NSString *)identifier
-{
+- (instancetype)initWithReuseIdentifier:(NSString *)identifier {
     return [self initWithReuseIdentifier:identifier style:CCExcelCellStyleDefault];
+}
+
+- (instancetype)initWithCoder:(NSCoder *)coder {
+    self = [super initWithCoder:coder];
+    if (self) {
+        [self didInitialize];
+    }
+    return self;
+}
+
+- (void)didInitialize {
+    selectedBackgroundLayer = [[CALayer alloc] init];
+    selectedBackgroundLayer.backgroundColor = kExcelCellSelectedColor.CGColor;
+    selectedBackgroundLayer.opacity = 0.0f;
+    [self.layer addSublayer:selectedBackgroundLayer];
+
+    label = [[CCWarnNumberLabel alloc] init];
+    label.font = CC_defaultFont;
+    label.textColor = kExcelCellLabelColor;
+    [self addSubview:label];
+
+    control = [UIControl new];
+    control.backgroundColor = CC_ColorClear;
+    control.exclusiveTouch = YES;
+    [self addSubview:control];
+
+    rightLineLayer = [[CALayer alloc] init];
+    rightLineLayer.backgroundColor = CC_RGB(184, 186, 186).CGColor;
+    [self.layer addSublayer:rightLineLayer];
+
+    switchImageView = [[UIImageView alloc] initWithImage:[CCHelper imageWithName:@"CC_switch_off"]];
+    switchImageView.hidden = YES;
+    [self addSubview:switchImageView];
+
+    rightIcon = [[UIImageView alloc] init];
+    [self addSubview:rightIcon];
+
+    contentImageView = [[UIImageView alloc] init];
+    [self addSubview:contentImageView];
 }
 
 - (void)setStyle:(CCExcelCellStyle)_style
@@ -96,7 +104,7 @@
 }
 
 - (void)setHighlighted:(BOOL)highlighted animated:(BOOL)animated {
-    
+
     if (animated) {
         [UIView animateWithDuration:.2 animations:^{
             self.highlighted = highlighted;
@@ -120,7 +128,7 @@
     rightLineLayer.frame = CC_rect(self.bounds.size.width - 1, 0, 1, self.bounds.size.height);
     if (style & CCExcelCellStyleSwitch) {
         label.frame = CC_rect(35, 0, self.bounds.size.width - 35, self.bounds.size.height);
-        
+
         switchImageView.frame = CC_rect(MIN(12, (self.width-22)/2), (self.height - 22)/2,22,22);
     } else {
         label.frame = CC_rect(kExcelCellLabelMarginX, 0, self.bounds.size.width - kExcelCellLabelMarginX * 2, self.bounds.size.height);

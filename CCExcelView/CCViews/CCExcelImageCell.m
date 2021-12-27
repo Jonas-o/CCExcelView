@@ -12,14 +12,12 @@
 @implementation CCExcelImageCell
 @synthesize imageView;
 
-- (instancetype)initWithReuseIdentifier:(NSString *)reuseIdentifier
-{
-    if (self = [super initWithReuseIdentifier:reuseIdentifier]) {
-        imageView = [UIImageView new];
-        imageView.contentMode = UIViewContentModeScaleAspectFit;
-        [self addSubview:imageView];
-    }
-    return self;
+- (void)didInitialize {
+    [super didInitialize];
+
+    imageView = [UIImageView new];
+    imageView.contentMode = UIViewContentModeScaleAspectFit;
+    [self addSubview:imageView];
 }
 
 - (void)layoutSubviews

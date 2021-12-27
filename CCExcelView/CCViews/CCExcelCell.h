@@ -31,6 +31,9 @@ typedef NS_OPTIONS(NSInteger, CCExcelCellStyle) {
 
 - (instancetype)initWithReuseIdentifier:(NSString *)reuseIdentifier style:(CCExcelCellStyle)style;
 
+/// 方便子类继承使用
+- (void)didInitialize;
+
 @property (nonatomic, assign) CCExcelCellStyle style;
 
 @property (nonatomic, strong, readonly) UILabel *label;

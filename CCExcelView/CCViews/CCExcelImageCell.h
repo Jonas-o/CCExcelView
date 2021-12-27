@@ -9,7 +9,9 @@
 #import "CCExcelCell.h"
 
 @interface CCExcelImageCell : CCExcelCell
+
 @property (nonatomic, strong) UIImageView *imageView;
 
 @property (nonatomic, assign) UIEdgeInsets imageInsets;
+
 @end

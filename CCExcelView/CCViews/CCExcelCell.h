@@ -34,6 +34,9 @@ typedef NS_OPTIONS(NSInteger, CCExcelCellStyle) {
 /// 方便子类继承使用
 - (void)didInitialize;
 
+/// 重用前的准备
+- (void)prepareForReuse NS_REQUIRES_SUPER;
+
 @property (nonatomic, assign) CCExcelCellStyle style;
 
 @property (nonatomic, strong, readonly) UILabel *label;

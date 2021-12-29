@@ -164,6 +164,7 @@ static NSInteger maxReusableCount = 50;
     }
     CCExcelCell *reusableCell = [set anyObject];
     reusableCell.hidden = NO;
+    [reusableCell prepareForReuse];
     [set removeObject:reusableCell];
     return reusableCell;
 }

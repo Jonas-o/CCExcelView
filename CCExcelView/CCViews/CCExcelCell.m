@@ -65,6 +65,11 @@
     [self addSubview:contentImageView];
 }
 
+- (void)prepareForReuse {
+    // 子类继承使用
+    [self setStyle:CCExcelCellStyleDefault];
+}
+
 - (void)setStyle:(CCExcelCellStyle)_style
 {
     style = _style;

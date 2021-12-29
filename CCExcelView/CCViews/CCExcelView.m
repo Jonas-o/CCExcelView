@@ -140,7 +140,7 @@ static NSString *cc_reuseIdentifier = @"cc_cell";
     if (showFooter && [self.delegate respondsToSelector:@selector(bottomRowHeightInExcelView:)]) {
         bottomRowHeight = [self.delegate bottomRowHeightInExcelView:self];
     }
-    table.frame = CC_rect(0, topRowHeight, self.bounds.size.width, self.bounds.size.height - topRowHeight - bottomRowHeight);
+//    table.frame = CC_rect(0, topRowHeight, self.bounds.size.width, self.bounds.size.height - topRowHeight - bottomRowHeight);
 //    [reusableCells removeAllObjects];
     columnNum = [self.delegate numberOfColumnsInExcelView:self];
     lockColumnNum = 1;
@@ -237,12 +237,12 @@ static NSString *cc_reuseIdentifier = @"cc_cell";
 //            [cell resetSubCellsOffset];
         }
     }
-    [headerCell resetSubCellsOffset];
+    [headerCell setNeedsLayout];
     if (showFooter) {
-        [footerCell resetSubCellsOffset];
+        [footerCell setNeedsLayout];
     }
     for (CCExcelRowCell *cell in [table visibleCells]) {
-        [cell resetSubCellsOffset];
+        [cell setNeedsLayout];
     }
 }
 
@@ -431,17 +431,23 @@ static NSString *cc_reuseIdentifier = @"cc_cell";
     CCExcelCell *reusableCell = nil;
     // 优先从本 cell 中寻找
     if (rowCell && matrix) {
-        if (matrix.column < rowCell.lockCells.count) {
-            reusableCell = rowCell.lockCells[matrix.column];
-        } else if (matrix.column < rowCell.lockCells.count + rowCell.scrollCells.count) {
-            reusableCell = rowCell.scrollCells[matrix.column - rowCell.lockCells.count];
-        } else if (matrix.column < rowCell.lockCells.count + rowCell.scrollCells.count + rowCell.farrightLockCells.count) {
-            reusableCell = rowCell.farrightLockCells[matrix.column - rowCell.lockCells.count - rowCell.scrollCells.count];
+        CCExcelCellPosition position;
+
+        if (matrix.column < lockColumnNum) {
+//            reusableCell = rowCell.lockCells[matrix.column];
+            position = CCExcelCellPositionLock;
+        } else if (matrix.column < columnNum - farrightLockColumnNum) {
+//            reusableCell = rowCell.scrollCells[matrix.column - rowCell.lockCells.count];
+            position = CCExcelCellPositionContent;
+        } else if (matrix.column < columnNum) {
+//            reusableCell = rowCell.farrightLockCells[matrix.column - rowCell.lockCells.count - rowCell.scrollCells.count];
+            position = CCExcelCellPositionFarrightLock;
         }
-        if (![reusableCell.reuseIdentifier isEqualToString:cellIdentifier]) {
-            [reusableCell removeFromSuperview];
-            reusableCell = nil;
-        }
+        reusableCell = [rowCell dequeueReusableCellWithIdentifier:cellIdentifier withPosition:position];
+//        if (![reusableCell.reuseIdentifier isEqualToString:cellIdentifier]) {
+//            [reusableCell removeFromSuperview];
+//            reusableCell = nil;
+//        }
         if (reusableCell) {
             return reusableCell;
         }
@@ -452,6 +458,7 @@ static NSString *cc_reuseIdentifier = @"cc_cell";
     }
     reusableCell = [set anyObject];
     [set removeObject:reusableCell];
+    reusableCell.hidden = NO;
     return reusableCell;
 }
 
@@ -727,6 +734,7 @@ static NSString *cc_reuseIdentifier = @"cc_cell";
         [self reuseCell:excelCell];
     }
     [rowCell removeAllItems];
+    [rowCell clearReuseCell];
     [rowCell setLockItems:nil scrollItems:nil rightLockItems:nil];
 }
 
@@ -770,7 +778,7 @@ static NSString *cc_reuseIdentifier = @"cc_cell";
     [cell controlScrollOffset:currentRowCellOffset];
     if (footerCell == cell) {
         dispatch_async(dispatch_get_main_queue(), ^{
-            footerShadowImageView.hidden = CCCGFloatLessThanOrEqualToFloat(self.table.contentSize.height + self.table.contentInset.top, self.table.size.height) || CCCGFloatLessThanOrEqualToFloat(self.table.contentSize.height, self.table.contentOffset.y + self.table.size.height);
+            self->footerShadowImageView.hidden = CCCGFloatLessThanOrEqualToFloat(self.table.contentSize.height + self.table.contentInset.top, self.table.size.height) || CCCGFloatLessThanOrEqualToFloat(self.table.contentSize.height, self.table.contentOffset.y + self.table.size.height);
         });
     }
 }

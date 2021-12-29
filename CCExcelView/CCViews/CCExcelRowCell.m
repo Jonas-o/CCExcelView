@@ -16,9 +16,19 @@
 
 @implementation CCExcelRowCell {
     UIImageView *farrightLockShadow;
+    /// 设置一个最大的重用数量，临界值保护，一般不会触发
+    NSInteger maxReusableCount = 50;
+    NSMutableDictionary <NSString *, NSMutableSet <CCExcelCell *> *> *lockReusableCells;
+    NSMutableDictionary <NSString *, NSMutableSet <CCExcelCell *> *> *contentReusableCells;
+    NSMutableDictionary <NSString *, NSMutableSet <CCExcelCell *> *> *farrightReusableCells;
 }
 @synthesize shouldSendScrollNotification, lockCells, scrollCells, line, farrightLockCells;
 @synthesize lockScrollView, contentScrollView, farrightLockScrollView;
+
+- (void)prepareForReuse {
+    [super prepareForReuse];
+    [self reuseCell];
+}
 
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
@@ -56,8 +66,105 @@
         UIView *selectedView = [UIView new];
         selectedView.backgroundColor = kExcelCellSelectedColor;
         self.selectedBackgroundView = selectedView;
+
+        lockReusableCells = [NSMutableDictionary dictionary];
+        contentReusableCells = [NSMutableDictionary dictionary];
+        farrightReusableCells = [NSMutableDictionary dictionary];
     }
     return self;
+}
+
+- (void)reuseCell {
+    for (CCExcelCell *cell in lockScrollView.subviews) {
+        NSString *identifer = cell.reuseIdentifier;
+        if (!identifer) {
+            [cell removeFromSuperview];
+            return;
+        }
+        cell.hidden = YES;
+        NSMutableSet *set = [lockReusableCells objectForKey:identifer];
+        if (!set) {
+            set = [NSMutableSet set];
+            if (lockReusableCells.count > maxReusableCount) {
+                [lockReusableCells removeObjectForKey:lockReusableCells.allKeys.firstObject];
+            }
+            [lockReusableCells setObject:set forKey:identifer];
+        }
+        if (![set containsObject:cell]) {
+            if (set.count > maxReusableCount) {
+                [set removeObject:[set anyObject]];
+            }
+            [set addObject:cell];
+        }
+    }
+    for (CCExcelCell *cell in contentScrollView.subviews) {
+        NSString *identifer = cell.reuseIdentifier;
+        if (!identifer) {
+            [cell removeFromSuperview];
+            return;
+        }
+        cell.hidden = YES;
+        NSMutableSet *set = [contentReusableCells objectForKey:identifer];
+        if (!set) {
+            set = [NSMutableSet set];
+            if (contentReusableCells.count > maxReusableCount) {
+                [contentReusableCells removeObjectForKey:contentReusableCells.allKeys.firstObject];
+            }
+            [contentReusableCells setObject:set forKey:identifer];
+        }
+        if (![set containsObject:cell]) {
+            if (set.count > maxReusableCount) {
+                [set removeObject:[set anyObject]];
+            }
+            [set addObject:cell];
+        }
+    }
+    for (CCExcelCell *cell in farrightLockScrollView.subviews) {
+        NSString *identifer = cell.reuseIdentifier;
+        if (!identifer) {
+            [cell removeFromSuperview];
+            return;
+        }
+        cell.hidden = YES;
+        NSMutableSet *set = [farrightReusableCells objectForKey:identifer];
+        if (!set) {
+            set = [NSMutableSet set];
+            if (farrightReusableCells.count > maxReusableCount) {
+                [farrightReusableCells removeObjectForKey:farrightReusableCells.allKeys.firstObject];
+            }
+            [farrightReusableCells setObject:set forKey:identifer];
+        }
+        if (![set containsObject:cell]) {
+            if (set.count > maxReusableCount) {
+                [set removeObject:[set anyObject]];
+            }
+            [set addObject:cell];
+        }
+    }
+}
+
+- (void)clearReuseCell {
+    [lockReusableCells removeAllObjects];
+    [contentReusableCells removeAllObjects];
+    [farrightReusableCells removeAllObjects];
+}
+
+- (CCExcelCell *)dequeueReusableCellWithIdentifier:(NSString *)cellIdentifier withPosition:(CCExcelCellPosition)position {
+    NSMutableSet *set = nil;
+    if (position == CCExcelCellPositionLock) {
+        set = [lockReusableCells objectForKey:cellIdentifier];
+    } else if (position == CCExcelCellPositionContent) {
+        set = [contentReusableCells objectForKey:cellIdentifier];
+    } else if (position == CCExcelCellPositionFarrightLock) {
+        set = [farrightReusableCells objectForKey:cellIdentifier];
+    }
+    if ([set count] == 0) {
+        return nil;
+    }
+    CCExcelCell *reusableCell = [set anyObject];
+    reusableCell.hidden = NO;
+    [set removeObject:reusableCell];
+    return reusableCell;
 }
 
 - (void)removeAllItems {
@@ -94,7 +201,7 @@
     contentScrollView.frame = CC_rect(lockScrollView.bounds.size.width, 0, self.bounds.size.width - lockScrollView.frame.size.width - farrightLockScrollView.bounds.size.width, self.bounds.size.height);
     contentScrollView.contentSize = CC_size(MAX(contentScrollView.bounds.size.width, x), self.bounds.size.height);
 
-    farrightLockShadow.hidden = farrightLockScrollView.subviews.count == 0 || CCCGFloatLessThanOrEqualToFloat(contentScrollView.contentSize.width, contentScrollView.size.width) || CCCGFloatLessThanOrEqualToFloat(contentScrollView.contentSize.width, contentScrollView.contentOffset.x + contentScrollView.size.width);
+    farrightLockShadow.hidden = self.farrightLockCells.count == 0 || CCCGFloatLessThanOrEqualToFloat(contentScrollView.contentSize.width, contentScrollView.size.width) || CCCGFloatLessThanOrEqualToFloat(contentScrollView.contentSize.width, contentScrollView.contentOffset.x + contentScrollView.size.width);
 }
 
 - (void)resetCellContentViewSize
@@ -111,14 +218,13 @@
     contentScrollView.frame = CC_rect(lockScrollView.bounds.size.width, 0, self.bounds.size.width - lockScrollView.frame.size.width - farrightLockScrollView.bounds.size.width, self.bounds.size.height);
     contentScrollView.contentSize = CC_size(MAX(contentScrollView.bounds.size.width, contentWidth), self.bounds.size.height);
 
-    // farrightLockShadow.hidden = farrightLockScrollView.subviews.count == 0 || contentWidth <= contentScrollView.size.width;
-    farrightLockShadow.hidden = farrightLockScrollView.subviews.count == 0 || CCCGFloatLessThanOrEqualToFloat(contentScrollView.contentSize.width, contentScrollView.size.width) || CCCGFloatLessThanOrEqualToFloat(contentScrollView.contentSize.width, contentScrollView.contentOffset.x + contentScrollView.size.width);
+    farrightLockShadow.hidden = self.farrightLockCells.count == 0 || CCCGFloatLessThanOrEqualToFloat(contentScrollView.contentSize.width, contentScrollView.size.width) || CCCGFloatLessThanOrEqualToFloat(contentScrollView.contentSize.width, contentScrollView.contentOffset.x + contentScrollView.size.width);
 }
 
 - (CGFloat)lockScrollViewContentWidth
 {
     CGFloat width = 0;
-    for (UIView *v in lockScrollView.subviews) {
+    for (UIView *v in self.lockCells) {
         width += v.bounds.size.width;
     }
     return width;
@@ -127,7 +233,7 @@
 - (CGFloat)contentScrollViewContentWidth
 {
     CGFloat width = 0;
-    for (UIView *v in contentScrollView.subviews) {
+    for (UIView *v in self.scrollCells) {
         width += v.bounds.size.width;
     }
     return width;
@@ -136,7 +242,7 @@
 - (CGFloat)rightScrollViewContentWidth
 {
     CGFloat width = 0;
-    for (UIView *v in farrightLockScrollView.subviews) {
+    for (UIView *v in self.farrightLockCells) {
         width += v.bounds.size.width;
     }
     return width;
@@ -171,9 +277,13 @@
     scrollCells = scrollItems;
     farrightLockCells = rightLockItems;
     CGFloat currentOffsetX = 0;
-    if (lockScrollView.subviews.count != lockItems.count) [lockScrollView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
+//    if (lockScrollView.subviews.count != lockItems.count) [lockScrollView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
+    [lockScrollView.subviews enumerateObjectsUsingBlock:^(__kindof UIView * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        obj.hidden = YES;
+    }];
     for (int i = 0; i < lockItems.count; i++) {
         CCExcelCell *lockItem = lockItems[i];
+        lockItem.hidden = NO;
         lockItem.control.tag = 100 + i;
         [lockItem.control removeTarget:nil action:NULL forControlEvents:UIControlEventAllEvents];
         [lockItem.control addTarget:self action:@selector(cellControlAction:) forControlEvents:UIControlEventTouchUpInside];
@@ -187,9 +297,13 @@
     }
     contentScrollView.frame = CC_rect(currentOffsetX, 0, 0, 0);
     currentOffsetX = 0;
-    if (contentScrollView.subviews.count != scrollItems.count) [contentScrollView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
+//    if (contentScrollView.subviews.count != scrollItems.count) [contentScrollView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
+    [contentScrollView.subviews enumerateObjectsUsingBlock:^(__kindof UIView * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        obj.hidden = YES;
+    }];
     for (int i = 0; i < scrollItems.count; i++) {
         CCExcelCell *scrollItem = scrollItems[i];
+        scrollItem.hidden = NO;
         scrollItem.control.tag = 100 + i + lockItems.count;
         [scrollItem.control removeTarget:nil action:NULL forControlEvents:UIControlEventAllEvents];
         [scrollItem.control addTarget:self action:@selector(cellControlAction:) forControlEvents:UIControlEventTouchUpInside];
@@ -204,9 +318,13 @@
     contentScrollView.contentSize = CC_size(currentOffsetX, 0);
 
     currentOffsetX = 0;
-    if (farrightLockScrollView.subviews.count != rightLockItems.count) [farrightLockScrollView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
+//    if (farrightLockScrollView.subviews.count != rightLockItems.count) [farrightLockScrollView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
+    [farrightLockScrollView.subviews enumerateObjectsUsingBlock:^(__kindof UIView * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        obj.hidden = YES;
+    }];
     for (int i = 0; i < rightLockItems.count; i++) {
         CCExcelCell *lockItem = rightLockItems[i];
+        lockItem.hidden = NO;
         [lockItem.control removeTarget:nil action:NULL forControlEvents:UIControlEventAllEvents];
         lockItem.control.tag = 100 + i + lockItems.count + scrollItems.count;
         [lockItem.control addTarget:self action:@selector(cellControlAction:) forControlEvents:UIControlEventTouchUpInside];
@@ -323,7 +441,7 @@
             [self.delegate excelRowCell:self didScrollViewAtOffset:scrollView.contentOffset];
         }
     }
-    farrightLockShadow.hidden = farrightLockScrollView.subviews.count == 0 || CCCGFloatLessThanOrEqualToFloat(contentScrollView.contentSize.width, contentScrollView.size.width) || CCCGFloatLessThanOrEqualToFloat(contentScrollView.contentSize.width, contentScrollView.contentOffset.x + contentScrollView.size.width);
+    farrightLockShadow.hidden = self.farrightLockCells.count == 0 || CCCGFloatLessThanOrEqualToFloat(contentScrollView.contentSize.width, contentScrollView.size.width) || CCCGFloatLessThanOrEqualToFloat(contentScrollView.contentSize.width, contentScrollView.contentOffset.x + contentScrollView.size.width);
 }
 
 @end

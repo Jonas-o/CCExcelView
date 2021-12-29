@@ -14,6 +14,12 @@ typedef enum : NSUInteger {
     CCExcelViewCellSelectionStyleCell,
 } CCExcelViewCellSelectionStyle;
 
+typedef NS_ENUM(NSInteger, CCExcelCellPosition) {
+    CCExcelCellPositionLock,
+    CCExcelCellPositionContent,
+    CCExcelCellPositionFarrightLock,
+};
+
 @class CCExcelCell;
 
 @protocol CCExcelRowCellDelegate;
@@ -35,6 +41,12 @@ typedef enum : NSUInteger {
 @property (nonatomic, strong, readonly) UIScrollView *lockScrollView;
 @property (nonatomic, strong, readonly) UIScrollView *contentScrollView;
 @property (nonatomic, strong, readonly) UIScrollView *farrightLockScrollView;
+
+/// 兼容不支持 RowCell 级别的重用，提供一个清除的方法
+- (void)clearReuseCell;
+
+/// 获取一个指定 identifier 重用的 cell
+- (CCExcelCell *)dequeueReusableCellWithIdentifier:(NSString *)cellIdentifier withPosition:(CCExcelCellPosition)position;
 
 - (void)removeAllItems;
 

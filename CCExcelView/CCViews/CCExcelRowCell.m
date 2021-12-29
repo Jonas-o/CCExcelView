@@ -10,14 +10,15 @@
 #import "CCExcelCell.h"
 #import "CCHelper.h"
 
+/// 设置一个最大的重用数量，临界值保护，一般不会触发
+static NSInteger maxReusableCount = 50;
+
 @interface CCExcelRowCell() <UIScrollViewDelegate>
 
 @end
 
 @implementation CCExcelRowCell {
     UIImageView *farrightLockShadow;
-    /// 设置一个最大的重用数量，临界值保护，一般不会触发
-    NSInteger maxReusableCount = 50;
     NSMutableDictionary <NSString *, NSMutableSet <CCExcelCell *> *> *lockReusableCells;
     NSMutableDictionary <NSString *, NSMutableSet <CCExcelCell *> *> *contentReusableCells;
     NSMutableDictionary <NSString *, NSMutableSet <CCExcelCell *> *> *farrightReusableCells;

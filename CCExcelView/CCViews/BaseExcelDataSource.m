@@ -23,6 +23,7 @@
         self.maxExcelColumnWidth = 160;
         self.lockNum = 1;
         self.lockRightNum = 0;
+        self.footerHeight = 40;
         columnWidthArray = [NSMutableArray array];
     }
     return self;
@@ -197,6 +198,10 @@
 - (CGFloat)topRowHeightInExcelView:(CCExcelView *)excelView
 {
     return self.headerHeight;
+}
+
+- (CGFloat)bottomRowHeightInExcelView:(CCExcelView *)excelView {
+    return self.footerHeight;
 }
 
 - (UIView *)topViewInExcelView:(CCExcelView *)excelView

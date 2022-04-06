@@ -30,6 +30,11 @@ typedef void(^ExcelSortTitleAction)(NSString  *sortTitle , CCSortType type);
 @property (nonatomic, assign) CGFloat headerHeight;
 
 /**
+ *  表尾的高度 默认 40
+ */
+@property (nonatomic, assign) CGFloat footerHeight;
+
+/**
  *  左侧锁住的列数
  */
 @property (nonatomic, assign) NSInteger lockNum;

@@ -24,17 +24,20 @@ Pod::Spec.new do |s|
 
   s.homepage     = "https://github.com/Jonas-o/CCExcelView"
   s.license      = { :type => "MIT", :file => "LICENSE"}
-  s.author             = { "luo" => "luo_ty@qq.com" }
+  s.author       = { "luo" => "luo_ty@qq.com" }
   s.platform     = :ios, "8.0"
   s.source       = { :git => "https://github.com/Jonas-o/CCExcelView.git", :tag => s.version.to_s }
-  s.framework  = "UIKit"
+  s.framework = "UIKit"
   s.requires_arc = true
 
   s.source_files  = "CCViews", "CCExcelView/**/*.{h,m}"
   s.resource = "CCExcelView/CCResources/*.bundle"
+  s.user_target_xcconfig = {
+    'GENERATE_INFOPLIST_FILE' => 'YES'
+  }
   s.pod_target_xcconfig = {
-      'GENERATE_INFOPLIST_FILE' => 'YES',
-    }
+    'GENERATE_INFOPLIST_FILE' => 'YES'
+  }
 
 
 end

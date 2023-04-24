@@ -94,52 +94,45 @@
         });
         return;
     }
-    dispatch_async(dispatch_get_global_queue(0, 0), ^{
-        NSMutableArray *indexs = [NSMutableArray array];
-        NSInteger totalRows = [self.delegate numberOfRowsInDataSource:self];
-        NSInteger begin = from;
-        if (begin < totalRows) {
-            for (NSInteger i = begin; i < totalRows; i ++) {
-                [indexs addObject:[NSIndexPath indexPathForRow:i inSection:0]];
-            }
-            NSInteger index = [self calculateColumnWidthsFromRow:begin + 1];
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [UIView animateWithDuration:.1f animations:^{
-                    [self.delegate.excelView resetAllColumnsWidthFromIndex:index];
-                } completion:^(BOOL finished) {
-                    BOOL canInsert = YES;
-                    NSArray *visibleIndexs = [self.delegate.excelView.table indexPathsForVisibleRows];
-                    for (NSIndexPath *index in indexs) {
-                        if ([visibleIndexs containsObject:index]) {
-                            canInsert = NO;
-                            break;
-                        }
-                    }
-                    if (canInsert) {
-                        [UIView setAnimationsEnabled:NO];// 或者[CATransaction setDisableActions:YES];
-                        @try {
-                            [self.delegate.excelView.table insertRowsAtIndexPaths:indexs withRowAnimation:UITableViewRowAnimationNone];
-                        } @catch (NSException *exception) {
-                            [self reloadData];
-                        }
-                        [UIView setAnimationsEnabled:YES];// 或者[CATransaction setDisableActions:NO];
-                    } else {
-                        [self reloadData];
-                    }
-                    dispatch_async(dispatch_get_main_queue(), ^{
-                        if (completion) completion();
-                    });
-                }];
-            });
-        } else {
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [self reloadData];
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    if (completion) completion();
-                });
-            });
+    NSMutableArray *indexs = [NSMutableArray array];
+    NSInteger totalRows = [self.delegate numberOfRowsInDataSource:self];
+    NSInteger begin = from;
+    if (begin < totalRows) {
+        for (NSInteger i = begin; i < totalRows; i ++) {
+            [indexs addObject:[NSIndexPath indexPathForRow:i inSection:0]];
         }
-    });
+        NSInteger index = [self calculateColumnWidthsFromRow:begin + 1];
+        [self.delegate.excelView resetAllColumnsWidthFromIndex:index];
+        BOOL canInsert = YES;
+        NSArray *visibleIndexs = [self.delegate.excelView.table indexPathsForVisibleRows];
+        for (NSIndexPath *index in indexs) {
+            if ([visibleIndexs containsObject:index]) {
+                canInsert = NO;
+                break;
+            }
+        }
+        if (canInsert) {
+            [UIView setAnimationsEnabled:NO];// 或者[CATransaction setDisableActions:YES];
+            @try {
+                [self.delegate.excelView.table insertRowsAtIndexPaths:indexs withRowAnimation:UITableViewRowAnimationNone];
+            } @catch (NSException *exception) {
+                [self reloadData];
+            }
+            [UIView setAnimationsEnabled:YES];// 或者[CATransaction setDisableActions:NO];
+        } else {
+            [self reloadData];
+        }
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if (completion) completion();
+        });
+    } else {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self reloadData];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                if (completion) completion();
+            });
+        });
+    }
 }
 
 - (void)reloadHeader {

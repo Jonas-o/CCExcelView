@@ -32,6 +32,9 @@ Pod::Spec.new do |s|
 
   s.source_files  = "CCViews", "CCExcelView/**/*.{h,m}"
   s.resource = "CCExcelView/CCResources/*.bundle"
+  ss.pod_target_xcconfig = {
+      'GENERATE_INFOPLIST_FILE' => 'YES',
+    }
 
 
 end

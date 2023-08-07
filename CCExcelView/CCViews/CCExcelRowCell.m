@@ -67,7 +67,7 @@ static NSInteger maxReusableCount = 50;
         UIView *selectedView = [UIView new];
         selectedView.backgroundColor = kExcelCellSelectedColor;
         self.selectedBackgroundView = selectedView;
-
+        
         lockReusableCells = [NSMutableDictionary dictionary];
         contentReusableCells = [NSMutableDictionary dictionary];
         farrightReusableCells = [NSMutableDictionary dictionary];
@@ -181,28 +181,34 @@ static NSInteger maxReusableCount = 50;
 - (void)resetSubCellsOffset {
     CGFloat x = 0;
     for (CCExcelCell *cell in self.lockCells) {
+        [cell.layer removeAllAnimations];
         cell.x = x;
         x = cell.right;
     }
+    [lockScrollView.layer removeAllAnimations];
     lockScrollView.frame = CC_rectZP(x, self.bounds.size.height);
     lockScrollView.contentSize = lockScrollView.bounds.size;
     x = 0;
     for (CCExcelCell *cell in self.farrightLockCells) {
+        [cell.layer removeAllAnimations];
         cell.x = x;
         x = cell.right;
     }
+    [farrightLockScrollView.layer removeAllAnimations];
     farrightLockScrollView.frame = CC_rect(self.bounds.size.width-x, 0, x, self.bounds.size.height);
     farrightLockScrollView.contentSize = farrightLockScrollView.bounds.size;
     farrightLockShadow.frame = CC_rect(farrightLockScrollView.origin.x - 15, 0, 30, farrightLockScrollView.size.height);
-
+    
     x = 0;
     for (CCExcelCell *cell in self.scrollCells) {
+        [cell.layer removeAllAnimations];
         cell.x = x;
         x = cell.right;
     }
+    [contentScrollView.layer removeAllAnimations];
     contentScrollView.frame = CC_rect(lockScrollView.bounds.size.width, 0, self.bounds.size.width - lockScrollView.frame.size.width - farrightLockScrollView.bounds.size.width, self.bounds.size.height);
     contentScrollView.contentSize = CC_size(MAX(contentScrollView.bounds.size.width, x), self.bounds.size.height);
-
+    
     farrightLockShadow.hidden = self.farrightLockCells.count == 0 || CCCGFloatLessThanOrEqualToFloat(contentScrollView.contentSize.width, contentScrollView.size.width) || CCCGFloatLessThanOrEqualToFloat(contentScrollView.contentSize.width, contentScrollView.contentOffset.x + contentScrollView.size.width);
 }
 

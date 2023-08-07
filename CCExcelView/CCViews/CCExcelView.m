@@ -96,15 +96,22 @@ static NSString *cc_reuseIdentifier = @"cc_cell";
 
 - (void)layoutSubviews {
     [super layoutSubviews];
-
+    
     if ([self.delegate respondsToSelector:@selector(topRowHeightInExcelView:)]) {
         topRowHeight = [self.delegate topRowHeightInExcelView:self];
     }
     if (showFooter && [self.delegate respondsToSelector:@selector(bottomRowHeightInExcelView:)]) {
         bottomRowHeight = [self.delegate bottomRowHeightInExcelView:self];
     }
-
+    
     table.frame = CC_rect(0, topRowHeight, self.bounds.size.width, self.bounds.size.height - topRowHeight - bottomRowHeight);
+    
+    headerCell.frame = CC_rectZP(self.bounds.size.width, topRowHeight);
+    [self handleHeaderCellFrame];
+    
+    if (showFooter) {
+        footerCell.frame = CC_rect(0, self.bounds.size.height - bottomRowHeight, self.bounds.size.width, bottomRowHeight);
+    }
 }
 
 - (void)refreshData:(id)sender {
@@ -169,7 +176,7 @@ static NSString *cc_reuseIdentifier = @"cc_cell";
         }
     }
     [self addSubview:headerCell];
-    [self resetRowCell:headerCell atRow:0];
+    [self reloadHeaderCell];
 
     if (showFooter) {
         NSInteger footRow = [self.delegate numberOfRowsInExcelView:self] + 1;
@@ -195,7 +202,7 @@ static NSString *cc_reuseIdentifier = @"cc_cell";
             }
         }
         [self addSubview:footerCell];
-        [self resetRowCell:footerCell atRow:footRow];
+        [self reloadFooterCell:footRow];
     }
 
     [table reloadData];
@@ -205,10 +212,15 @@ static NSString *cc_reuseIdentifier = @"cc_cell";
     [self handleHeaderCellFrame];
 }
 
+- (void)reloadFooterCell:(NSInteger)footRow {
+    /// headerCell 和 footerCell 不会进入 tableView 的重用机制，所以这里需要手动触发重用
+    [footerCell prepareForReuse];
+    [self resetRowCell:footerCell atRow:footRow];
+}
+
 - (void)reloadHeaderCell {
-//    [headerCell.lockScrollView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
-//    [headerCell.contentScrollView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
-//    [headerCell.farrightLockScrollView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
+    /// headerCell 和 footerCell 不会进入 tableView 的重用机制，所以这里需要手动触发重用
+    [headerCell prepareForReuse];
     [self resetRowCell:headerCell atRow:0];
 }
 
@@ -432,7 +444,7 @@ static NSString *cc_reuseIdentifier = @"cc_cell";
     // 优先从本 cell 中寻找
     if (rowCell && matrix) {
         CCExcelCellPosition position;
-
+        
         if (matrix.column < lockColumnNum) {
 //            reusableCell = rowCell.lockCells[matrix.column];
             position = CCExcelCellPositionLock;

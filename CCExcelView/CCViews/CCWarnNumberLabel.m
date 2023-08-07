@@ -58,9 +58,12 @@
     if (![string hasPrefix:@"-"]) {
         return NO;
     }
-    NSScanner* scan = [NSScanner scannerWithString:[[string componentsSeparatedByString:@","] componentsJoinedByString:@""]];
+    NSString *scanString = [string stringByReplacingOccurrencesOfString:@"," withString:@""];
+    scanString = [scanString stringByReplacingOccurrencesOfString:@"¥" withString:@""];
+    scanString = [scanString stringByReplacingOccurrencesOfString:@"￥" withString:@""];
+    NSScanner* scan = [NSScanner scannerWithString:scanString];
     double val;
-    return[scan scanDouble:&val] && scan.isAtEnd;
+    return [scan scanDouble:&val] && scan.isAtEnd;
 }
 
 @end

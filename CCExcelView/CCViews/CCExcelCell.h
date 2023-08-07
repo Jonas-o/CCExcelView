@@ -57,8 +57,15 @@ typedef NS_OPTIONS(NSInteger, CCExcelCellStyle) {
 
 @property (nonatomic, assign) BOOL      switchOn;
 
+/// 作为表头时期望的字号
+@property (nonatomic, strong) UIFont *headerFont;
+
+/// 作为表格时期望的字号
+@property (nonatomic, strong) UIFont *cellFont;
+
+
 - (void)setHighlighted:(BOOL)highlighted animated:(BOOL)animated;
 
-+ (CGFloat)cellWidthWithTitle:(NSString *)title;
++ (CGFloat)cellWidthWithTitle:(NSString *)title withFont:(UIFont *)font;
 
 @end

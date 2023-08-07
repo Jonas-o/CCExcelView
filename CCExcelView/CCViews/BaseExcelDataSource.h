@@ -77,6 +77,16 @@ typedef void(^ExcelSortTitleAction)(NSString  *sortTitle , CCSortType type);
 @property (nonatomic, copy) ExcelSortTitleAction sortActionWithTitle;
 
 /**
+ *  表头自定义字号
+ */
+@property (nonatomic, strong) UIFont *headerFont;
+
+/**
+ *  表格自定义字号
+ */
+@property (nonatomic, strong) UIFont *cellFont;
+
+/**
  *  reloadData
  */
 - (void)reloadData;

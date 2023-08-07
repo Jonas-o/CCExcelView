@@ -16,8 +16,8 @@
 - (instancetype)initWithReuseIdentifier:(NSString *)identifier style:(CCExcelCellStyle)cellStyle {
     if (self = [super initWithFrame:CGRectZero]) {
         reuseIdentifier = identifier;
-        self.style = cellStyle;
         [self didInitialize];
+        self.style = cellStyle;
     }
     return self;
 }
@@ -41,7 +41,7 @@
     [self.layer addSublayer:selectedBackgroundLayer];
 
     label = [[CCWarnNumberLabel alloc] init];
-    label.font = CC_defaultFont;
+    label.font = self.cellFont ?: CC_defaultFont;
     label.textColor = kExcelCellLabelColor;
     [self addSubview:label];
 
@@ -70,6 +70,24 @@
     [self setStyle:CCExcelCellStyleDefault];
 }
 
+- (void)setHeaderFont:(UIFont *)headerFont {
+    _headerFont = headerFont;
+    if (style & CCExcelCellStyleHeader) {
+        label.font = self.headerFont ?: kExcelCellLabelHeaderFont;
+    } else {
+        label.font = self.cellFont ?: kExcelCellLabelFont;
+    }
+}
+
+- (void)setCellFont:(UIFont *)cellFont {
+    _cellFont = cellFont;
+    if (style & CCExcelCellStyleHeader) {
+        label.font = self.headerFont ?: kExcelCellLabelHeaderFont;
+    } else {
+        label.font = self.cellFont ?: kExcelCellLabelFont;
+    }
+}
+
 - (void)setStyle:(CCExcelCellStyle)_style
 {
     style = _style;
@@ -90,11 +108,11 @@
     }
     if (style & CCExcelCellStyleHeader) {
         rightLineLayer.hidden = NO;
-        label.font = kExcelCellLabelHeaderFont;
+        label.font = self.headerFont ?: kExcelCellLabelHeaderFont;
         label.textColor = kExcelCellLabelHeaderColor;
     } else {
         rightLineLayer.hidden = YES;
-        label.font = kExcelCellLabelFont;
+        label.font = self.cellFont ?: kExcelCellLabelFont;
         label.textColor = kExcelCellLabelColor;
     }
     if (style & CCExcelCellStyleWarn) {
@@ -152,10 +170,9 @@
     contentImageView.frame = CC_rect(self.bounds.size.width - self.bounds.size.height, 0, self.bounds.size.height, self.bounds.size.height);
 }
 
-+ (CGFloat)cellWidthWithTitle:(NSString *)title
-{
++ (CGFloat)cellWidthWithTitle:(NSString *)title withFont:(UIFont *)font {
     CGSize maxSize = CC_size(MAXFLOAT, MAXFLOAT);
-    CGFloat width = [CCHelper sizeWithString:title font:kExcelCellLabelFont maxSize:maxSize].width;
+    CGFloat width = [CCHelper sizeWithString:title font:font maxSize:maxSize].width;
     width = ceil(width);
     return width + kExcelCellLabelMarginX*2;
 }

@@ -19,14 +19,23 @@
 - (instancetype)init
 {
     if (self = [super init]) {
+        self.headerFont = kExcelCellLabelHeaderFont;
+        self.cellFont = kExcelCellLabelFont;
         self.minExcelColumnWidth = 80;
-        self.maxExcelColumnWidth = 160;
+        self.maxExcelColumnWidth = 10 * self.cellFont.pointSize;
         self.lockNum = 1;
         self.lockRightNum = 0;
         self.footerHeight = 40;
         columnWidthArray = [NSMutableArray array];
     }
     return self;
+}
+
+- (void)setCellFont:(UIFont *)cellFont {
+    if (self.maxExcelColumnWidth == 10 * self.cellFont.pointSize) {
+        self.maxExcelColumnWidth = 10 * cellFont.pointSize;
+    }
+    _cellFont = cellFont;
 }
 
 - (void)reloadData
@@ -271,6 +280,8 @@
             }
         }
     }
+    cell.headerFont = self.headerFont;
+    cell.cellFont = self.cellFont;
     cell.style = [delegate dataSource:self styleAtMatrix:matrix];
     cell.label.text = content;
     if (excelView.showFooter && matrix.row == [delegate numberOfRowsInDataSource:self] + 1) {
@@ -379,9 +390,9 @@
             CCMatrix *matrix = [CCMatrix matrixWithColumn:i row:j];
             NSString *content = [self contentAtMatrix:matrix];
             CGSize maxSize = CC_size(MAXFLOAT, 40);
-            UIFont *font = kExcelCellLabelFont;
+            UIFont *font = self.cellFont ?: kExcelCellLabelFont;
             if (j == 0) {
-                font = CC_defaultBoldFont;
+                font = self.headerFont ?: CC_defaultBoldFont;
             }
             CGFloat cellWidth = [CCHelper sizeWithString:content font:font maxSize:maxSize].width;
             if (j == 0) {
@@ -437,9 +448,9 @@
             CCMatrix *matrix = [CCMatrix matrixWithColumn:i row:j];
             NSString *content = [self contentAtMatrix:matrix];
             CGSize maxSize = CC_size(MAXFLOAT, 40);
-            UIFont *font = kExcelCellLabelFont;
+            UIFont *font = self.cellFont ?: kExcelCellLabelFont;
             if (j == 0) {
-                font = CC_defaultBoldFont;
+                font = self.headerFont ?: CC_defaultBoldFont;
             }
             CGFloat cellWidth = [CCHelper sizeWithString:content font:font maxSize:maxSize].width;
             if (j == 0) {

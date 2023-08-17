@@ -197,4 +197,7 @@ typedef void(^ExcelSortTitleAction)(NSString  *sortTitle , CCSortType type);
  */
 - (BOOL)shouldShowSortControl:(BaseExcelDataSource *)dataSource withMatrix:(CCMatrix *)matrix;
 
+/// footer 是否需要响应点击事件
+- (BOOL)shouldResponseFooterCell:(BaseExcelDataSource *)dataSource;
+
 @end

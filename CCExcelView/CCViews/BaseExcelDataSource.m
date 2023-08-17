@@ -321,6 +321,13 @@
     }
 }
 
+- (BOOL)excelViewShouldResponseFooterCell:(CCExcelView *)excelView {
+    if ([delegate respondsToSelector:@selector(shouldResponseFooterCell:)]) {
+        return [delegate shouldResponseFooterCell:self];
+    }
+    return NO;
+}
+
 - (void)excelView:(CCExcelView *)excelView didSelectAt:(CCMatrix *)matrix
 {
     if ([matrix isHeader]) {
@@ -447,7 +454,7 @@
         for (NSInteger j = 0; j < rowCount; j++) {
             CCMatrix *matrix = [CCMatrix matrixWithColumn:i row:j];
             NSString *content = [self contentAtMatrix:matrix];
-            CGSize maxSize = CC_size(MAXFLOAT, 40);
+            CGSize maxSize = CC_size(MAXFLOAT, MAXFLOAT);
             UIFont *font = self.cellFont ?: kExcelCellLabelFont;
             if (j == 0) {
                 font = self.headerFont ?: CC_defaultBoldFont;

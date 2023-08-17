@@ -46,6 +46,19 @@
 - (void)resetTextColor {
     if ([self isNegativeDecimalDouble:self.text]) {
         self.textColor = self.warnColor ?: CC_ColorRed;
+    } else if ([self.text containsString:@"\n"]) {
+        // 换行后字体颜色处理（数量为负时使用富文本）
+        NSArray <NSString *> *texts = [self.text componentsSeparatedByString:@"\n"];
+        NSMutableAttributedString *att = [[NSMutableAttributedString alloc] initWithString:self.text];
+        
+        NSInteger location = 0;
+        for (NSString *text in texts) {
+            if (text.length > 0 && [self isNegativeDecimalDouble:text]) {
+                [att addAttribute:NSForegroundColorAttributeName value:self.warnColor ?: CC_ColorRed range:NSMakeRange(location, text.length)];
+            }
+            location += text.length + 1;
+        }
+        self.attributedText = att;
     } else {
         self.textColor = initialColor;
     }

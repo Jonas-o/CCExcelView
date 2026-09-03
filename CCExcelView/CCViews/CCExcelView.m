@@ -443,23 +443,13 @@ static NSString *cc_reuseIdentifier = @"cc_cell";
     CCExcelCell *reusableCell = nil;
     // 优先从本 cell 中寻找
     if (rowCell && matrix) {
-        CCExcelCellPosition position;
-        
         if (matrix.column < lockColumnNum) {
-//            reusableCell = rowCell.lockCells[matrix.column];
-            position = CCExcelCellPositionLock;
+            reusableCell = [rowCell dequeueReusableCellWithIdentifier:cellIdentifier withPosition:CCExcelCellPositionLock];
         } else if (matrix.column < columnNum - farrightLockColumnNum) {
-//            reusableCell = rowCell.scrollCells[matrix.column - rowCell.lockCells.count];
-            position = CCExcelCellPositionContent;
+            reusableCell = [rowCell dequeueReusableCellWithIdentifier:cellIdentifier withPosition:CCExcelCellPositionContent];
         } else if (matrix.column < columnNum) {
-//            reusableCell = rowCell.farrightLockCells[matrix.column - rowCell.lockCells.count - rowCell.scrollCells.count];
-            position = CCExcelCellPositionFarrightLock;
+            reusableCell = [rowCell dequeueReusableCellWithIdentifier:cellIdentifier withPosition:CCExcelCellPositionFarrightLock];
         }
-        reusableCell = [rowCell dequeueReusableCellWithIdentifier:cellIdentifier withPosition:position];
-//        if (![reusableCell.reuseIdentifier isEqualToString:cellIdentifier]) {
-//            [reusableCell removeFromSuperview];
-//            reusableCell = nil;
-//        }
         if (reusableCell) {
             return reusableCell;
         }

@@ -25,7 +25,7 @@ Pod::Spec.new do |s|
   s.homepage     = "https://github.com/Jonas-o/CCExcelView"
   s.license      = { :type => "MIT", :file => "LICENSE"}
   s.author       = { "luo" => "luo_ty@qq.com" }
-  s.platform     = :ios, "8.0"
+  s.platform     = :ios, "12.0"
   s.source       = { :git => "https://github.com/Jonas-o/CCExcelView.git", :tag => s.version.to_s }
   s.framework = "UIKit"
   s.requires_arc = true

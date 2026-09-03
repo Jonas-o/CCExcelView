@@ -21,9 +21,30 @@ iOS ExcelView 自定义表格，支持设置左右向锁住的列数，支持列
 
 * 支持使用 CocoaPods 导入项目中
 
-> pod 'CCExcelView'
+```ruby
+pod 'CCExcelView'
+```
 
-然后运行 pod install 即可
+然后运行 `pod install` 即可
+
+* 支持使用 Swift Package Manager 导入
+
+Xcode：`File` → `Add Package Dependencies…`，填入：
+
+```text
+https://github.com/Jonas-o/CCExcelView.git
+```
+
+或在 `Package.swift` 中：
+
+```swift
+dependencies: [
+    .package(url: "https://github.com/Jonas-o/CCExcelView.git", from: "1.0.9")
+]
+```
+
+Swift：`import CCExcelView`  
+Objective-C：`#import <CCExcelView/CCExcel.h>`
 
 可参考[Demo](https://github.com/Jonas-o/CCExcelViewDemo.git)
 

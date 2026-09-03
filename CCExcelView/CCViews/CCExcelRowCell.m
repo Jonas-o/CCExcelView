@@ -281,6 +281,8 @@ static NSInteger maxReusableCount = 50;
 
 - (void)setLockItems:(NSArray *)lockItems scrollItems:(NSArray *)scrollItems rightLockItems:(NSArray *)rightLockItems
 {
+    // 布局 / contentSize 变更不是用户拖拽，不应广播横向滚动同步
+    shouldSendScrollNotification = NO;
     lockCells = lockItems;
     scrollCells = scrollItems;
     farrightLockCells = rightLockItems;

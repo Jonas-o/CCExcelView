@@ -747,7 +747,6 @@ static NSString *cc_reuseIdentifier = @"cc_cell";
     }
     [rowCell removeAllItems];
     [rowCell clearReuseCell];
-    [rowCell setLockItems:nil scrollItems:nil rightLockItems:nil];
 }
 
 - (BOOL)tableView:(UITableView *)tableView shouldHighlightRowAtIndexPath:(NSIndexPath *)indexPath

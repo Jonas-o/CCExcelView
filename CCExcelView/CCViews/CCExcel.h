@@ -11,5 +11,9 @@
 
 #import "BaseExcelDataSource.h"
 #import "CCExcelImageCell.h"
+#import "CCExcelView.h"
+#import "CCExcelCell.h"
+#import "CCExcelRowCell.h"
+#import "CCHelper.h"
 
 #endif /* CCExcel_h */

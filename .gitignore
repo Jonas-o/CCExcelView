@@ -1,0 +1,28 @@
+# macOS
+.DS_Store
+*.swp
+*~
+
+# Xcode / SPM local
+.swiftpm/
+.build/
+DerivedData/
+xcuserdata/
+*.xcuserstate
+*.xccheckout
+*.moved-aside
+*.hmap
+*.ipa
+*.dSYM.zip
+*.dSYM
+
+# Cursor
+.cursor/
+
+# CocoaPods (if used locally)
+Pods/
+Podfile.lock
+
+# Misc
+*.log
+.idea/

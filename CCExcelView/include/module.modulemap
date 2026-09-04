@@ -1,0 +1,5 @@
+module CCExcelView {
+  umbrella header "CCExcelView/CCExcel.h"
+  export *
+  module * { export * }
+}

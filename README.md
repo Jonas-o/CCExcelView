@@ -35,7 +35,7 @@ https://github.com/Jonas-o/CCExcelView.git
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/Jonas-o/CCExcelView.git", from: "1.0.9")
+    .package(url: "https://github.com/Jonas-o/CCExcelView.git", from: "1.0.10")
 ]
 ```
 

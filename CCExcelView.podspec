@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "CCExcelView"
-  s.version      = "1.0.9"
+  s.version      = "1.0.10"
   s.summary      = "The Excel View a friendly way for iOS."
   s.description  = <<-DESC
                   iOS ExcelView 自定义表格，支持设置左右向锁住的列数，支持列排序（排序规则自己实现）,支持设置topView，支持列表背景色，支持设置整行还是单元格点击的点击色
@@ -30,13 +30,17 @@ Pod::Spec.new do |s|
   s.framework = "UIKit"
   s.requires_arc = true
 
-  s.source_files  = "CCViews", "CCExcelView/**/*.{h,m}"
+  s.source_files         = "CCExcelView/CCViews/**/*.{m}", "CCExcelView/include/CCExcelView/**/*.h"
+  s.public_header_files  = "CCExcelView/include/CCExcelView/**/*.h"
+  s.header_mappings_dir  = "CCExcelView/include"
+  s.module_map           = "CCExcelView/include/module.modulemap"
   s.resource = "CCExcelView/CCResources/*.bundle"
   s.user_target_xcconfig = {
     'GENERATE_INFOPLIST_FILE' => 'YES'
   }
   s.pod_target_xcconfig = {
-    'GENERATE_INFOPLIST_FILE' => 'YES'
+    'GENERATE_INFOPLIST_FILE' => 'YES',
+    'HEADER_SEARCH_PATHS' => '"$(PODS_TARGET_SRCROOT)/CCExcelView/include"'
   }
 
 

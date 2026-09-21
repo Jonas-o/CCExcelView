@@ -1,6 +1,14 @@
 # CCExcelView
 iOS ExcelView 自定义表格，支持设置左右向锁住的列数，支持列排序（排序规则自己实现）,支持设置topView，支持列表背景色，支持设置整行还是单元格点击的点击色
 
+> **本库已停止功能维护。** 新项目请使用 Swift 表格库 [ListExcel](https://github.com/Jonas-o/ListExcel)（iOS 13+，仅 SPM）。
+>
+> ```swift
+> .package(url: "https://github.com/Jonas-o/ListExcel.git", from: "0.2.0")
+> ```
+>
+> `import ListExcel`。CCExcelView 仍可按下方方式集成，只修严重问题，不再加功能。
+
 [![License](https://img.shields.io/badge/license-MIT-blue.svg?style=flat)](http://opensource.org/licenses/MIT "Feel free to contribute.")
 
 ## 效果展示
